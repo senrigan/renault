@@ -5,7 +5,9 @@ http://www.redips.net/
 Apr, 2011.
 
 */
-
+th{
+	text-align: center;
+}
 body {
 	font-family: arial;
 	margin: 0px;
@@ -69,7 +71,7 @@ div#redips-drag th {
 	*/
 	line-height: 20px;
 	border-width: 2px;
-	border-style: solid;
+	/*border-style: solid;*/
 	background-color: white;
 	/* round corners */
 	border-radius: 4px; /* Opera, Chrome */
