@@ -16,7 +16,7 @@ body {
 /* make drag container visible */
 #redips-drag {
 	border: 2px dashed LightBlue;
-	width: 580px;
+	width: 100%;
 	padding: 10px;
 	margin: 0px auto;
 }
