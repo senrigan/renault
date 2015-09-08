@@ -125,3 +125,22 @@ div#redips-drag th {
 .cdark {
 	background-color: #C6C8CB;
 }
+#blue{
+	background-color: #000080;
+}
+#yellow{
+	background-color: #DAA520;
+}
+#white{
+	background-color: #F8F8FF;
+}
+
+.blue{
+	background-color: #000080;
+}
+.yellow{
+	background-color: #DAA520;
+}
+.white{
+	background-color: #F8F8FF;
+}
