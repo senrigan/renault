@@ -4,89 +4,42 @@
 /* enable strict mode */
 "use strict";
 
-// define redipsInit variable
-var redipsInit;
+// create redips container
+var redips = {};
 
 // redips initialization
-redipsInit = function () {
-	// reference to the REDIPS.drag library and message line
-	var	rd = REDIPS.drag,
-		msg;
+redips.init = function () {
+	// reference to the REDIPS.drag object
+	var	rd = REDIPS.drag;
+	// define border style (this should go before init() method)
+	rd.style.borderEnabled = 'none';
 	// initialization
 	rd.init();
-	// set hover color for TD and TR
-	rd.hover.colorTd = '#FFCFAE';
-	rd.hover.colorTr = '#9BB3DA';
-	// set hover border for current TD and TR
-	rd.hover.borderTd = '2px solid #32568E';
-	rd.hover.borderTr = '2px solid #32568E';
-	// drop row after highlighted row (if row is dropped to other tables)
-	rd.rowDropMode = 'after';
-	// row was clicked - event handler
-	rd.event.rowClicked = function () {
-		// set current element (this is clicked TR)
-		var el = rd.obj;
-		// find parent table
-		el = rd.findParent('TABLE', el);
-		// every table has only one SPAN element to display messages
-		msg = el.getElementsByTagName('span')[0];
-		// display message
-		msg.innerHTML = 'Clicked';
+	// set hover color
+	rd.hover.colorTd = '#FFE885';
+	// DIV elements can be dropped to the empty cells only
+	rd.dropMode = 'single';
+	// DIV element was clicked - disable 'mini' tables
+	rd.event.clicked = function () {
+		// search for table inside DIV element
+		var tbl = rd.obj.getElementsByTagName('TABLE');
+		// if dragged DIV element contains table then disable all mini tables
+		// it is not allowed to drop mini table within another mini table
+		if (tbl.length > 0) {
+			rd.enableTable(false, 'mini');
+		}
 	};
-	// row was moved - event handler
-	rd.event.rowMoved = function () {
-		// set opacity for moved row
-		// rd.obj is reference of cloned row (mini table)
-		rd.rowOpacity(rd.obj, 85);
-		// set opacity for source row and change source row background color
-		// rd.objOld is reference of source row
-		rd.rowOpacity(rd.objOld, 20, 'White');
-		// display message
-		msg.innerHTML = 'Moved';
-	};
-	// row was not moved - event handler
-	rd.event.rowNotMoved = function () {
-		msg.innerHTML = 'Not moved';
-	};
-	// row was dropped - event handler
-	rd.event.rowDropped = function () {
-		// display message
-		msg.innerHTML = 'Dropped';
-	};
-	// row was dropped to the source - event handler
-	// mini table (cloned row) will be removed and source row should return to original state
-	rd.event.rowDroppedSource = function () {
-		// make source row completely visible (no opacity)
-		rd.rowOpacity(rd.objOld, 100);
-		// display message
-		msg.innerHTML = 'Dropped to the source';
-	};
-	/*
-	// how to cancel row drop to the table
-	rd.event.rowDroppedBefore = function () {
-		//
-		// JS logic
-		//
-		// return source row to its original state
-		rd.rowOpacity(rd.objOld, 100);
-		// cancel row drop
-		return false;
+	// after dragged DIV element is dropped, enable all mini tables
+	// this way, mini tables will be ready for accepting ordinary DIV element (circle DIV)
+	rd.event.finish = function () {
+		rd.enableTable(true, 'mini');
 	}
-	*/
-	// row position was changed - event handler
-	rd.event.rowChanged = function () {
-		// get target and source position (method returns positions as array)
-		var pos = rd.getPosition();
-		// display current table and current row
-		msg.innerHTML = 'Changed: ' + pos[0] + ' ' + pos[1];
-	};
 };
-
 
 // add onload event listener
 if (window.addEventListener) {
-	window.addEventListener('load', redipsInit, false);
+	window.addEventListener('load', redips.init, false);
 }
 else if (window.attachEvent) {
-	window.attachEvent('onload', redipsInit);
+	window.attachEvent('onload', redips.init);
 }
