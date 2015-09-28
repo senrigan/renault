@@ -20,7 +20,7 @@ redips.init = function () {
 	// DIV elements can be dropped to the empty cells only
 	rd.dropMode = 'single';
 	// DIV element was clicked - disable 'mini' tables
-	rd.event.clicked = function () {
+/*	rd.event.clicked = function () {
 		// search for table inside DIV element
 		var tbl = rd.obj.getElementsByTagName('TABLE');
 		// if dragged DIV element contains table then disable all mini tables
@@ -29,11 +29,27 @@ redips.init = function () {
 			rd.enableTable(false, 'mini');
 		}
 	};
+*/
 	// after dragged DIV element is dropped, enable all mini tables
 	// this way, mini tables will be ready for accepting ordinary DIV element (circle DIV)
-	rd.event.finish = function () {
+/*	rd.event.finish = function () {
 		rd.enableTable(true, 'mini');
 	}
+*/
+	// define A and B source elements for the last row only (element ID and class name of the last row)
+	rd.only.div.a = 'last';
+	rd.only.div.b = 'last';
+	// A and B elements can't be placed to other table cells (this is default value)
+	rd.only.other = 'deny';
+	rd.event.cloned = function () {
+		// set id of cloned element
+		var clonedId = rd.obj.id;
+		// if id of cloned element begins with "e" then make exception (allow DIV element to access cells with class name "redips-mark")
+		if (clonedId.substr(0, 1) === 'z') {   
+			//rd.mark.exception[clonedId] = 'mark';
+			rd.only.div[clonedId] = 'last';
+		}
+	};
 };
 
 // add onload event listener

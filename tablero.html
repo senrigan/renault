@@ -18,38 +18,38 @@
 	</head>
 	<body onload="REDIPS.drag.init()" >
 		
-			<div id="main_container" class="container">
-				<div id="redips-drag">
-					<table id="table1" border="1" width="100%" >
+			<div id="right"  width="100%">
+				<div id="redips-drag" width="100%">
+					<table id="table2" name="table2" border="1" width="100%" >
 						<thead>
 							<tr>
-								<th colspan="20" rowspan="" headers="" scope="col">CONTROL DE PROGRESO DE TRABAJO</th>
+								<th class="redips-only last" colspan="20" rowspan="" headers="" scope="col">CONTROL DE PROGRESO DE TRABAJO</th>
 								
 								
-								<th colspan="2" rowspan="" headers="" scope="">Detenidos</th>
+								<th class="redips-only last" colspan="2" rowspan="" headers="" scope="">Detenidos</th>
 							</tr>
 							<tr>
-								<th colspan="" rowspan="" headers="" scope=""> Tecnicos</th>
-								<th colspan="" rowspan="" headers="" scope="">ID</th>
-								<th colspan="" rowspan="" headers="" scope="">Status Trabajo</th>
-								<th colspan="" rowspan="" headers="" scope="">8:00</th>
-								<th colspan="" rowspan="" headers="" scope="">9:00</th>
-								<th colspan="" rowspan="" headers="" scope="">10:00</th>
-								<th colspan="" rowspan="" headers="" scope="">11:00</th>
-								<th colspan="" rowspan="" headers="" scope="">12:00</th>
-								<th colspan="" rowspan="" headers="" scope="">13:00</th>
-								<th colspan="" rowspan="" headers="" scope="">14:00</th>
-								<th colspan="" rowspan="" headers="" scope="">15:00</th>
-								<th colspan="" rowspan="" headers="" scope="">16:00</th>
-								<th colspan="" rowspan="" headers="" scope="">17:00</th>
-								<th colspan="" rowspan="" headers="" scope="">18:00</th>
-								<th colspan="" rowspan="" headers="" scope="">19:00</th>
-								<th colspan="" rowspan="" headers="" scope="">Lavado</th>
-								<th colspan="" rowspan="" headers="" scope="">C.C</th>
-								<th colspan="" rowspan="" headers="" scope="">Term</th>
-								<th colspan="" rowspan="" headers="" scope="">T.O.T</th>
-								<th colspan="" rowspan="" headers="" scope="">Partes</th>
-								<th colspan="" rowspan="" headers="" scope="">AUT</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope=""> Tecnicos</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">ID</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">Status Trabajo</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">8:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">9:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">10:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">11:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">12:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">13:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">14:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">15:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">16:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">17:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">18:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">19:00</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">Lavado</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">C.C</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">TermSS</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">T.O.T</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">Partes</th>
+								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">AUT</th>
 							</tr>
 						
 						</thead>
@@ -145,10 +145,14 @@
 					</tbody>
 						
 					</table>
-					<div id="butonContainer" name="butonContainer">
-						<table id="table2" name="table2">
+					<div id="left" name="left">
+						<table id="table1" name="table1">
 							<thead>
-								<tr>Elementos de arrastre</tr>
+								<tr>
+									<th class="redips-only last" colspan="5" rowspan="" headers="" scope="">
+										Elementos de arrastre
+									</th>
+								</tr>
 							</thead>
 							<tbody>
 								<tr>
@@ -170,9 +174,21 @@
 
 										</div>
 									</td>
+									<td class="dark" colspan="" rowspan="" headers="">
+										<div  class="redips-drag redips-clone birthday" id="birthday" name="birthday" >
+											<img src="images/admin/birthday.jpg" alt="" height="40px" width="40px">
+
+										</div>
+									</td>
+									<td class="dark" colspan="" rowspan="" headers="">
+										<div  class="redips-drag redips-clone food" id="food" name="food" >
+											<img src="images/admin/comida.jpg" alt="" height="40px" width="40px">
+
+										</div>
+									</td>
 									<td class="redips-trash" colspan="" rowspan="" headers="">
 										<div  id="Trash">
-											<img src="images/admin/trash.png" alt="" height="80px" width="80px">
+											<img src="images/admin/trash.png" alt="" height="40px" width="40px">
 										</div>
 										
 									</td>
