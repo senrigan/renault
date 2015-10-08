@@ -10,19 +10,49 @@
         <link rel="stylesheet" href="css/login.css">
 
     
-    
-    
+    <script src="javascript/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8" ></script>
+    <script type="text/javascript">
+
+      function iniciarSesion(){
+        var user=$("#login__username").val();
+        var pass=$("#login__password").val();
+        alert("mmm");
+        console.log("user"+user+" pass"+pass);
+        $.ajax({
+            url:'controller/usuarios_sesion.php',
+            type : 'post',
+            dataType : 'text',
+            data : 'user='+user+'&pass='+pass,
+
+            success:function(res){
+              if(res!=0){
+                alert("cuenta correcta");
+                alert(""+res);
+               //$("#content").append(res);
+
+              }else{
+                //document.formulario.user.value="valio";
+                alert("no existe la cuenta");
+                alert(res);
+
+              }
+            },error : function(){
+
+            }
+          });
+      }
+    </script>  
   </head>
 
   <body>
 
     <body class="align">
 
-  <div class="site__container">
+  <div id="content" class="site__container">
     <img class="logo_login" src="images/logorenault.png" alt="" height="180" width="180">
     <div class="grid__container">
 
-      <form action="" method="post" class="form form--login">
+      <form  class="form form--login" action="javascript:iniciarSesion();" >
 
         <div class="form__field">
           <label class="fontawesome-user" for="login__username"><span class="hidden">Usuario</span></label>
@@ -35,7 +65,7 @@
         </div>
 
         <div class="form__field">
-          <input type="submit" value="Iniciar Session">
+          <input type="submit" value="Iniciar Session" >
         </div>
 
       </form>
