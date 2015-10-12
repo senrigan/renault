@@ -1,0 +1,274 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.1
+-- Dumped by pg_dump version 9.1.1
+-- Started on 2015-10-12 02:56:32
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 166 (class 3079 OID 11638)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1871 (class 0 OID 0)
+-- Dependencies: 166
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 165 (class 1259 OID 16411)
+-- Dependencies: 5
+-- Name: elemento_control; Type: TABLE; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+CREATE TABLE elemento_control (
+    "idElemento" integer NOT NULL,
+    tipo integer NOT NULL,
+    contenido character varying(50) NOT NULL,
+    referencia integer
+);
+
+
+ALTER TABLE public.elemento_control OWNER TO pruebas;
+
+--
+-- TOC entry 164 (class 1259 OID 16409)
+-- Dependencies: 165 5
+-- Name: elemento_control_idElemento_seq; Type: SEQUENCE; Schema: public; Owner: pruebas
+--
+
+CREATE SEQUENCE "elemento_control_idElemento_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."elemento_control_idElemento_seq" OWNER TO pruebas;
+
+--
+-- TOC entry 1872 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: elemento_control_idElemento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: pruebas
+--
+
+ALTER SEQUENCE "elemento_control_idElemento_seq" OWNED BY elemento_control."idElemento";
+
+
+--
+-- TOC entry 1873 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: elemento_control_idElemento_seq; Type: SEQUENCE SET; Schema: public; Owner: pruebas
+--
+
+SELECT pg_catalog.setval('"elemento_control_idElemento_seq"', 1, false);
+
+
+--
+-- TOC entry 163 (class 1259 OID 16404)
+-- Dependencies: 5
+-- Name: tablero_control; Type: TABLE; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+CREATE TABLE tablero_control (
+    "idTablero" integer NOT NULL,
+    "idEmpleado" integer NOT NULL,
+    "statusTrabajo" integer NOT NULL,
+    h0800 integer,
+    h0830 integer,
+    h0900 integer,
+    h0930 integer,
+    h1000 integer,
+    h1030 integer,
+    h1100 integer,
+    h1130 integer,
+    h1200 integer,
+    h1230 integer,
+    h1300 integer,
+    h1330 integer,
+    h1400 integer,
+    h1430 integer,
+    h1500 integer,
+    h1530 integer,
+    h1600 integer,
+    h1630 integer,
+    h1700 integer,
+    h1730 integer,
+    h1800 integer,
+    h1830 integer,
+    h1900 integer,
+    h1930 integer,
+    h2000 integer,
+    lavado integer,
+    control_calidad integer,
+    terminado integer,
+    "ToT" integer,
+    partes integer,
+    "AUT" integer
+);
+
+
+ALTER TABLE public.tablero_control OWNER TO pruebas;
+
+--
+-- TOC entry 162 (class 1259 OID 16398)
+-- Dependencies: 5
+-- Name: tecnicos; Type: TABLE; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+CREATE TABLE tecnicos (
+    "idTecnico" integer NOT NULL,
+    nombre character varying(30) NOT NULL,
+    a_paterno character varying(30) NOT NULL,
+    a_materno character varying(30) NOT NULL,
+    imagen_perfil character(50) NOT NULL
+);
+
+
+ALTER TABLE public.tecnicos OWNER TO pruebas;
+
+--
+-- TOC entry 161 (class 1259 OID 16396)
+-- Dependencies: 5 162
+-- Name: tecnicos_idTecnico_seq; Type: SEQUENCE; Schema: public; Owner: pruebas
+--
+
+CREATE SEQUENCE "tecnicos_idTecnico_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."tecnicos_idTecnico_seq" OWNER TO pruebas;
+
+--
+-- TOC entry 1874 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: tecnicos_idTecnico_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: pruebas
+--
+
+ALTER SEQUENCE "tecnicos_idTecnico_seq" OWNED BY tecnicos."idTecnico";
+
+
+--
+-- TOC entry 1875 (class 0 OID 0)
+-- Dependencies: 161
+-- Name: tecnicos_idTecnico_seq; Type: SEQUENCE SET; Schema: public; Owner: pruebas
+--
+
+SELECT pg_catalog.setval('"tecnicos_idTecnico_seq"', 1, false);
+
+
+--
+-- TOC entry 1856 (class 2604 OID 16414)
+-- Dependencies: 165 164 165
+-- Name: idElemento; Type: DEFAULT; Schema: public; Owner: pruebas
+--
+
+ALTER TABLE elemento_control ALTER COLUMN "idElemento" SET DEFAULT nextval('"elemento_control_idElemento_seq"'::regclass);
+
+
+--
+-- TOC entry 1855 (class 2604 OID 16401)
+-- Dependencies: 161 162 162
+-- Name: idTecnico; Type: DEFAULT; Schema: public; Owner: pruebas
+--
+
+ALTER TABLE tecnicos ALTER COLUMN "idTecnico" SET DEFAULT nextval('"tecnicos_idTecnico_seq"'::regclass);
+
+
+--
+-- TOC entry 1865 (class 0 OID 16411)
+-- Dependencies: 165
+-- Data for Name: elemento_control; Type: TABLE DATA; Schema: public; Owner: pruebas
+--
+
+
+
+--
+-- TOC entry 1864 (class 0 OID 16404)
+-- Dependencies: 163
+-- Data for Name: tablero_control; Type: TABLE DATA; Schema: public; Owner: pruebas
+--
+
+
+
+--
+-- TOC entry 1863 (class 0 OID 16398)
+-- Dependencies: 162
+-- Data for Name: tecnicos; Type: TABLE DATA; Schema: public; Owner: pruebas
+--
+
+
+
+--
+-- TOC entry 1862 (class 2606 OID 16419)
+-- Dependencies: 165 165
+-- Name: elemento_control_pkey; Type: CONSTRAINT; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+ALTER TABLE ONLY elemento_control
+    ADD CONSTRAINT elemento_control_pkey PRIMARY KEY ("idElemento");
+
+
+--
+-- TOC entry 1860 (class 2606 OID 16408)
+-- Dependencies: 163 163
+-- Name: tablero_control_pkey; Type: CONSTRAINT; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+ALTER TABLE ONLY tablero_control
+    ADD CONSTRAINT tablero_control_pkey PRIMARY KEY ("idTablero");
+
+
+--
+-- TOC entry 1858 (class 2606 OID 16403)
+-- Dependencies: 162 162
+-- Name: tecnicos_pkey; Type: CONSTRAINT; Schema: public; Owner: pruebas; Tablespace: 
+--
+
+ALTER TABLE ONLY tecnicos
+    ADD CONSTRAINT tecnicos_pkey PRIMARY KEY ("idTecnico");
+
+
+--
+-- TOC entry 1870 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-10-12 02:56:32
+
+--
+-- PostgreSQL database dump complete
+--
+
