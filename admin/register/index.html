@@ -36,8 +36,8 @@
             <div class="wizard-container"> 
                 
                 <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
-                    <form action="" method="">
-                <!--        You can switch "ct-wizard-orange"  with one of the next bright colors: "ct-wizard-blue", "ct-wizard-green", "ct-wizard-orange", "ct-wizard-red"             -->
+                    <form  enctype="multipart/form-data" action="registrar_tecnico.php" method="POST" id="register_user" name="register_user">
+         
                 
                     	<div class="wizard-header">
                         	<h3>
@@ -58,7 +58,7 @@
                                      <div class="picture-container">
                                           <div class="picture">
                                               <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                              <input type="file" id="wizard-picture">
+                                              <input name="wizard-picture" type="file" id="wizard-picture">
                                           </div>
                                           <h6>Elegir Imagen</h6>
                                       </div>
@@ -86,7 +86,7 @@
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Registrar' />
+                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Registrar' />
         
                             </div>
                             

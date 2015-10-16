@@ -57,10 +57,11 @@ $(document).ready(function(){
 
     });
     $(".btn-finish").click(function(){
-       validateFirstStep();
+       if(validateFirstStep()){
+        document.getElementById("register_user").submit();
+       }
     });
     $("#finish").click(function(){
-        alert("hoa");
     });
     // Prepare the preview for profile picture
     $("#wizard-picture").change(function(){
