@@ -61,8 +61,7 @@ $(document).ready(function(){
         document.getElementById("register_user").submit();
        }
     });
-    $("#finish").click(function(){
-    });
+  
     // Prepare the preview for profile picture
     $("#wizard-picture").change(function(){
         readURL(this);
