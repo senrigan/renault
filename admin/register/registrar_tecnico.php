@@ -15,11 +15,6 @@
 	$firtName=$_POST["firstname"];
 	$lastFatherName=$_POST["lastnamePatern"];
 	$lastMomName=$_POST["lastnameMother"];
-
-
-
-
-
 	if(move_uploaded_file($_FILES['wizard-picture']['tmp_name'], $target_path)) { 
 		echo "El archivo ". basename( $_FILES['wizard-picture']['name']). " ha sido subido";
 	} else{
