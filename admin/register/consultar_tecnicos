@@ -1,0 +1,10 @@
+<?php
+	include 'DatabaseConector.php';
+	$conector=new DatabaseConector("pruebas","admin","renault","5432","localhost");
+	$conexion=$conector->openConexion();
+	$query="SELECT * FROM tecnicos";
+	$resultado=$conector->executeQuery($query,$conexion);
+	$arr = pg_fetch_all($resultado);
+
+	print_r($arr);
+?>

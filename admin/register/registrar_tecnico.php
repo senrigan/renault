@@ -7,11 +7,15 @@
 	$cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$password";
 
 	$conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
-	echo "<h3>Conexion Exitosa PHP - PostgreSQL</h3><hr><br>";
 
 	$target_path = "userImage/";
 	$target_path = $target_path . basename( $_FILES['wizard-picture']['name']); 
-	$nameImage= $_FILES['wizard-picture']['name'];
+	if( $_FILES['wizard-picture']['name']){
+		$nameImage= $_FILES['wizard-picture']['name'];	
+	}else{
+		$nameImage="tecnico.png";
+	}
+	
 	$firtName=$_POST["firstname"];
 	$lastFatherName=$_POST["lastnamePatern"];
 	$lastMomName=$_POST["lastnameMother"];
