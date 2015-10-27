@@ -1,7 +1,7 @@
-<script src="../../javascript/jquery-1.11.3.min.js"></script>
+<script src="../../../static/javascript/jquery-1.11.3.min.js"></script>
 
-		<link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../css/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
 <table class='table'>
 	<caption>Tabla de los usuarios registrados</caption>
 	<thead>
@@ -16,7 +16,7 @@
 	<tbody>
 
 <?php
-	include 'DatabaseConector.php';
+	include '../model/DatabaseConector.php';
 	$conector=new DatabaseConector("pruebas","admin","renault","localhost","5432");
 	$conexion=$conector->openConexion();
 	$query="SELECT * FROM tecnicos";
@@ -30,17 +30,18 @@
 		$sizeElement=sizeof($filas);
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
+			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
 			if($filas[$i]['imagen_perfil']){
-				if(file_exists(getcwd()."/userImage/".$filas[$i]['imagen_perfil'])){
-					echo "<image src=userImage/".$filas[$i]['imagen_perfil'].
+				if(file_exists("../../../media/userImage/".$filas[$i]['imagen_perfil'])){
+					echo "<image src=../../../media/userImage/".$filas[$i]['imagen_perfil'].
 					" class='img-thumbnail' width='100' height='100' >";
 				}else{
-					echo "<image src=userImage/tecnico.png".
+					echo "<image src=../../../static/images/admin/tecnico.png".
 					" class='img-thumbnail' width='100' height='100' >";
 				}
 				
 			}else{
-				echo "<image src=userImage/tecnico.png".
+				echo "<image src=../../../static/images/admin/tecnico.png".
 					" class='img-thumbnail' width='100' height='100' >";
 			}
 			
