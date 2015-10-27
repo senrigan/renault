@@ -31,10 +31,14 @@
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
 			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
+			$nombreImagen=trim($filas[$i]['imagen_perfil']);
+			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
+			$ubicacion=trim($ubicacion);
+			
+			//echo "".strcmp($ubicacion, $ubi);
 			if($filas[$i]['imagen_perfil']){
-				if(file_exists("../../../media/userImage/".$filas[$i]['imagen_perfil'])){
-					echo "<image src=../../../media/userImage/".$filas[$i]['imagen_perfil'].
-					" class='img-thumbnail' width='100' height='100' >";
+				if(file_exists($ubicacion)){
+					echo "<image src='../../../media/userImage/".$nombreImagen."' class='img-thumbnail' width='100' height='100' >";
 				}else{
 					echo "<image src=../../../static/images/admin/tecnico.png".
 					" class='img-thumbnail' width='100' height='100' >";
@@ -49,6 +53,8 @@
 				"<td>".$filas[$i]['nombre']."</td>".
 				"<td>".$filas[$i]['a_paterno']."</td>".
 				"<td>".$filas[$i]['a_materno']."</td>".
+				"<td><button type='button' class='btn btn-warning'>Modificar</button>".
+				"<button type='button' class='btn btn-danger'>Eliminar</button></td>".
 			"</tr>";
 		}
 		
