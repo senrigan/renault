@@ -10,7 +10,6 @@
       function iniciarSesion(){
         var user=$("#login__username").val();
         var pass=$("#login__password").val();
-        alert("mmm");
         console.log("user"+user+" pass"+pass);
         $.ajax({
             url:'controller/usuarios_sesion.php',
@@ -21,7 +20,6 @@
             success:function(res){
               if(res!=0){
                 alert("cuenta correcta");
-                alert(""+res);
                //$("#content").append(res);
 
               }else{
