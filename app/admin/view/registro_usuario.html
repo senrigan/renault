@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	
@@ -36,17 +36,17 @@
             <div class="wizard-container"> 
                 
                 <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
-                    <form  enctype="multipart/form-data" action="../controller/registrar_tecnico.php" method="POST" id="register_user" name="register_user">
+                    <form  enctype="multipart/form-data" action="../controller/registrar_cuenta.php" method="POST" id="register_user" name="register_user">
          
                 
                     	<div class="wizard-header">
                         	<h3>
-                        	   <b>Registro de Tecnicos</b><br>
+                        	   <b>Registro de Usuarios</b><br>
                         	
                         	</h3>
                     	</div>
                     	<ul>
-                            <li><a href="#about" data-toggle="tab">Datos Personales</a></li>
+                            <li><a href="#about" data-toggle="tab">Datos de la Cuenta</a></li>
                            
                         </ul>
                         
@@ -54,27 +54,23 @@
                             <div class="tab-pane" id="about">
                               <div class="row">
                                  
-                                  <div class="col-sm-4 col-sm-offset-1">
-                                     <div class="picture-container">
-                                          <div class="picture">
-                                              <img src="../../../static/images/admin/register/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                              <input name="wizard-picture" type="file" id="wizard-picture">
-                                          </div>
-                                          <h6>Elegir Imagen</h6>
-                                      </div>
-                                  </div>
-                                  <div class="col-sm-6">
+                                  
+                                  <div class="col-sm-12">
                                       <div class="form-group">
-                                        <label>Nombre <small>(required)</small></label>
-                                        <input name="firstname" type="text" class="form-control" >
+                                        <label>usuario <small>(required)</small></label>
+                                        <input name="user" id="user" type="text" class="form-control" >
                                       </div>
                                       <div class="form-group">
-                                        <label>Apellido Paterno <small>(required)</small></label>
-                                        <input name="lastnamePatern" type="text" class="form-control" >
+                                        <label>contraseña <small>(required)</small></label>
+                                        <input name="password" id="password" type="text" class="form-control" >
                                       </div>
                                       <div class="form-group">
-                                        <label>Apellido Materno <small>(required)</small></label>
-                                        <input name="lastnameMother" type="text" class="form-control" >
+                                        <label>tipo de cuenta <small>(required)</small></label>
+                                        
+                                        <select name="typecount" id="typecount" class="form-control">
+                                          <option value="1">usuario normal</option>
+                                          <option value="2">administrador</option>
+                                        </select>
                                       </div>
                                   </div>
                          

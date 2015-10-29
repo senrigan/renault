@@ -11,24 +11,34 @@
 
 	$conector=new DatabaseConector("pruebas","admin","renault","localhost","5432");
 	$conexion=$conector->openConexion();
-	//$user=trim($user);
-	//$pass=trim($pass);
-	$query="SELECT * FROM cuentas WHERE user='$user' AND password='$pass' ";
-	echo $query;
-	$resultado=$conector->executeQueryDefine($query,$conexion);
+	$user=trim($user);
+	$pass=trim($pass);
+	//$query="SELECT * FROM cuentas WHERE user='$user' AND password='$pass' ";
+	$query="SELECT * FROM cuentas  ";
 
+	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$num=pg_num_rows($resultado);
+
 	if($num==0){
 		//usuario  invalido
 		echo 0;
 	}else{
 		$filas = pg_fetch_all($resultado);
 		$conector->closeConexionDef($conexion);
-		$userName=$filas[0]['user'];
-		$idUser=$filas[0]['id'];
-		$_SESSION['id_user']=$id_user;
-		$_SESSION['userName']=$userName;
-		echo 1;
+		for($i=0;$i<$num;$i++){
+			$userName=$filas[$i]['user'];
+			$idUser=$filas[$i]['id'];
+			$privileges=$filas[$i]['privileges'];
+			$password=$filas[$i]['password'];
+			if(strcmp($userName,$user)==0 && strcmp($pass,$password)==0){
+				echo 1;
+				$_SESSION['id_user']=$idUser;
+				$_SESSION['userName']=$userName;
+				$_SESSION['typecount']=$privileges;
+			}
+		}
+		
+		
 	}
 	
 	/*if(!$resultado){
