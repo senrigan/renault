@@ -18,28 +18,37 @@
 
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$num=pg_num_rows($resultado);
-
+	$result=0;
 	if($num==0){
 		//usuario  invalido
-		echo 0;
+		echo $result;
 	}else{
 		$filas = pg_fetch_all($resultado);
 		$conector->closeConexionDef($conexion);
 		for($i=0;$i<$num;$i++){
-			$userName=$filas[$i]['user'];
+			$userName=$filas[$i]['cuenta'];
 			$idUser=$filas[$i]['id'];
 			$privileges=$filas[$i]['privileges'];
 			$password=$filas[$i]['password'];
 			if(strcmp($userName,$user)==0 && strcmp($pass,$password)==0){
-				echo 1;
 				$_SESSION['id_user']=$idUser;
 				$_SESSION['userName']=$userName;
 				$_SESSION['typecount']=$privileges;
+				if($privileges==1){
+					header("location : view/tablero.php");
+					$result= 1;
+
+
+				}else if($privileges==2){
+					header("location : ../../admin/index.html");
+					$result=2;
+				}
 			}
 		}
 		
 		
 	}
+	echo $result;
 	
 	/*if(!$resultado){
 		echo "ocurrio un error al consultar la base de datos";

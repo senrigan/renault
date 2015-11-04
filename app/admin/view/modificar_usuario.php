@@ -8,7 +8,7 @@
 
   $filas = pg_fetch_all($resultado);
   $conector->closeConexionDef($conexion);
-  $usuario=$filas[0]['user'];
+  $usuario=$filas[0]['cuenta'];
   $pass=$filas[0]['password'];
   $typecount=$filas[0]['privileges'];
 

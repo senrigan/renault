@@ -1,7 +1,8 @@
 <script src="../../../static/javascript/jquery-1.11.3.min.js"></script>
+<script src="../../../static/javascript/admin/gestor_usuario.js"></script>
+<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
 
-		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
 <table class='table'>
 	<caption>Tabla de los usuarios registrados</caption>
 	<thead>
@@ -33,11 +34,14 @@
 			//echo "".strcmp($ubicacion, $ubi);
 			
 			
-			echo "<td>".$filas[$i]['user']."</td>".
+			echo "<td>".$filas[$i]['cuenta']."</td>".
 				"<td>".$filas[$i]['privileges']."</td>".
-				"<td><button type='button' class='btn btn-warning'>Modificar</button>".
-				"<button type='button' class='btn btn-danger'>Eliminar</button></td>".
-			"</tr>";
+				"<td>";
+		?>
+			<button type='button' class='btn btn-warning' onclick=<?php echo "modificarUsuario('modificar_usuario.php?idusuario=".($i+1)."')"; ?> >Modificar</button>
+			<button type='button' class='btn btn-danger'>Eliminar</button></td>.
+			</tr>;
+		<?php	
 		}
 		
 	//print_r($arr);

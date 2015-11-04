@@ -34,19 +34,21 @@
 			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
+			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
+			$imagenesUsuario="../../../media/userImage/";
 			$ubicacion=trim($ubicacion);
 			
 			//echo "".strcmp($ubicacion, $ubi);
 			if($filas[$i]['imagen_perfil']){
 				if(file_exists($ubicacion)){
-					echo "<image src='../../../media/userImage/".$nombreImagen."' class='img-thumbnail' width='100' height='100' >";
+					echo "<image src='".$imagenesUsuario.$nombreImagen."' class='img-thumbnail' width='100' height='100' >";
 				}else{
-					echo "<image src=../../../static/images/admin/tecnico.png".
+					echo "<image src=".$imagenesUsuario."static/tecnico.png".
 					" class='img-thumbnail' width='100' height='100' >";
 				}
 				
 			}else{
-				echo "<image src=../../../static/images/admin/tecnico.png".
+				echo "<image src=".$imagenesUsuario."static/tecnico.png".
 					" class='img-thumbnail' width='100' height='100' >";
 			}
 			

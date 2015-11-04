@@ -19,8 +19,12 @@
 
             success:function(res){
               alert(""+res);
-              if(res==1){
-                alert("cuenta correcta");
+              if(res==1 || res==2){
+                if(res==1){
+                  window.location.href = "view/tablero.php";
+                }else if(res==2){
+                  window.location.href = "../admin/index.html";
+                }
                //$("#content").append(res);
 
               }else{
