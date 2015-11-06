@@ -121,6 +121,15 @@ div#redips-drag th {
 	background-color: #eee;
 }
 
+.cd {
+	background-color: #ddd;
+}
+
+/* row light */
+.cl {
+	background-color: #eee;
+}
+
 /* cell dark */
 .cdark {
 	background-color: #C6C8CB;

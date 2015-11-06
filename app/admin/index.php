@@ -38,7 +38,7 @@
             <li><a href="view/consultar_tecnico.php" target="_self" >Modificar</a></li>
           </ul>
         </li>
-       
+        <li><a href="view/tablero.php" target="_self"></span>Tablero</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
