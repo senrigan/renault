@@ -1,6 +1,13 @@
 <?php
-	include "../../admin/model/DatabaseConector.php";
-
+	//include "../../admin/model/DatabaseConector.php";
+	include "../../admin/model/DatabaseConectorStatic.php";
+	$conector=new DatabaseConectorStat();
+	$conexion=$conector->openConexion();
+	$query="SELECT * FROM  cuentas ";
+	$resultado=$conector->executeQueryDefine($query,$conexion);
+	//$filas = pg_fetch_all($resultado);
+	
+	//$sizeElement=sizeof($filas);
 	session_start();
 	
 	//require "funciones/funciones.php";
@@ -9,7 +16,7 @@
 	$user=$_REQUEST['user'];
 	$pass=$_REQUEST['pass'];
 
-	$conector=new DatabaseConector("pruebas","admin","renault","localhost","5432");
+	/*$conector=new DatabaseConector("pruebas","admin","renault","localhost","5432");
 	$conexion=$conector->openConexion();
 	$user=trim($user);
 	$pass=trim($pass);
@@ -17,6 +24,7 @@
 	$query="SELECT * FROM cuentas  ";
 
 	$resultado=$conector->executeQueryDefine($query,$conexion);
+	*/
 	$num=pg_num_rows($resultado);
 	$result=0;
 	if($num==0){
@@ -48,6 +56,7 @@
 		
 		
 	}
+	$conector->closeConexionDef($conexion);
 	echo $result;
 	
 	/*if(!$resultado){

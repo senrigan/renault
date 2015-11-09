@@ -1,5 +1,12 @@
 <?php
-	$user = "pruebas";
+	include "../model/DatabaseConectorStatic.php";
+	$conector=new DatabaseConectorStat();
+	$conexion=$conector->openConexion();
+	
+
+
+
+	/*$user = "pruebas";
 	$password = "admin";
 	$dbname = "renault";
 	$port = "5432";
@@ -7,7 +14,7 @@
 	$cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$password";
 
 	$conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
-
+	*/
 	$target_path = $_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/";
 	$target_path = $target_path . basename( $_FILES['wizard-picture']['name']); 
 	if( $_FILES['wizard-picture']['name']){
@@ -28,7 +35,8 @@
 
 	$query ="INSERT INTO tecnicos VALUES (DEFAULT , '{$firtName}' , '{$lastFatherName}' , '{$lastMomName}' , '{$nameImage}' )";
 
-	$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
+	//$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
+	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$numReg = pg_num_rows($resultado);
 
 	pg_close($conexion);
