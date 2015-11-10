@@ -45,7 +45,7 @@
                             $apaterno=$filas[0]['a_paterno'];
                             $amaterno=$filas[0]['a_materno'];
                             $imagen=$filas[0]['imagen_perfil'];
-                            $ubicacion=$_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/".$imagen;
+                            $ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$imagen;
                             if(!file_exists($ubicacion)){
                                 $imagen="static/tecnico.png";
                             }

@@ -5,7 +5,7 @@
 	$conexion=$conector->openConexion();
 	
 
-	$target_path = $_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/";
+	$target_path = $_SERVER['DOCUMENT_ROOT']."/media/userImage/";
 	$target_path = $target_path . basename( $_FILES['wizard-picture']['name']); 
 	$nameImage= $_FILES['wizard-picture']['name'];
 	if( !$_FILES['wizard-picture']['name']){

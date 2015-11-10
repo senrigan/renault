@@ -220,7 +220,7 @@
 								$apaterno=$filasTecnicos[0]["a_paterno"];
 								$amaterno=$filasTecnicos[0]["a_materno"];
 								$imagen=$filasTecnicos[0]["imagen_perfil"];
-								$ubicacion="http://".$_SERVER['SERVER_NAME']."/renault/media/userImage/";
+								$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 								$ubicacion=$ubicacion.$imagen;
 								//planeado
 									echo "<tr class='r1'>".

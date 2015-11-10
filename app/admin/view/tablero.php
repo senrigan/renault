@@ -143,7 +143,7 @@ $sizeElement=sizeof($filas);
 	  								$resultado=$conector->executeQueryDefine($query,$conexion);
 	 								$filasTecnicos = pg_fetch_all($resultado);
 	  								$conector->closeConexionDef($conexion);
-	  								$ubicacion="http://".$_SERVER['SERVER_NAME']."/renault/media/userImage/";
+	  								$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 	  								$sizeElement=sizeof($filas);
 	  								$nombre=$filasTecnicos[0]["nombre"];
 	  								$apaterno=$filasTecnicos[0]["a_paterno"];

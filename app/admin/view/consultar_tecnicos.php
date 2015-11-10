@@ -40,7 +40,7 @@
 			echo "<tr> <td >";
 			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
-			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
+			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$filas[$i]['imagen_perfil'];
 			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 			$imagenesUsuario="../../../media/userImage/";
 			$ubicacion=trim($ubicacion);
