@@ -35,7 +35,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tecnicos <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="view/registro_tecnico.html" target="_self" >Registrar</a></li>
-            <li><a href="view/consultar_tecnico.php" target="_self" >Modificar</a></li>
+            <li><a href="view/consultar_tecnicos.php" target="_self" >Modificar</a></li>
           </ul>
         </li>
         <li><a href="view/tablero.php" target="_self"></span>Tablero</a></li>

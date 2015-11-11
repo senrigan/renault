@@ -15,11 +15,14 @@
 	<tbody>
 
 <?php
-	include '../model/DatabaseConector.php';
-	$conector=new DatabaseConector("pruebas","admin","renault","localhost","5432");
+
+	include "../model/DatabaseConectorStatic.php";
+	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
 	$query="SELECT * FROM cuentas ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
+
+	
 	if(!$resultado){
 		echo "ocurrio un error al consultar la base de datos";
 		exit;
