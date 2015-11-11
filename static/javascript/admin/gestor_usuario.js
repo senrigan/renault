@@ -3,5 +3,5 @@ function modificarUsuario(url){
 }
 
 function eliminarUsuario(url){
-	window.location.href = "url";
+	window.location.href = url;
 }

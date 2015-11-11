@@ -21,15 +21,22 @@
 	$typecount=$_POST["typecount"];
 	
 
-
-	$query ="INSERT INTO cuentas VALUES (DEFAULT , '{$user}' , '{$password}' , '{$typecount}'  )";
-
+	$query ="SELECT * FROM cuentas WHERE cuenta='$user' password='$password' privileges='$typecount' ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
-
-	//$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
 	$numReg = pg_num_rows($resultado);
+	if($numReg==0){
+		$query ="INSERT INTO cuentas VALUES (DEFAULT , '{$user}' , '{$password}' , '{$typecount}'  )";
 
-	pg_close($conexion);
+		$resultado=$conector->executeQueryDefine($query,$conexion);
 
+		//$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
+		$numReg = pg_num_rows($resultado);
+
+		pg_close($conexion);
+
+	}else{
+		echo "<script>alert('esta cuenta ya esta registrada');</script>"
+	}
+	
 
 ?>

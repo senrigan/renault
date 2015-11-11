@@ -2,6 +2,8 @@
 
 		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
+		<script src="../../../static/javascript/admin/gestor_tecnico.js"></script>
+
 <table class='table'>
 	<caption>Tabla de los tecnicos registrados</caption>
 	<thead>
@@ -62,9 +64,12 @@
 			echo "</td>".
 				"<td>".$filas[$i]['nombre']."</td>".
 				"<td>".$filas[$i]['a_paterno']."</td>".
-				"<td>".$filas[$i]['a_materno']."</td>".
-				"<td><button type='button' class='btn btn-warning'>Modificar</button>".
-				"<button type='button' class='btn btn-danger'>Eliminar</button></td>".
+				"<td>".$filas[$i]['a_materno']."</td>";
+			?>
+				
+				"<td><button type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico('modificar_tecnico.php?idTecnico=".($i+1)."')"; ?> >Modificar</button>".
+				<button type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico('../controller/eliminar_tecnico.php?idTecnico=".($i+1)."')"; ?> >Eliminar</button></td>
+			<?php 
 			"</tr>";
 		}
 		

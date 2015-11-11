@@ -32,14 +32,21 @@
 	//echo "Ha ocurrido un error, trate de nuevo!";
 	}
 
-
-	$query ="INSERT INTO tecnicos VALUES (DEFAULT , '{$firtName}' , '{$lastFatherName}' , '{$lastMomName}' , '{$nameImage}' )";
-
-	//$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
+	$query="SELECT * FROM tecnicos where nombre='$firstname' AND a_paterno='$lastFatherName' AND a_materno='$lastMomName' ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$numReg = pg_num_rows($resultado);
+	if($numReg==0){
+		$query ="INSERT INTO tecnicos VALUES (DEFAULT , '{$firtName}' , '{$lastFatherName}' , '{$lastMomName}' , '{$nameImage}' )";
 
-	pg_close($conexion);
+		//$resultado = pg_query($conexion, $query) or die("No se pudo generar registro alguno");
+		$resultado=$conector->executeQueryDefine($query,$conexion);
+		$numReg = pg_num_rows($resultado);
+
+		pg_close($conexion);
+	}else{
+		echo "<javascript>alert('este tecnico ya esta registrado')</javascript>";
+	}
+	
 
 	
 	

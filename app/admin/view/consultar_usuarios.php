@@ -39,7 +39,7 @@
 				"<td>";
 		?>
 			<button type='button' class='btn btn-warning' onclick=<?php echo "modificarUsuario('modificar_usuario.php?idusuario=".($i+1)."')"; ?> >Modificar</button>
-			<button type='button' class='btn btn-danger'>Eliminar</button></td>.
+			<button type='button' class='btn btn-danger'  onclick=<?php echo "eliminarUsuario('../controller/eliminar_usuario.php?id=".($i+1)."')"; ?>>Eliminar</button></td>.
 			</tr>;
 		<?php	
 		}
