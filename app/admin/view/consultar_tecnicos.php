@@ -67,7 +67,7 @@
 				"<td>".$filas[$i]['a_materno']."</td>";
 			?>
 				
-				"<td><button type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico('modificar_tecnico.php?idTecnico=".($i+1)."')"; ?> >Modificar</button>".
+				<td><button type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico('modificar_tecnico.php?idTecnico=".($i+1)."')" ; ?> >Modificar</button>
 				<button type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico('../controller/eliminar_tecnico.php?idTecnico=".($i+1)."')"; ?> >Eliminar</button></td>
 			<?php 
 			"</tr>";
