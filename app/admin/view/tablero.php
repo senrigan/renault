@@ -301,6 +301,28 @@ $sizeElement=sizeof($filas);
 				
 			</div>
 
+			<div aria-labelledby="ui-id-1" role="dialog" tabindex="-1" style="display: none; outline: 0px none; z-index: 1000;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-dialog-buttons">
+			<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+				<span class="ui-dialog-title" id="ui-id-1">jQuery dialog</span>
+				<a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
+					<span class="ui-icon ui-icon-closethick">close</span>
+				</a>
+			</div>
+			<div class="ui-dialog-content ui-widget-content" id="dialog">Please choose action!</div>
+			<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+				<div class="ui-dialog-buttonset">
+					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+						<span class="ui-button-text">Shift</span>
+					</button>
+					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+						<span class="ui-button-text">Switch</span>
+					</button>
+					<button aria-disabled="false" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+						<span class="ui-button-text">Overwrite</span></button>
+				</div>
+			</div>
+		</div>
+
 		
 	</body>
 

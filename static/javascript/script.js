@@ -19,6 +19,31 @@ redips.init = function () {
 	rd.hover.colorTd = '#FFE885';
 	// DIV elements can be dropped to the empty cells only
 	rd.dropMode = 'single';
+
+	rd.event.droppedBefore = function (targetCell) {
+		// test if target cell is occupied and set reference to the dragged DIV element
+		var empty = rd.emptyCell(targetCell, 'test');
+		// if target cell is not empty
+		if (!empty) {
+			// open dialog should be wrapped in setTimeout because of
+			// removeChild and return false below
+			setTimeout(function () {
+				$('#dialog').dialog('open');
+			}, 50);
+			// remove dragged DIV from from DOM (node still exists in memory)
+			rd.obj.parentNode.removeChild(rd.obj);
+			// this will disable DIV elements in target cell (DIV element will be somehow marked)
+			rd.enableDrag(false, targetCell);
+			// return false (deleted DIV will not be returned to source cell)
+			return false;
+		}
+	};
+
+		// add counter to cloned element name
+	// (after cloned DIV element is dropped to the table)
+	
+	// in the moment when DIV element is moved, clonedDIV will be set
+	
 	// DIV element was clicked - disable 'mini' tables
 /*	rd.event.clicked = function () {
 		// search for table inside DIV element
@@ -41,6 +66,10 @@ redips.init = function () {
 	rd.only.div.b = 'last';
 	// A and B elements can't be placed to other table cells (this is default value)
 	rd.only.other = 'deny';
+
+	rd.event.moved = function (cloned) {
+		clonedDIV = cloned;
+	};
 	rd.event.cloned = function () {
 		// set id of cloned element
 		var clonedId = rd.obj.id;
@@ -50,6 +79,73 @@ redips.init = function () {
 			rd.only.div[clonedId] = 'last';
 		}
 	};
+
+	
+
+	// define jQuery dialog
+	$('#dialog').dialog({
+		autoOpen: false,
+		resizable: false,
+		modal: true,
+		width: 400,
+		height: 170,
+		// define Shift, Switch and Overwrite buttons
+		buttons: {
+			'Shift': function () {
+				// enable elements in target cell (return solid border)
+				rd.enableDrag(true, rd.td.target);
+				// DIV element is cloned then shift cells to the last TD
+				if (clonedDIV) {
+					rd.shiftCells(lastCell, rd.td.target);
+				}
+				// if DIV element is dragged within table then shift cells
+				// from source to target TD position
+				else {
+					rd.shiftCells(rd.td.source, rd.td.target);
+				}
+				// append previously removed DIV to the target cell
+				rd.td.target.appendChild(rd.obj);
+				// close dialog
+				$(this).dialog('close');
+			},
+			'Switch': function () {
+				// enable elements in target cell (return solid border) in both cases
+				rd.enableDrag(true, rd.td.target);
+				// switch elements only if current DIV element is not cloned 
+				if (!clonedDIV) {
+					// relocate target and source cells
+					rd.relocate(rd.td.target, rd.td.source);
+					// append previously removed DIV to the target cell
+					rd.td.target.appendChild(rd.obj);
+				}
+				// close dialog
+				$(this).dialog('close');
+			},
+			'Overwrite': function () {
+				// empty target cell
+				rd.emptyCell(rd.td.target);
+				// append previously removed DIV to the target cell
+				rd.td.target.appendChild(rd.obj);
+				// close dialog
+				$(this).dialog('close');
+			}
+		
+		},
+		// action when dialog is closed
+		close: function (event, ui) {
+			// return dragged DIV element to the source cell only if X button is clicked
+			// (in this case event.which property exists)
+			if (event.which) {
+				// enable elements in target cell (return solid border)
+				rd.enableDrag(true, rd.td.target);
+				// if and DIV element is not cloned then return in to source cell
+				if (!clonedDIV) {
+					// append previously removed DIV to the target cell
+					rd.td.source.appendChild(rd.obj);
+				}
+			}
+		}
+	});	
 };
 
 // add onload event listener

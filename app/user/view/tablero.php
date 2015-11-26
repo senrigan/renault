@@ -57,7 +57,6 @@
 <html>
 	<head>
 		<script src="../../../static/javascript/jquery-1.11.3.min.js"></script>
-		<script src="../../../static/javascript/admin/gestor_tablero.js"></script>
 
 		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
@@ -69,6 +68,8 @@
 	
 		
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
+		<script src="../../../static/javascript/admin/gestor_tablero.js"></script>
+
 	</head>
 	<body  >
 		
@@ -378,6 +379,8 @@
 				
 				
 			</div>
+
+		
 
 		
 	</body>

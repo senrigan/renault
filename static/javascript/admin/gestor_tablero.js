@@ -5,7 +5,7 @@ function guardarTablero(){
 	for(var i=3,row; row=table.rows[i] ;i++){
 		///console.log("row"+i+"data"+row.innerHTML)
 		if(esImpar(i)){//planeando
-			console.log("planeando ****");
+			//console.log("planeando ****");
 			var tab_tecnico=[];
 			var planeado=[];
 			var trabajando=[];
@@ -14,108 +14,105 @@ function guardarTablero(){
 			tab_tecnico.push(tecnico.id);
 
 			//console.log(tecnico);
-			console.log("id tecnico"+tecnico.id);
+			//console.log("id tecnico"+tecnico.id);
 			var imagen=row.cells[1];
 			var status=row.cells[2];
-			console.log("status"+status.innerHTML);
-			console.log("status"+row.cells[0].innerHTML);
-			var h0800=row.cells[3].innerHTML;
+			///console.log("status"+status.innerHTML);
+			//console.log("status"+row.cells[0].innerHTML);
+			var h0800=obtenerCelda(3,row);
 			planeado.push(h0800);
-			var h0830=row.cells[4].innerHTML;
+			var h0830=obtenerCelda(4,row);;
 			planeado.push(h0830);
-			var h0900=row.cells[5].innerHTML;
+			var h0900=obtenerCelda(5,row);;
 			planeado.push(h0900);
-			var h0930=row.cells[6].innerHTML;
+			var h0930=obtenerCelda(6,row);;
 			planeado.push(h0930);
-			var h1000=row.cells[7].innerHTML;
+			var h1000=obtenerCelda(7,row);;
 			planeado.push(h1000);
-			var h1030=row.cells[8].innerHTML;
+			var h1030=obtenerCelda(8,row);;
 			planeado.push(h1030);
-			var h1100=row.cells[9].innerHTML;
+			var h1100=obtenerCelda(9,row);;
 			planeado.push(h1100);
-			var h1130=row.cells[10].innerHTML;
+			var h1130=obtenerCelda(10,row);;
 			planeado.push(h1130);
-			var h1200=row.cells[11].innerHTML;
+			var h1200=obtenerCelda(11,row);;
 			planeado.push(h1200);
-			var h1230=row.cells[12].innerHTML;
+			var h1230=obtenerCelda(12,row);;
 			planeado.push(h1230);
-			var h1300=row.cells[13].innerHTML;
+			var h1300=obtenerCelda(13,row);;
 			planeado.push(h1300);
-			var h1330=row.cells[14].innerHTML;
+			var h1330=obtenerCelda(14,row);;
 			planeado.push(h1330);
-			var h1400=row.cells[15].innerHTML;
+			var h1400=obtenerCelda(15,row);;
 			planeado.push(h1400);
-			var h1430=row.cells[16].innerHTML;
+			var h1430=obtenerCelda(16,row);;
 			planeado.push(h1430);
-			var h1500=row.cells[17].innerHTML;
+			var h1500=obtenerCelda(17,row);;
 			planeado.push(h1500);
-			var h1530=row.cells[18].innerHTML;
+			var h1530=obtenerCelda(18,row);;
 			planeado.push(h1530);
-			var h1600=row.cells[19].innerHTML;
+			var h1600=obtenerCelda(19,row);;
 			planeado.push(h1600);
-			var h1630=row.cells[20].innerHTML;
+			var h1630=obtenerCelda(20,row);;
 			planeado.push(h1630);
-			var h1700=row.cells[21].innerHTML;
+			var h1700=obtenerCelda(21,row);;
 			planeado.push(h1700);
-			var h1730=row.cells[22].innerHTML;
+			var h1730=obtenerCelda(22,row);;
 			planeado.push(h1730);
-			var h1800=row.cells[23].innerHTML;
+			var h1800=obtenerCelda(23,row);;
 			planeado.push(h1800);
-			var h1830=row.cells[24].innerHTML;
+			var h1830=obtenerCelda(24,row);;
 			planeado.push(h1830);
-			var h1900=row.cells[25].innerHTML;
+			var h1900=obtenerCelda(25,row);;
 			planeado.push(h1900);
-			var h1930=row.cells[26].innerHTML;
+			var h1930=obtenerCelda(26,row);;
 			planeado.push(h1930);
-			var lavado=row.cells[27].innerHTML;
+			var lavado=obtenerCelda(27,row);;
 			planeado.push(lavado);
-			var control=row.cells[28].innerHTML;
+			var control=obtenerCelda(28,row);;
 			planeado.push(control);
-			var term=row.cells[29].innerHTML;
+			var term=obtenerCelda(29,row);;
 			planeado.push(term);
-			var tot=row.cells[30].innerHTML;
+			var tot=obtenerCelda(30,row);;
 			planeado.push(tot);
-			var partes=row.cells[31].innerHTML;
+			var partes=obtenerCelda(31,row);;
 			planeado.push(partes);
-			var aut=row.cells[32].innerHTML;
+			var aut=obtenerCelda(32,row);;
 			planeado.push(aut);
 			tab_tecnico.push(planeado);
 		}else{//trabajndo
-			console.log("trabajando ****");
 			//console.log(tecnico);
-			console.log("id tecnico"+tecnico.id);
-			var status=row.cells[0];
-			console.log("status"+status.innerHTML);
-			var h0800=row.cells[1];
-			var h0830=row.cells[2];
-			var h0900=row.cells[3].innerHTML;
-			var h0930=row.cells[4].innerHTML;
-			var h1000=row.cells[5];
-			var h1030=row.cells[6].innerHTML;
-			var h1100=row.cells[7].innerHTML;
-			var h1130=row.cells[8].innerHTML;
-			var h1200=row.cells[9].innerHTML;
-			var h1230=row.cells[10].innerHTML;
-			var h1300=row.cells[11].innerHTML;
-			var h1330=row.cells[12].innerHTML;
-			var h1400=row.cells[13].innerHTML;
-			var h1430=row.cells[14].innerHTML;
-			var h1500=row.cells[15].innerHTML;
-			var h1530=row.cells[16].innerHTML;
-			var h1600=row.cells[17].innerHTML;
-			var h1630=row.cells[18].innerHTML;
-			var h1700=row.cells[19].innerHTML;
-			var h1730=row.cells[20].innerHTML;
-			var h1800=row.cells[21].innerHTML;
-			var h1830=row.cells[22].innerHTML;
-			var h1900=row.cells[23].innerHTML;
-			var h1930=row.cells[24].innerHTML;
-			var lavado=row.cells[25].innerHTML;
-			var control=row.cells[26].innerHTML;
-			var term=row.cells[27].innerHTML;
-			var tot=row.cells[28].innerHTML;
-			var partes=row.cells[29].innerHTML;
-			var aut=row.cells[30].innerHTML;
+			var status=obtenerCelda(0,row);
+			var h0800=obtenerCelda(1,row);
+			var h0830=obtenerCelda(2,row);
+			var h0900=obtenerCelda(3,row);
+			var h0930=obtenerCelda(4,row);
+			var h1000=obtenerCelda(5,row);
+			var h1030=obtenerCelda(6,row);
+			var h1100=obtenerCelda(7,row);
+			var h1130=obtenerCelda(8,row);
+			var h1200=obtenerCelda(9,row);
+			var h1230=obtenerCelda(10,row);
+			var h1300=obtenerCelda(11,row);
+			var h1330=obtenerCelda(12,row);
+			var h1400=obtenerCelda(13,row);
+			var h1430=obtenerCelda(14,row);;
+			var h1500=obtenerCelda(15,row);
+			var h1530=obtenerCelda(16,row);
+			var h1600=obtenerCelda(17,row);
+			var h1630=obtenerCelda(18,row);
+			var h1700=obtenerCelda(19,row);
+			var h1730=obtenerCelda(20,row);
+			var h1800=obtenerCelda(21,row);
+			var h1830=obtenerCelda(22,row);
+			var h1900=obtenerCelda(23,row);
+			var h1930=obtenerCelda(24,row);
+			var lavado=obtenerCelda(25,row);
+			var control=obtenerCelda(26,row);
+			var term=obtenerCelda(27,row);
+			var tot=obtenerCelda(28,row);
+			var partes=obtenerCelda(29,row);
+			var aut=obtenerCelda(30,row);
 			trabajando.push(h0800);
 			trabajando.push(h0830);
 			trabajando.push(h0900);
@@ -149,8 +146,47 @@ function guardarTablero(){
 			tab_tecnico.push(trabajando);
 			tecnicos.push(tab_tecnico);
 			console.log("tecnicos"+tecnicos);
+			/*$.POST("../controller/gestionar_tablero.php?id="+tecnico.id,{
+				planeado: planeado,
+				trabajando: trabajando
+			},function(data,status){
+				console.log("data"+data);
 
+			});
 
+*/
+			$.post("../controller/gestionar_tablero.php",{
+				id:tecnico.id,
+				plan:planeado,
+				trab:trabajando,
+				},function(data,status){
+				console.log("data"+data);
+			});
+			/* $.ajax({
+			     type: 'POST',
+			     url: '../controller/gestionar_tablero.php',
+			     data: { planeado: planeado,
+				trabajando: trabajando,
+				id:tecnico
+				},
+			     beforeSend: function()
+			     {
+			         alert('Fetching....');
+			     },
+			     success: function(data , status)
+			     {
+			         alert('Fetch Complete'+data);
+			     },
+			     error: function()
+			     {
+			         alert('Error');
+			     },
+			     complete: function()
+			     {
+			         alert('Complete')
+			     }
+			 });
+			*/
 
 		}
 		
@@ -162,12 +198,13 @@ function guardarTablero(){
 			console.log("col"+col.innerHTML);
 		}*/
 	}
-	var tab=JSON.stringify(tecnicos);
-	console.log("tab"+tab);
+	//var tab=JSON.stringify(tecnicos);
+	//console.log("tab"+tab);
 	/*$.post("../controller/gestionar_tablero.php?tablero="+tab,function(data,status){
 		console.log("recibiendo data"+data);
 	});
 */
+	/*
 	$.ajax({
     type: 'POST',
     url: '../controller/gestionar_tablero.php',
@@ -182,6 +219,7 @@ function guardarTablero(){
 	    console.log('fail');
 	    console.log(data);
 	});
+*/
 
 }
 function esImpar(num){
@@ -190,4 +228,14 @@ function esImpar(num){
 	}else{
 		return true;
 	}
+}
+
+function obtenerCelda(num , fila){
+	var celda=fila.cells[num].innerHTML;
+	if(celda){
+		return celda;
+	}else{
+		celda="-";
+	}
+	return celda;
 }
