@@ -30,6 +30,8 @@ $sizeElement=sizeof($filas);
 		
 		<script type="text/javascript" src="../../../static/javascript/redips-drag-min.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
+		<script type="text/javascript" src="../../../static/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../../../static/javascript/jquery/jquery-ui/jquery-ui.css"/>
 	</head>
 	<body onload="REDIPS.drag.init()" >
 		
@@ -321,6 +323,17 @@ $sizeElement=sizeof($filas);
 						<span class="ui-button-text">Overwrite</span></button>
 				</div>
 			</div>
+
+			<div id="dialogo2" name="dialogo2" class="ui-dialog-content ui-widget-content ui-helper-clearfix">
+				<div>
+					<p>inserta el contenido de la celda
+               			<input id="contentDiv" name="contentDiv" type="text" >
+               		</p>
+               		<button id="saveContent" name="saveContent"></button>
+				</div>
+			</div>
+
+
 		</div>
 
 		

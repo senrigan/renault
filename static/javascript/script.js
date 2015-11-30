@@ -2,15 +2,20 @@
 /*global window: false, REDIPS: true */
 
 /* enable strict mode */
-"use strict";
+//"use strict";
 
 // create redips container
-var redips = {};
+var redips = {},
+	rd = REDIPS.drag,	// reference to the REDIPS.drag library
+	counter = 0,		// counter for cloned DIV elements
+	clonedDIV = false;	// cloned flag set in event.moved;
 
 // redips initialization
+
+
 redips.init = function () {
 	// reference to the REDIPS.drag object
-	var	rd = REDIPS.drag;
+	//var	rd = REDIPS.drag;
 	// define border style (this should go before init() method)
 	rd.style.borderEnabled = 'none';
 	// initialization
@@ -36,6 +41,8 @@ redips.init = function () {
 			rd.enableDrag(false, targetCell);
 			// return false (deleted DIV will not be returned to source cell)
 			return false;
+		}else{
+			
 		}
 	};
 
@@ -67,9 +74,7 @@ redips.init = function () {
 	// A and B elements can't be placed to other table cells (this is default value)
 	rd.only.other = 'deny';
 
-	rd.event.moved = function (cloned) {
-		clonedDIV = cloned;
-	};
+	
 	rd.event.cloned = function () {
 		// set id of cloned element
 		var clonedId = rd.obj.id;
@@ -78,7 +83,11 @@ redips.init = function () {
 			//rd.mark.exception[clonedId] = 'mark';
 			rd.only.div[clonedId] = 'last';
 		}
-	};
+	}
+
+	rd.event.moved = function (cloned) {
+		clonedDIV = cloned;
+	}
 
 	
 
@@ -91,23 +100,7 @@ redips.init = function () {
 		height: 170,
 		// define Shift, Switch and Overwrite buttons
 		buttons: {
-			'Shift': function () {
-				// enable elements in target cell (return solid border)
-				rd.enableDrag(true, rd.td.target);
-				// DIV element is cloned then shift cells to the last TD
-				if (clonedDIV) {
-					rd.shiftCells(lastCell, rd.td.target);
-				}
-				// if DIV element is dragged within table then shift cells
-				// from source to target TD position
-				else {
-					rd.shiftCells(rd.td.source, rd.td.target);
-				}
-				// append previously removed DIV to the target cell
-				rd.td.target.appendChild(rd.obj);
-				// close dialog
-				$(this).dialog('close');
-			},
+			
 			'Switch': function () {
 				// enable elements in target cell (return solid border) in both cases
 				rd.enableDrag(true, rd.td.target);
@@ -120,15 +113,8 @@ redips.init = function () {
 				}
 				// close dialog
 				$(this).dialog('close');
-			},
-			'Overwrite': function () {
-				// empty target cell
-				rd.emptyCell(rd.td.target);
-				// append previously removed DIV to the target cell
-				rd.td.target.appendChild(rd.obj);
-				// close dialog
-				$(this).dialog('close');
 			}
+		
 		
 		},
 		// action when dialog is closed
