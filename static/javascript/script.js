@@ -42,7 +42,11 @@ redips.init = function () {
 			// return false (deleted DIV will not be returned to source cell)
 			return false;
 		}else{
-			if(!rd.obj['inTable']){
+			console.log("id"+rd.obj.id)
+			var str=rd.obj.id;
+			
+			
+			if(!rd.obj['inTable'] && str.indexOf("birthday")==-1 && str.indexOf("food")==-1){
 				$("#contentDiv").val("");
 
 				$('#dialog2').dialog('open');
