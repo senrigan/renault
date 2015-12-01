@@ -42,7 +42,11 @@ redips.init = function () {
 			// return false (deleted DIV will not be returned to source cell)
 			return false;
 		}else{
-			
+			if(!rd.obj['inTable']){
+				$("#contentDiv").val("");
+
+				$('#dialog2').dialog('open');
+			}
 		}
 	};
 
@@ -90,7 +94,33 @@ redips.init = function () {
 	}
 
 	
-
+	$("#dialog2").dialog({
+		autoOpen: false,
+		resizable: false,
+		modal: true,
+		width: 400,
+		height: 170,
+		// define Shift, Switch and Overwrite buttons
+		
+		buttons: {
+			
+			'Guardar': function () {
+				// empty target cell
+				rd.emptyCell(rd.td.target);
+				// append previously removed DIV to the target cell
+				var textInput=$("#contentDiv").val();
+				console.log(rd.obj);
+				console.log(rd);
+				rd.obj.innerHTML=textInput;
+				rd.obj['inTable']=true;
+				rd.td.target.appendChild(rd.obj);
+				// close dialog
+				$(this).dialog('close');
+			}
+		
+		
+		}
+	});
 	// define jQuery dialog
 	$('#dialog').dialog({
 		autoOpen: false,

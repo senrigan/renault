@@ -324,12 +324,10 @@ $sizeElement=sizeof($filas);
 				</div>
 			</div>
 
-			<div id="dialogo2" name="dialogo2" class="ui-dialog-content ui-widget-content ui-helper-clearfix">
+			<div id="dialog2" name="dialog2" >
+				Insertar Texto
 				<div>
-					<p>inserta el contenido de la celda
-               			<input id="contentDiv" name="contentDiv" type="text" >
-               		</p>
-               		<button id="saveContent" name="saveContent"></button>
+               		<input id="contentDiv" name="contentDiv" type="text" >
 				</div>
 			</div>
 
