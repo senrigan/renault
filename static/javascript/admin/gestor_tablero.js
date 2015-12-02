@@ -155,6 +155,12 @@ function guardarTablero(){
 			});
 
 */
+			var trab={
+				"t0800":h0800,
+				"t0900":h0900
+			};
+			console.log("traba es /*///////");
+			console.log(trab);
 			$.post("../controller/gestionar_tablero.php",{
 				id:tecnico.id,
 				plan:planeado,
@@ -231,11 +237,42 @@ function esImpar(num){
 }
 
 function obtenerCelda(num , fila){
-	var celda=fila.cells[num].innerHTML;
+	var celda=fila.cells[num].firstChild;
 	if(celda){
-		return celda;
-	}else{
-		celda="-";
+		var id=celda.id;
+		if(id){
+			var content={};
+			if(id.indexOf("food")==-1 && id.indexOf("birthday")==-1 ){
+				
+				if(id.indexOf("yellow")!=-1){
+					id="yellow";
+				}else if(id.indexOf("blue")!=-1){
+					id="blue";
+				}else if(id.indexOf("red")!=-1){
+					id="red";
+				}else if(id.indexOf("white")!=-1){
+					id="white";
+				}
+				content["text"]=celda.textContent;
+
+			}else{
+				if(id.indexOf("food")!=-1){
+					id="food";
+				}else if(id.indexOf("birthday")!=-1){
+					id="birthday";
+				}
+
+			}
+			content["id"]=id;
+
+			console.log(content);
+			return content;
 	}
 	return celda;
+			
+	}else{
+		celda="-";
+		console.log(celda);
+		return celda;
+	}
 }

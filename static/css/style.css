@@ -130,6 +130,13 @@ div#redips-drag th {
 	background-color: #eee;
 }
 
+
+
+.blue,.yellow,.white,.red{
+	border:1px  ;
+	margin: 2 5 2px;
+	padding: 15px;
+}
 /* cell dark */
 .cdark {
 	background-color: #C6C8CB;
@@ -144,8 +151,14 @@ div#redips-drag th {
 	background-color: #F8F8FF;
 }
 
+#red{
+	background-color: #BE212E;
+}
+
 .blue{
 	background-color: #000080;
+	color : white;
+
 }
 .yellow{
 	background-color: #DAA520;
@@ -153,3 +166,8 @@ div#redips-drag th {
 .white{
 	background-color: #F8F8FF;
 }
+
+.red{
+	background-color: #BE212E ;
+}
+

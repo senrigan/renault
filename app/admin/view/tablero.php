@@ -257,26 +257,27 @@ $sizeElement=sizeof($filas);
 								<tr>
 									<td colspan="" rowspan="" headers="">
 										<div class="redips-drag redips-clone blue" id="blue" name="blue">
-											Azul
 										</div>
 										
 									</td>
 									<td class="redisp-dark" colspan="" rowspan="" headers="">
 										<div class="redips-drag redips-clone white" id="white" name="white">
-											Blanco
 										</div>
 										
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone yellow" id="yellow" name="yellow" >
-										Amarrillo
 
 										</div>
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
+										<div  class="redips-drag redips-clone red" id="red" name="red" height="40px" width="40px">
+										</div>
+										
+									</td>
+									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone birthday" id="birthday" name="birthday" >
 											<img src="../../../static/images/admin/birthday.jpg" alt="" height="40px" width="40px">
-
 										</div>
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
@@ -291,6 +292,8 @@ $sizeElement=sizeof($filas);
 										</div>
 										
 									</td>
+
+									
 								</tr>
 							</tbody>
 						</table>
