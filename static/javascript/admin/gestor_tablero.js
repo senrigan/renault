@@ -80,6 +80,39 @@ function guardarTablero(){
 			var aut=obtenerCelda(32,row);;
 			planeado.push(aut);
 			tab_tecnico.push(planeado);
+
+			var plan={
+				"0800":h0800,
+				"0830":h0830,
+				"0900":h0900,
+				"0930":h0930,
+				"1000":h1000,
+				"1030":h1030,
+				"1100":h1100,
+				"1130":h1130,
+				"1200":h1200,
+				"1230":h1230,
+				"1300":h1300,
+				"1330":h1330,
+				"1400":h1400,
+				"1430":h1430,
+				"1500":h1500,
+				"1530":h1530,
+				"1600":h1600,
+				"1630":h1630,
+				"1700":h1700,
+				"1730":h1730,
+				"1800":h1800,
+				"1830":h1830,
+				"1900":h1900,
+				"1930":h1930,
+				"lavado":lavado,
+				"control":control,
+				"term":term,
+				"tot":tot,
+				"partes":partes,
+				"aut":aut
+			};
 		}else{//trabajndo
 			//console.log(tecnico);
 			var status=obtenerCelda(0,row);
@@ -156,17 +189,45 @@ function guardarTablero(){
 
 */
 			var trab={
-				"t0800":h0800,
-				"t0900":h0900
+				"0800":h0800,
+				"0830":h0830,
+				"0900":h0900,
+				"0930":h0930,
+				"1000":h1000,
+				"1030":h1030,
+				"1100":h1100,
+				"1130":h1130,
+				"1200":h1200,
+				"1230":h1230,
+				"1300":h1300,
+				"1330":h1330,
+				"1400":h1400,
+				"1430":h1430,
+				"1500":h1500,
+				"1530":h1530,
+				"1600":h1600,
+				"1630":h1630,
+				"1700":h1700,
+				"1730":h1730,
+				"1800":h1800,
+				"1830":h1830,
+				"1900":h1900,
+				"1930":h1930,
+				"lavado":lavado,
+				"control":control,
+				"term":term,
+				"tot":tot,
+				"partes":partes,
+				"aut":aut
 			};
-			console.log("traba es /*///////");
-			console.log(trab);
+			
+
 			$.post("../controller/gestionar_tablero.php",{
 				id:tecnico.id,
-				plan:planeado,
-				trab:trabajando,
+				planeado:plan,
+				trabajando:trab,
 				},function(data,status){
-				console.log("data"+data);
+				console.log("data es "+data);
 			});
 			/* $.ajax({
 			     type: 'POST',

@@ -1,19 +1,19 @@
 <?php 
 	class DatabaseConectorStat{
-		/*static $user="pruebas";
+		static $user="pruebas";
 		static $password="admin";
 		static $dbname="renault";
 		static $port="5432";
 		static $host="localhost";
 		static $conexion;
-		*/
-		static $user="iwxdbrzwzwmcvq";
+		
+		/*static $user="iwxdbrzwzwmcvq";
 		static $password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 		static $dbname="dcv72crt7q7fa1";
 		static $port="5432";
 		static $host="ec2-54-83-36-203.compute-1.amazonaws.com";
 		static $conexion;
-
+*/
 		public function __construct(){
 			
 		}
