@@ -34,16 +34,19 @@
 					
 					break;
 				case 4:
+					$result="<div  class='redips-drag redips-clone red' id='red' name='red' height='40px' width='40px'>$contenido</div>";
+					break;
+				case 5:
 					$result="<div class='birthday' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
 							"<img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
 							"</div>";
 					break;
-				case 5:
+				case 6:
 					$result= "<div class='food' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
 							"<img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
 							"</div>";
 					break;
-				case 6:
+				default:
 					break;
 			}
 			return $result;

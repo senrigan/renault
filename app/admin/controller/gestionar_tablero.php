@@ -45,6 +45,9 @@
 				$filas = pg_fetch_all($resultado);
 				if(sizeof($filas)>0){
 						$idElemento=$filas[0]['id'];
+						$query ="UPDATE tablero_control SET $plan=$idElemento WHERE tecnico=$idTecnico AND status=1";
+						echo "query".$query;
+						$resultado=$conector->executeQueryDefine($query,$conexion);
 						echo("\n id elemento $idElemento \n");
 				}else{
 					echo "hubo error al insertar elemento de control";
@@ -84,6 +87,10 @@
 				$filas = pg_fetch_all($resultado);
 				if(sizeof($filas)>0){
 						$idElemento=$filas[0]['id'];
+						$query ="UPDATE tablero_control SET $plan=$idElemento WHERE tecnico=$idTecnico AND status=2";
+						$resultado=$conector->executeQueryDefine($query,$conexion);
+
+						echo "query".$query;
 						echo("\n id elemento $idElemento \n");
 				}else{
 					echo "hubo error al insertar elemento de control";
