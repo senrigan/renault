@@ -148,8 +148,8 @@
 						$empleadoActual=-1;
 						for($i=0;$i<$sizeElement;$i++){
 							$idTablero=$filas[$i]["idTablero"];
-							$idEmpleado=$filas[$i]["idEmpleado"];
-							$status=$filas[$i]["statusTrabajo"];
+							$idEmpleado=$filas[$i]["tecnico"];
+							$status=$filas[$i]["status"];
 							$h0800=$filas[$i]["h0800"];
 							$h0830=$filas[$i]["h0830"];
 							$h0900=$filas[$i]["h0900"];

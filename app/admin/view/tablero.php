@@ -1,5 +1,7 @@
 <?php
 include "../../admin/model/DatabaseConectorStatic.php";
+include "../controller/GestorTablero.php";
+
 $conector=new DatabaseConectorStat();
 $conexion=$conector->openConexion();
 $query="SELECT * FROM tablero_control ";
@@ -103,42 +105,48 @@ $sizeElement=sizeof($filas);
 						</thead>
 						
 						<tbody>
+						
 						<?php 
 							$tecnicoActual=-1;
+							$gestor=new GestorTablero();
 							for($i=0;$i<$sizeElement;$i++){
+								echo($i."\n");
 								$idEmpleado=$filas[$i]["tecnico"];
+								$status=$filas[$i]["status"];
+								$h0800=$gestor->obtenerElemento($filas[$i]["h0800"]);
+								$h0830=$gestor->obtenerElemento($filas[$i]["h0830"]);
+								$h0900=$gestor->obtenerElemento($filas[$i]["h0900"]);
+								$h0930=$gestor->obtenerElemento($filas[$i]["h0930"]);
+								$h1000=$gestor->obtenerElemento($filas[$i]["h1000"]);
+								$h1030=$gestor->obtenerElemento($filas[$i]["h1030"]);
+								$h1100=$gestor->obtenerElemento($filas[$i]["h1100"]);
+								$h1130=$gestor->obtenerElemento($filas[$i]["h1130"]);
+								$h1200=$gestor->obtenerElemento($filas[$i]["h1200"]);
+								$h1230=$gestor->obtenerElemento($filas[$i]["h1230"]);
+								$h1300=$gestor->obtenerElemento($filas[$i]["h1300"]);
+								$h1330=$gestor->obtenerElemento($filas[$i]["h1330"]);
+								$h1400=$gestor->obtenerElemento($filas[$i]["h1400"]);
+								$h1430=$gestor->obtenerElemento($filas[$i]["h1430"]);
+								$h1500=$gestor->obtenerElemento($filas[$i]["h1500"]);
+								$h1530=$gestor->obtenerElemento($filas[$i]["h1530"]);
+								$h1600=$gestor->obtenerElemento($filas[$i]["h1600"]);
+								$h1630=$gestor->obtenerElemento($filas[$i]["h1630"]);
+								$h1700=$gestor->obtenerElemento($filas[$i]["h1700"]);
+								$h1730=$gestor->obtenerElemento($filas[$i]["h1730"]);
+								$h1800=$gestor->obtenerElemento($filas[$i]["h1800"]);
+								$h1830=$gestor->obtenerElemento($filas[$i]["h1830"]);
+								$h1900=$gestor->obtenerElemento($filas[$i]["h1900"]);
+								$h1930=$gestor->obtenerElemento($filas[$i]["h1930"]);
+
+								$lavado=$gestor->obtenerElemento($filas[$i]["lavado"]);
+								$control_calida=$gestor->obtenerElemento($filas[$i]["control_calidad"]);
+								$terminado=$gestor->obtenerElemento($filas[$i]["terminado"]);
+								$Tot=$gestor->obtenerElemento($filas[$i]["ToT"]);
+								$partes=$gestor->obtenerElemento($filas[$i]["partes"]);
+								$AUT=$gestor->obtenerElemento($filas[$i]["AUT"]);
 								if($tecnicoActual!=$idEmpleado){
 									$tecnicoActual=$idEmpleado;
-									$status=$filas[$i]["status"];
-									$h0800=$filas[$i]["h0800"];
-									$h0830=$filas[$i]["h0830"];
-									$h0900=$filas[$i]["h0900"];
-									$h0930=$filas[$i]["h0930"];
-									$h1000=$filas[$i]["h1000"];
-									$h1030=$filas[$i]["h1030"];
-									$h1100=$filas[$i]["h1100"];
-									$h1130=$filas[$i]["h1130"];
-									$h1200=$filas[$i]["h1200"];
-									$h1230=$filas[$i]["h1230"];
-									$h1300=$filas[$i]["h1300"];
-									$h1330=$filas[$i]["h1330"];
-									$h1400=$filas[$i]["h1400"];
-									$h1430=$filas[$i]["h1430"];
-									$h1500=$filas[$i]["h1500"];
-									$h1530=$filas[$i]["h1530"];
-									$h1600=$filas[$i]["h1600"];
-									$h1630=$filas[$i]["h1630"];
-									$h1700=$filas[$i]["h1700"];
-									$h1730=$filas[$i]["h1730"];
-									$h1800=$filas[$i]["h1800"];
-									$h1830=$filas[$i]["h1830"];
-									$h1900=$filas[$i]["h1900"];
-									$lavado=$filas[$i]["lavado"];
-									$control_calida=$filas[$i]["control_calidad"];
-									$terminado=$filas[$i]["terminado"];
-									$Tot=$filas[$i]["ToT"];
-									$partes=$filas[$i]["partes"];
-									$AUT=$filas[$i]["AUT"];
+									
 									
 									$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado ";
 									$conexion=$conector->openConexion();
@@ -152,85 +160,91 @@ $sizeElement=sizeof($filas);
 	  								$amaterno=$filasTecnicos[0]["a_materno"];
 	  								$imagen=$filasTecnicos[0]["imagen_perfil"];
 									$ubicacion=$ubicacion.$imagen;
-									echo "<tr class='r1'>".
+									if($status==1){
+										echo "<tr class='r1'>".
 											"<td id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
 											"<td class='redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
 											"<td class='redips-only last'>Planeado</td>".
-											"<td class='c1' ></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
+											"<td class='c1' >$h0800</td>".
+											"<td class='c1'>$h0830</td>".
+											"<td class='c1'>$h0900</td>".
+											"<td class='c1'>$h0930</td>".
+											"<td class='c1'>$h1000</td>".
+											"<td class='c1'>$h1030</td>".
+											"<td class='c1'>$h1100</td>".
+											"<td class='c1'>$h1130</td>".
+											"<td class='c1'>$h1200</td>".
+											"<td class='c1'>$h1230</td>".
+											"<td class='c1'>$h1300</td>".
+											"<td class='c1'>$h1330</td>".
+											"<td class='c1'>$h1400</td>".
+											"<td class='c1'>$h1430</td>".
+											"<td class='c1'>$h1500</td>".
+											"<td class='c1'>$h1530</td>".
+											"<td class='c1'>$h1600</td>".
 										
-											"<td class='c1'></td>".
+											"<td class='c1'>$h1630</td>".
 
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
-											"<td class='c1'></td>".
+											"<td class='c1'>$h1700</td>".
+											"<td class='c1'>$h1730</td>".
+											"<td class='c1'>$h1800</td>".
+											"<td class='c1'>$h1830</td>".
+											"<td class='c1'>$h1900</td>".
+											"<td class='c1'>$h1930</td>".
+											"<td class='c1'>$lavado</td>".
+											"<td class='c1'>$control_calida</td>".
+											"<td class='c1'>$terminado</td>".
+											"<td class='c1'>$Tot</td>".
+											"<td class='c1'>$partes</td>".
+											"<td class='c1'>$AUT</td>".
 											"</tr>";
+										}
+									
 
-									echo "<tr class='rd' >".
-											
-											"<td class='redips-only last'>Trabajando</td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-										
-											"<td colspan='' rowspan='' headers=''>".
-											
-											"</td>".
-
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											"<td></td>".
-											
-										"</tr>";
+									
 						
 								}
+								if($status==2){
+											echo "<tr class='rd' >".
+											
+											"<td class='redips-only last'>Trabajando</td>".
+											"<td>$h0800</td>".
+											"<td>$h0830</td>".
+											"<td>$h0900</td>".
+											"<td>$h0930</td>".
+											"<td>$h1000</td>".
+											"<td>$h1030</td>".
+											"<td>$h1100</td>".
+											"<td>$h1130</td>".
+											"<td>$h1200</td>".
+											"<td>$h1230</td>".
+											"<td>$h1300</td>".
+											"<td>$h1330</td>".
+											"<td>$h1400</td>".
+											"<td>$h1430</td>".
+											"<td>$h1500</td>".
+											"<td>$h1530</td>".
+											"<td>$h1600</td>".
+										
+											"<td colspan='' rowspan='' headers=''>".
+											$h1630.
+											"</td>".
+
+											"<td>$h1700</td>".
+											"<td>$h1730</td>".
+											"<td>$h1800</td>".
+											"<td>$h1830</td>".
+											"<td>$h1900</td>".
+											"<td>$h1930</td>".
+											"<td>$lavado</td>".
+											"<td>$control_calida</td>".
+											"<td>$terminado</td>".
+											"<td>$Tot</td>".
+											"<td>$partes</td>".
+											"<td>$AUT</td>".
+											
+										"</tr>";
+										}
 								
 
 
