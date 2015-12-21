@@ -2,7 +2,7 @@
 	include "../../admin/model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	$query="SELECT * FROM tablero_control ";
+	$query="SELECT * FROM tablero_control  ORDER BY id ASC";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$filas = pg_fetch_all($resultado);
 	$conector->closeConexionDef($conexion);
@@ -147,7 +147,7 @@
 						<?php
 						$empleadoActual=-1;
 						for($i=0;$i<$sizeElement;$i++){
-							$idTablero=$filas[$i]["idTablero"];
+							$idTablero=$filas[$i]["id"];
 							$idEmpleado=$filas[$i]["tecnico"];
 							$status=$filas[$i]["status"];
 							$h0800=$filas[$i]["h0800"];

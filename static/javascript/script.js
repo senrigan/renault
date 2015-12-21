@@ -46,7 +46,7 @@ redips.init = function () {
 			var str=rd.obj.id;
 			
 			
-			if(!rd.obj['inTable'] && str.indexOf("birthday")==-1 && str.indexOf("food")==-1){
+			if( !hasClass(rd.obj,"moved") && !rd.obj['inTable'] && str.indexOf("birthday")==-1 && str.indexOf("food")==-1){
 				$("#contentDiv").val("");
 
 				$('#dialog2').dialog('open');
@@ -174,4 +174,8 @@ if (window.addEventListener) {
 }
 else if (window.attachEvent) {
 	window.attachEvent('onload', redips.init);
+}
+
+function hasClass( target, className ) {
+    return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
 }

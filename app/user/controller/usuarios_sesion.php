@@ -32,7 +32,6 @@
 		echo $result;
 	}else{
 		$filas = pg_fetch_all($resultado);
-		$conector->closeConexionDef($conexion);
 		for($i=0;$i<$num;$i++){
 			$userName=$filas[$i]['cuenta'];
 			$idUser=$filas[$i]['id'];

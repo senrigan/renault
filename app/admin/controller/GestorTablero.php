@@ -21,25 +21,25 @@
 
 				switch ($tipo) {
 					case 1:
-						$elemento="<div class='redips-drag  blue' id='blue' name='blue'></div>";
+						$elemento="<div class='redips-drag  blue moved' id='blue' name='blue'></div>";
 						break;
 					case 2:
-						$elemento="<div class='white redips-drag' id='whitec' name='white'$num style='border-style: none; cursor: move;'>$contenido</div>";
+						$elemento="<div class='white redips-drag moved' id='whitec' name='white'$num style='border-style: none; cursor: move;'>$contenido</div>";
 						break;
 					case 3:
-						$elemento="<div class='yellow redips-drag' id='yellow' name='yellow' style='border-style: none; cursor: move;'>$contenido</div>";
+						$elemento="<div class='yellow redips-drag moved' id='yellow' name='yellow' style='border-style: none; cursor: move;'>$contenido</div>";
 
 						break;
 					case 4:
-						$elemento="<div  class='redips-drag  red' id='red' name='red' height='40px' width='40px'>$contenido</div>";
+						$elemento="<div  class='redips-drag  red moved' id='red' name='red' height='40px' width='40px'>$contenido</div>";
 						break;
 					case 5:
-						$elemento="<div class='redips-drag  birthday' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
+						$elemento="<div class='redips-drag  birthday moved' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
 								"<img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
 								"</div>";
 						break;
 					case 6:
-						$elemento= "<div class=' redips-drag  food' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
+						$elemento= "<div class=' redips-drag  food moved' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
 								"<img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
 								"</div>";
 						break;

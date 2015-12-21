@@ -4,7 +4,7 @@ include "../controller/GestorTablero.php";
 
 $conector=new DatabaseConectorStat();
 $conexion=$conector->openConexion();
-$query="SELECT * FROM tablero_control ";
+$query="SELECT * FROM tablero_control  ORDER BY  tecnico,status ASC";
 $resultado=$conector->executeQueryDefine($query,$conexion);
 $filas = pg_fetch_all($resultado);
 $conector->closeConexionDef($conexion);
@@ -141,9 +141,9 @@ $sizeElement=sizeof($filas);
 								$lavado=$gestor->obtenerElemento($filas[$i]["lavado"]);
 								$control_calida=$gestor->obtenerElemento($filas[$i]["control_calidad"]);
 								$terminado=$gestor->obtenerElemento($filas[$i]["terminado"]);
-								$Tot=$gestor->obtenerElemento($filas[$i]["ToT"]);
+								$Tot=$gestor->obtenerElemento($filas[$i]["tot"]);
 								$partes=$gestor->obtenerElemento($filas[$i]["partes"]);
-								$AUT=$gestor->obtenerElemento($filas[$i]["AUT"]);
+								$AUT=$gestor->obtenerElemento($filas[$i]["aut"]);
 								if($tecnicoActual!=$idEmpleado){
 									$tecnicoActual=$idEmpleado;
 									

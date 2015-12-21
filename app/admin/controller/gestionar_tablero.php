@@ -12,7 +12,14 @@
 		//var_dump($id);
 		//var_dump($planeado);
 		//var_dump($trabajando);
-		echo "////////////";
+		$query="UPDATE tablero_control  SET h0800=null, h0830=null, h0900=null, h0930=null,". 
+       "h1000=null, h1030=null, h1100=null, h1130=null, h1200=null, h1230=null, h1300=null,". 
+       "h1330=null, h1400=null, h1430=null, h1500=null, h1530=null, h1600=null, h1630=null,". 
+       "h1700=null, h1730=null, h1800=null, h1830=null, h1900=null, h1930=null, h2000=null,". 
+       "lavado=null, control_calidad=null, terminado=null, tot=null, partes=null, ".
+       "aut=null WHERE status=1 OR status=2";
+       $resultado=$conector->executeQueryDefine($query,$conexion);
+
 		foreach ($planeado as $plan => $value) {
 			if($value!="-"){
 				$tipoElemento=$value["id"];
@@ -40,6 +47,7 @@
 					case "food":
 						break;
 				}
+
 				$query="INSERT INTO elemento_control VALUES (DEFAULT,$tipoElemento,'{$texto}',-1 ) returning id";
 				$resultado=$conector->executeQueryDefine($query,$conexion);
 				$filas = pg_fetch_all($resultado);
@@ -87,6 +95,7 @@
 				$filas = pg_fetch_all($resultado);
 				if(sizeof($filas)>0){
 						$idElemento=$filas[0]['id'];
+						echo $idElemento;
 						$query ="UPDATE tablero_control SET $plan=$idElemento WHERE tecnico=$idTecnico AND status=2";
 						$resultado=$conector->executeQueryDefine($query,$conexion);
 

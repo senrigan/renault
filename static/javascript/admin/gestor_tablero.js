@@ -109,9 +109,9 @@ function guardarTablero(){
 				"lavado":lavado,
 				"control_calidad":control,
 				"terminado":term,
-				"ToT":tot,
+				"tot":tot,
 				"partes":partes,
-				"AUT":aut
+				"aut":aut
 			};
 		}else{//trabajndo
 			//console.log(tecnico);
@@ -216,9 +216,9 @@ function guardarTablero(){
 				"lavado":lavado,
 				"control_calidad":control,
 				"terminado":term,
-				"ToT":tot,
+				"tot":tot,
 				"partes":partes,
-				"AUT":aut
+				"aut":aut
 			};
 			
 
