@@ -228,8 +228,8 @@
 								$ubicacion=$ubicacion.$imagen;
 								//planeado
 									echo "<tr class='r1'>".
-									"<td id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-									"<td class='redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+									"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
+									"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
 									"<td class='redips-only last'>Planeado</td>".
 									"<td class='c1' >$h0800</td>".//0800
 									"<td class='c1'>$h0830</td>".//0830

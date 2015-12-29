@@ -24,8 +24,8 @@ body {
 /* set border-collapse */
 div#redips-drag table {
 /* 	border-collapse: collapse; */
-	border-collapse: separate;
-	border-spacing: 0px;
+	/*border-collapse: separate;
+	border-spacing: 0px;*/
 
 }
 	/* define margin below first table */

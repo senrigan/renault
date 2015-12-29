@@ -34,12 +34,13 @@ $sizeElement=sizeof($filas);
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
 		<link rel="stylesheet" href="../../../static/javascript/jquery/jquery-ui/jquery-ui.css"/>
+		<link rel="stylesheet" href="../../../static/css/tablero.css"/>
 	</head>
-	<body onload="REDIPS.drag.init()" >
+	<body class="content" onload="REDIPS.drag.init()" >
 		
 			<div id="right"  width="100%">
 				<div id="redips-drag" width="100%">
-					<table id="table2" name="table2" border="1" width="100%" >
+					<table class="tablehead" id="table2" name="table2" border="1" width="100%" >
 						<thead>
 							<tr>
 								<th class="redips-only last" colspan="31" rowspan="" headers="" scope="col">CONTROL DE PROGRESO DE TRABAJO</th>
@@ -110,7 +111,7 @@ $sizeElement=sizeof($filas);
 							$tecnicoActual=-1;
 							$gestor=new GestorTablero();
 							for($i=0;$i<$sizeElement;$i++){
-								echo($i."\n");
+								//echo($i."\n");
 								$idEmpleado=$filas[$i]["tecnico"];
 								$status=$filas[$i]["status"];
 								$h0800=$gestor->obtenerElemento($filas[$i]["h0800"]);
@@ -162,8 +163,8 @@ $sizeElement=sizeof($filas);
 									$ubicacion=$ubicacion.$imagen;
 									if($status==1){
 										echo "<tr class='r1'>".
-											"<td id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-											"<td class='redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+											"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
+											"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
 											"<td class='redips-only last'>Planeado</td>".
 											"<td class='c1' >$h0800</td>".
 											"<td class='c1'>$h0830</td>".
