@@ -2,7 +2,8 @@
 	include "../model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-
+	$query="DELETE FROM elemento_control";
+	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$idTecnico=$_REQUEST["id"];
 	if(isset($idTecnico)){
 		var_dump($_REQUEST);
