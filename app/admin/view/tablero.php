@@ -16,6 +16,7 @@ $sizeElement=sizeof($filas);
 
 <html>
 	<head>
+
 		<script src="../../../static/javascript/jquery-1.11.3.min.js"></script>
 		<script src="../../../static/javascript/admin/gestor_tablero.js"></script>
 
@@ -33,6 +34,7 @@ $sizeElement=sizeof($filas);
 		<script type="text/javascript" src="../../../static/javascript/redips-drag-min.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
+		<script src="../staticvar.js"></script>
 		<link rel="stylesheet" href="../../../static/javascript/jquery/jquery-ui/jquery-ui.css"/>
 		<link rel="stylesheet" href="../../../static/css/tablero.css"/>
 	</head>
@@ -164,7 +166,7 @@ $sizeElement=sizeof($filas);
 									if($status==1){
 										echo "<tr class='r1'>".
 											"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-											"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+											"<td class=' redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
 											"<td class='redips-only last'>Planeado</td>".
 											"<td class='c1' >$h0800</td>".
 											"<td class='c1'>$h0830</td>".
@@ -259,11 +261,12 @@ $sizeElement=sizeof($filas);
 					</tbody>
 						
 					</table>
+					<br><br><br>
 					<div id="left" name="left">
 						<table id="table1" name="table1">
 							<thead>
 								<tr>
-									<th class="redips-only last" colspan="5" rowspan="" headers="" scope="">
+									<th class="redips-only last" colspan="7" rowspan="" headers="" scope="">
 										Elementos de arrastre
 									</th>
 								</tr>

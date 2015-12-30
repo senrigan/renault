@@ -5,9 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap.min.css">
+  <script src="../../static/javascript/staticvar.js"></script>
   <script src="../../static/javascript/jquery-1.11.3.min.js"></script>
   <script src="../../static/javascript/bootstrap.min.js"></script>
   <script src="../../static/javascript/admin/gestor_menu.js"></script>
+
 
 </head>
 <body>
@@ -20,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">RENAULT ADMIN</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -32,10 +34,10 @@
           </ul>
         </li>
          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tecnicos <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="tec">Tecnicos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="view/registro_tecnico.html" target="_self" >Registrar</a></li>
-            <li><a href="view/consultar_tecnicos.php" target="_self" >Modificar</a></li>
+            <li><a href="#"  id="regtec">Registrar</a></li>
+            <li><a href="#"  id="modtec">Modificar</a></li>
           </ul>
         </li>
         <li><a href="view/tablero.php" target="_self"></span>Tablero</a></li>

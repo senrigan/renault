@@ -9,7 +9,6 @@
 		<tr>
 			<th>cuenta</th>
 		    <th>privilegios</th>
-
 		</tr>
 	</thead>
 	<tbody>
