@@ -1,8 +1,8 @@
-<script src="../../../static/javascript/jquery-1.11.3.min.js"></script>
+<script src="../../static/javascript/jquery-1.11.3.min.js"></script>
 
-		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../static/css/bootstrap/css/bootstrap-theme.min.css">
-		<script src="../../../static/javascript/admin/gestor_tecnico.js"></script>
+		<link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap-theme.min.css">
+		<script src="../../static/javascript/admin/gestor_tecnico.js"></script>
 
 <table class='table'>
 	<caption>Tabla de los tecnicos registrados</caption>
@@ -40,11 +40,11 @@
 		$sizeElement=sizeof($filas);
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
-			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
+			//echo getcwd()."../../media/userImage/".$filas[$i]['imagen_perfil'];
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$filas[$i]['imagen_perfil'];
 			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
-			$imagenesUsuario="../../../media/userImage/";
+			$imagenesUsuario="../../media/userImage/";
 			$ubicacion=trim($ubicacion);
 			
 			//echo "".strcmp($ubicacion, $ubi);

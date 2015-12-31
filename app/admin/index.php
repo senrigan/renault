@@ -9,6 +9,8 @@
   <script src="../../static/javascript/jquery-1.11.3.min.js"></script>
   <script src="../../static/javascript/bootstrap.min.js"></script>
   <script src="../../static/javascript/admin/gestor_menu.js"></script>
+  <link href="../../static/css/gsdk-base.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../../static/images/admin/register/favicon.ico">
 
 
 </head>
@@ -22,15 +24,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">RENAULT ADMIN</a>
+      <a class="navbar-brand" href=".">RENAULT ADMIN</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="view/registro_usuario.html" target="_self" >Registrar</a></li>
-            <li><a href="view/consultar_usuarios.php"  target="_self" >Modificar</a></li>
+            <li><a href="#" id="reguser" target="_self" >Registrar</a></li>
+            <li><a href="#" id="moduser"  target="_self" >Modificar</a></li>
           </ul>
         </li>
          <li class="dropdown">
@@ -43,8 +45,8 @@
         <li><a href="view/tablero.php" target="_self"></span>Tablero</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>

@@ -34,7 +34,7 @@ $sizeElement=sizeof($filas);
 		<script type="text/javascript" src="../../../static/javascript/redips-drag-min.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
-		<script src="../staticvar.js"></script>
+		<script src="../../../static/javascript/staticvar.js"></script>
 		<link rel="stylesheet" href="../../../static/javascript/jquery/jquery-ui/jquery-ui.css"/>
 		<link rel="stylesheet" href="../../../static/css/tablero.css"/>
 	</head>
@@ -156,7 +156,13 @@ $sizeElement=sizeof($filas);
 	  								$resultado=$conector->executeQueryDefine($query,$conexion);
 	 								$filasTecnicos = pg_fetch_all($resultado);
 	  								$conector->closeConexionDef($conexion);
-	  								$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
+	  								$local=$_SERVER['SERVER_NAME'];
+	  								if($local=="localhost"){
+	  									$ubicacion="http://".$local."/renault/media/userImage/";
+	  								}else{
+	  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
+
+	  								}
 	  								$sizeElement=sizeof($filas);
 	  								$nombre=$filasTecnicos[0]["nombre"];
 	  								$apaterno=$filasTecnicos[0]["a_paterno"];
@@ -295,12 +301,12 @@ $sizeElement=sizeof($filas);
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone birthday" id="birthday" name="birthday" >
-											<img src="../../../static/images/admin/birthday.jpg" alt="" height="40px" width="40px">
+											<img src="../../../static/images/admin/birthday.png" alt="" height="40px" width="40px">
 										</div>
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone food" id="food" name="food" >
-											<img src="../../../static/images/admin/comida.jpg" alt="" height="40px" width="40px">
+											<img src="../../../static/images/admin/comida.png" alt="" height="40px" width="40px">
 
 										</div>
 									</td>

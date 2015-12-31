@@ -1,26 +1,30 @@
 
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="utf-8" />
 	
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <link rel="icon" type="image/png" href="../../../static/images/admin/register/favicon.ico">
-    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="../../../static/css/gsdk-base.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../../static/images/admin/register/favicon.ico">
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../../static/css/gsdk-base.css" rel="stylesheet" />
+  <script src="../../static/javascript/jquery-1.10.2.js" type="text/javascript"></script>
+  <script src="../../static/javascript/bootstrap.min.js" type="text/javascript"></script>
     
+  <!--   plugins   -->
+  <script src="../../static/javascript/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+  
+    <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
+  <script src="../../static/javascript/jquery.validate.min.js"></script>
+  
+    <!--  methods for manipulating the wizard and the validation -->
+  <script src="../../static/javascript/wizard.js"></script>
 
-</head>
 
-<body>
-<div class="image-container set-full-height" style="background-image: url('../../../static/images/admin/register/reno1.jpg')" >
+<div class="image-container set-full-height" style="background-image: url('../../static/images/admin/register/reno1.jpg')" >
   
        <div class="logo-container">
           <div class="logo">
-              <img src="../../../static/images/admin/register/logo.png" height="70px" width="70px">
+              <img src="../../static/images/admin/register/logo.png" height="70px" width="70px">
           </div>
           <div class="brand">
               Administrador
@@ -83,7 +87,7 @@
                                   <div class="col-sm-4 col-sm-offset-1">
                                      <div class="picture-container">
                                           <div class="picture">
-                                              <img src=<?php echo "../../../media/userImage/".$imagen; ?> class="picture-src" id="wizardPicturePreview" title=""/>
+                                              <img src=<?php echo "../../media/userImage/".$imagen; ?> class="picture-src" id="wizardPicturePreview" title=""/>
                                               <input name="wizard-picture" type="file" id="wizard-picture">
                                           </div>
                                           <h6>Elegir Imagen</h6>
@@ -133,18 +137,3 @@
 
 </div>
 
-</body>
-
-    <script src="../../../static/javascript/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../../../static/javascript/bootstrap.min.js" type="text/javascript"></script>
-		
-	<!--   plugins 	 -->
-	<script src="../../../static/javascript/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-	
-    <!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="../../../static/javascript/jquery.validate.min.js"></script>
-	
-    <!--  methods for manipulating the wizard and the validation -->
-	<script src="../../../static/javascript/wizard.js"></script>
-
-</html>

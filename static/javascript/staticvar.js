@@ -1,6 +1,9 @@
 var localurl=location.href;
 localurl=localurl.replace("#",'');
 localurl=localurl.substring(0,localurl.indexOf("/app/"));
+var staticfolder=localurl+"/static/";
+var jscript=staticfolder+"javascript/";
+var cssfolder=staticfolder+"css/";
 localurl=localurl+"/app/";
 
 var admin=localurl+"admin/";
