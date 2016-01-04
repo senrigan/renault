@@ -16,7 +16,18 @@
 		static $conexion;
 		*/
 		public function __construct(){
-			
+			$local=$_SERVER['SERVER_NAME'];
+			if($local=="localhost"){
+				
+			}else{
+				
+				$user="iwxdbrzwzwmcvq";
+				$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
+				$dbname="dcv72crt7q7fa1";
+				$port="5432";
+				$host="ec2-54-83-36-203.compute-1.amazonaws.com";
+				
+			}
 		}
 
 		public function closeConexion(){
