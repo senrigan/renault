@@ -58,53 +58,51 @@ $(document).ready(function(){
     });
     $(".btn-finish").click(function(){
         if(regtecactive){
-            alert("regute"+regtecactive);
+            if(validateTec()){
+                var name=$("#firstname").val();
+                var patern=$("#lastnamePatern").val();
+                var mother=$("#lastnameMother").val();
+                var pict=$("#wizard-picture");
+                $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
+                    if(data!=-1){
+                        if(data==0){
+                        alert("el tecnico ya esta registrador");
+                        }else{
+                            alert("Tecnico Registrado existosamente");    
+                        }    
+                    }else{
+                        alert("Error al acceder ala base de datos");
+                    }
+                    
+                    
+                });
+
+            
+            }
         }
         if(reguseractive){
             alert("reguser"+reguseractive);
-        }
-       if(validateFirstStep()){
-        if(document.getElementById("typecount")){//registrar cuenta
-            var user=$("#user").val();
-            var pass=$("#password").val();
-            var type=$("#typecount").val();
+            if(validateUser()){//registrar cuenta
+                var user=$("#user").val();
+                var pass=$("#password").val();
+                var type=$("#typecount").val();
 
-            $.post("controller/registrar_cuenta.php",{user:user,password:pass,typecount:type},function(data){
-                if(data==0){
-                    alert("El usuario ya existe")
-                    $("#user").val("");
-                    $("#password").val("");
-
-                }else{//registro exitoso
-
-                    alert(data);
-                    $(".closeUserReg")[0].click();
-
-                }
-            });
-        }else if($("#lastnamePatern")){
-            var name=$("#firstname").val();
-            var patern=$("#lastnamePatern").val();
-            var mother=$("#lastnameMother").val();
-            var pict=$("#wizard-picture");
-            $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
-                if(data!=-1){
+                $.post("controller/registrar_cuenta.php",{user:user,password:pass,typecount:type},function(data){
                     if(data==0){
-                    alert("el tecnico ya esta registrador");
-                    }else{
-                        alert("Tecnico Registrado existosamente");    
-                    }    
-                }else{
-                    alert("Error al acceder ala base de datos");
-                }
-                
-                
-            });
+                        alert("El usuario ya existe")
+                        $("#user").val("");
+                        $("#password").val("");
 
-            
+                    }else{//registro exitoso
+
+                        alert(data);
+                        $(".closeUserReg")[0].click();
+
+                    }
+                });
+            }
         }
-        
-       }
+     
     });
   
     // Prepare the preview for profile picture
@@ -157,6 +155,28 @@ function validateTec(){
     
     return true;
 }
+
+function validateUser(){
+    $("#register_user").validate({
+        rules: {
+            user:"required",
+            password:"required",
+            typecount:"required",
+        },
+        messages: {
+            user:"Insertar nombre de usuario",
+            password:"Insertar una contraseña",
+            typecount:"Insertar tipo de cuenta",
+        }
+    }); 
+    
+    if(!$("register_user").valid()){
+        //form is invalid
+        return false;
+    }
+    
+    return true;
+}
 function validateFirstStep(){
     
     $(".wizard-card form").validate({
@@ -167,6 +187,7 @@ function validateFirstStep(){
             user:"required",
             password:"required",
             typecount:"required",
+
 			
 /*  other possible input validations
 			,username: {
