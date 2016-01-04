@@ -11,7 +11,6 @@
 		static $user="iwxdbrzwzwmcvq";
 		static $password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 		static $dbname="dcv72crt7q7fa1";
-						dcv72crt7q7fa1
 		static $port="5432";
 		static $host="ec2-54-83-36-203.compute-1.amazonaws.com";
 		static $conexion;
