@@ -57,8 +57,53 @@ $(document).ready(function(){
 
     });
     $(".btn-finish").click(function(){
+        if(regtecactive){
+            alert("regute"+regtecactive);
+        }
+        if(reguseractive){
+            alert("reguser"+reguseractive);
+        }
        if(validateFirstStep()){
-        document.getElementById("register_user").submit();
+        if(document.getElementById("typecount")){//registrar cuenta
+            var user=$("#user").val();
+            var pass=$("#password").val();
+            var type=$("#typecount").val();
+
+            $.post("controller/registrar_cuenta.php",{user:user,password:pass,typecount:type},function(data){
+                if(data==0){
+                    alert("El usuario ya existe")
+                    $("#user").val("");
+                    $("#password").val("");
+
+                }else{//registro exitoso
+
+                    alert(data);
+                    $(".closeUserReg")[0].click();
+
+                }
+            });
+        }else if($("#lastnamePatern")){
+            var name=$("#firstname").val();
+            var patern=$("#lastnamePatern").val();
+            var mother=$("#lastnameMother").val();
+            var pict=$("#wizard-picture");
+            $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
+                if(data!=-1){
+                    if(data==0){
+                    alert("el tecnico ya esta registrador");
+                    }else{
+                        alert("Tecnico Registrado existosamente");    
+                    }    
+                }else{
+                    alert("Error al acceder ala base de datos");
+                }
+                
+                
+            });
+
+            
+        }
+        
        }
     });
   
@@ -91,6 +136,27 @@ $(document).ready(function(){
     
 });
 
+function validateTec(){
+     $("#register_tec").validate({
+        rules: {
+            firstname: "required",
+            lastnamePatern: "required",
+            lastnameMother:"required",        
+      },
+        messages: {
+            firstname: "Inserta tu nombre",
+            lastnamePatern: "Inserta tu apellido Paterno",
+            lastnameMother: "Inserta tu apellido materno"      
+        }
+    }); 
+    
+    if(!$("#register_tec").valid()){
+        //form is invalid
+        return false;
+    }
+    
+    return true;
+}
 function validateFirstStep(){
     
     $(".wizard-card form").validate({
@@ -98,6 +164,9 @@ function validateFirstStep(){
 			firstname: "required",
 			lastnamePatern: "required",
 			lastnameMother:"required",
+            user:"required",
+            password:"required",
+            typecount:"required",
 			
 /*  other possible input validations
 			,username: {
@@ -126,6 +195,9 @@ function validateFirstStep(){
 			firstname: "Inserta tu nombre",
 			lastnamePatern: "Inserta tu apellido Paterno",
             lastnameMother: "Inserta tu apellido materno",
+            user:"Insertar nombre de usuario",
+            password:"Insertar una contraseña",
+            typecount:"Insertar tipo de cuenta",
 		
 
 /*   other posible validation messages

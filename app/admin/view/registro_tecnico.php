@@ -72,15 +72,15 @@
                                   </div>
                                   <div class="col-sm-6">
                                       <div class="form-group">
-                                        <label>Nombre <small>(required)</small></label>
+                                        <label>Nombre <small>(requerido)</small></label>
                                         <input name="firstname" type="text" class="form-control" >
                                       </div>
                                       <div class="form-group">
-                                        <label>Apellido Paterno <small>(required)</small></label>
+                                        <label>Apellido Paterno <small>(requerido)</small></label>
                                         <input name="lastnamePatern" type="text" class="form-control" >
                                       </div>
                                       <div class="form-group">
-                                        <label>Apellido Materno <small>(required)</small></label>
+                                        <label>Apellido Materno <small>(requerido)</small></label>
                                         <input name="lastnameMother" type="text" class="form-control" >
                                       </div>
                                   </div>

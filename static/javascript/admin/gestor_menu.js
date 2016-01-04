@@ -1,3 +1,5 @@
+var regtecactive=false;
+var reguseractive=false;
 function loadContent(page){
 	$.ajax({
 	  url: ''+page,
@@ -11,9 +13,11 @@ function loadContent(page){
 $(document).ready(function() // or $(function()
  {
  	
-     $("#regtec").click(function () {
-    var loadUrl =adminview+"registro_tecnico.php";
-    $("#container").load(loadUrl);
+    $("#regtec").click(function () {
+    	regtecactive=true;
+    	reguseractive=false;
+    //var loadUrl =adminview+"registro_tecnico.php";
+    //$("#container").load(loadUrl);
 	});
 
 	$("#modtec").click(function () {
@@ -25,7 +29,10 @@ $(document).ready(function() // or $(function()
 	    $("#container").load(loadUrl);
 	});
 	$("#reguser").click(function () {
-	    var loadUrl = adminview+"registro_usuario.html";
-	    $("#container").load(loadUrl);
+	    reguseractive=true;
+	    regtecactive=false;
+	    //var loadUrl = adminview+"registro_usuario.php";
+	    //$("#modalcontent").load(loadUrl);
+	    //$("#modalreg").modal('show');
 	});
  });

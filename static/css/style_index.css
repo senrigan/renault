@@ -1,0 +1,14 @@
+.bootstrap-container *,    
+.bootstrap-container body, 
+.bootstrap-container td, 
+.bootstrap-container tr, 
+.bootstrap-container div, 
+.bootstrap-container p, 
+.bootstrap-container form, 
+.bootstrap-container input, 
+.bootstrap-container select, 
+.bootstrap-container textarea, 
+.bootstrap-container font {
+font-family: 'Open Sans', sans-serif !important; 
+}
+.body { font-family: 'Open Sans', sans-serif;}

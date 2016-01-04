@@ -21,7 +21,7 @@
 	$typecount=$_POST["typecount"];
 	
 
-	$query ="SELECT * FROM cuentas WHERE cuenta='$user' password='$password' privileges='$typecount' ";
+	$query ="SELECT * FROM cuentas WHERE cuenta='$user' ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$numReg = pg_num_rows($resultado);
 	if($numReg==0){
@@ -33,9 +33,10 @@
 		$numReg = pg_num_rows($resultado);
 
 		pg_close($conexion);
+		echo "Cuenta registrada correctamente";
 
 	}else{
-		echo "<script>alert('esta cuenta ya esta registrada');</script>"
+		echo "0";
 	}
 	
 

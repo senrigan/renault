@@ -47,12 +47,13 @@
 			$resultado=$conector->executeQueryDefine($query,$conexion);
 
 			pg_close($conexion);
+			echo "1";//tecnico registrado
 		}else{
-			echo "<javascript>alert('este tecnico ya esta registrado')</javascript>";
+			echo "0";//tecnico repetido
 		}
 	} else{
 
-		echo "Ha ocurrido un error, trate de nuevo!";
+		echo "-1";//errror base de datos
 	}
 
 	

@@ -4,6 +4,8 @@ include "../controller/GestorTablero.php";
 
 $conector=new DatabaseConectorStat();
 $conexion=$conector->openConexion();
+$query="SELECT * FROM tecnicos ORDER BY id";
+$resultado=$conector->executeQueryDefine($query,$conexion);
 $query="SELECT * FROM tablero_control  ORDER BY  tecnico,status ASC";
 $resultado=$conector->executeQueryDefine($query,$conexion);
 $filas = pg_fetch_all($resultado);
