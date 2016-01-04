@@ -74,7 +74,7 @@
                 <!--      Wizard container        -->   
                 <div class="wizard-container movedown"> 
                     <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
-                        <form    method="POST" id="register_user" name="register_user">
+                        <form  id="register_user" name="register_user">
              
                     
                           <div class="wizard-header">
@@ -148,7 +148,7 @@
           <div class="wizard-container"> 
               
               <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
-                  <form  enctype="multipart/form-data"  method="POST" id="register_tec" name="register_tec">
+                  <form id="register_tec" name="register_tec">
        
               
                     <div class="wizard-header">
@@ -178,15 +178,15 @@
                                 <div>
                                     <div class="form-group">
                                       <label>Nombre <small>(requerido)</small></label>
-                                      <input  name="firstname" type="text" class="form-control" >
+                                      <input id="firstname" name="firstname" type="text" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                       <label>Apellido Paterno <small>(requerido)</small></label>
-                                      <input name="lastnamePatern" type="text" class="form-control" >
+                                      <input id="lastnamepatern" name="lastnamepatern" type="text" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                       <label>Apellido Materno <small>(requerido)</small></label>
-                                      <input name="lastnameMother" type="text" class="form-control" >
+                                      <input id="lastnamemother" name="lastnamemother" type="text" class="form-control" >
                                     </div>
                                 </div>
                        
