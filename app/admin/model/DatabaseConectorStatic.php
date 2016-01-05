@@ -18,7 +18,10 @@
 		public function __construct(){
 			$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
-				
+				$password="admin";
+				$dbname="renault";
+				$port="5432";
+				$host="localhost";
 			}else{
 				
 				$user="iwxdbrzwzwmcvq";
