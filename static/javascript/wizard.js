@@ -135,7 +135,7 @@ $(document).ready(function(){
 });
 
 function validateTec(){
-     $("#register_tec").validate({
+     $(".wizard-card form").validate({
         rules: {
             firstname: "required",
             lastnamePatern: "required",
@@ -148,7 +148,7 @@ function validateTec(){
         }
     }); 
     
-    if(!$("#register_tec").valid()){
+    if(!$(".wizard-card form").valid()){
         //form is invalid
         return false;
     }
@@ -157,7 +157,7 @@ function validateTec(){
 }
 
 function validateUser(){
-    $("#register_user").validate({
+    $(".wizard-card form").validate({
         rules: {
             user:"required",
             password:"required",
@@ -170,7 +170,7 @@ function validateUser(){
         }
     }); 
     
-    if(!$("register_user").valid()){
+    if(!$(".wizard-card form").valid()){
         //form is invalid
         return false;
     }
