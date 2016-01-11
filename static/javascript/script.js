@@ -113,6 +113,7 @@ redips.init = function () {
 				rd.emptyCell(rd.td.target);
 				// append previously removed DIV to the target cell
 				var textInput=$("#contentDiv").val();
+				textInput=textInput.toUpperCase();
 				console.log(rd.obj);
 				console.log(rd);
 				rd.obj.innerHTML=textInput;

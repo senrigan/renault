@@ -1,16 +1,15 @@
 <?php
 include "../../admin/model/DatabaseConectorStatic.php";
 include "../controller/GestorTablero.php";
-
 $conector=new DatabaseConectorStat();
 $conexion=$conector->openConexion();
-$query="SELECT * FROM tecnicos ORDER BY id";
+$query="SELECT * FROM tecnicos ORDER BY id ASC";
 $resultado=$conector->executeQueryDefine($query,$conexion);
-$query="SELECT * FROM tablero_control  ORDER BY  tecnico,status ASC";
-$resultado=$conector->executeQueryDefine($query,$conexion);
-$filas = pg_fetch_all($resultado);
+$tecnicos=pg_fetch_all($resultado);
 $conector->closeConexionDef($conexion);
-$sizeElement=sizeof($filas);
+
+
+
 
 
 ?>
@@ -111,155 +110,171 @@ $sizeElement=sizeof($filas);
 						
 						<tbody>
 						
-						<?php 
-							$tecnicoActual=-1;
+						<?php
+							$tecnicosSize=sizeof($tecnicos);
 							$gestor=new GestorTablero();
-							for($i=0;$i<$sizeElement;$i++){
-								//echo($i."\n");
-								$idEmpleado=$filas[$i]["tecnico"];
-								$status=$filas[$i]["status"];
-								$h0800=$gestor->obtenerElemento($filas[$i]["h0800"]);
-								$h0830=$gestor->obtenerElemento($filas[$i]["h0830"]);
-								$h0900=$gestor->obtenerElemento($filas[$i]["h0900"]);
-								$h0930=$gestor->obtenerElemento($filas[$i]["h0930"]);
-								$h1000=$gestor->obtenerElemento($filas[$i]["h1000"]);
-								$h1030=$gestor->obtenerElemento($filas[$i]["h1030"]);
-								$h1100=$gestor->obtenerElemento($filas[$i]["h1100"]);
-								$h1130=$gestor->obtenerElemento($filas[$i]["h1130"]);
-								$h1200=$gestor->obtenerElemento($filas[$i]["h1200"]);
-								$h1230=$gestor->obtenerElemento($filas[$i]["h1230"]);
-								$h1300=$gestor->obtenerElemento($filas[$i]["h1300"]);
-								$h1330=$gestor->obtenerElemento($filas[$i]["h1330"]);
-								$h1400=$gestor->obtenerElemento($filas[$i]["h1400"]);
-								$h1430=$gestor->obtenerElemento($filas[$i]["h1430"]);
-								$h1500=$gestor->obtenerElemento($filas[$i]["h1500"]);
-								$h1530=$gestor->obtenerElemento($filas[$i]["h1530"]);
-								$h1600=$gestor->obtenerElemento($filas[$i]["h1600"]);
-								$h1630=$gestor->obtenerElemento($filas[$i]["h1630"]);
-								$h1700=$gestor->obtenerElemento($filas[$i]["h1700"]);
-								$h1730=$gestor->obtenerElemento($filas[$i]["h1730"]);
-								$h1800=$gestor->obtenerElemento($filas[$i]["h1800"]);
-								$h1830=$gestor->obtenerElemento($filas[$i]["h1830"]);
-								$h1900=$gestor->obtenerElemento($filas[$i]["h1900"]);
-								$h1930=$gestor->obtenerElemento($filas[$i]["h1930"]);
 
-								$lavado=$gestor->obtenerElemento($filas[$i]["lavado"]);
-								$control_calida=$gestor->obtenerElemento($filas[$i]["control_calidad"]);
-								$terminado=$gestor->obtenerElemento($filas[$i]["terminado"]);
-								$Tot=$gestor->obtenerElemento($filas[$i]["tot"]);
-								$partes=$gestor->obtenerElemento($filas[$i]["partes"]);
-								$AUT=$gestor->obtenerElemento($filas[$i]["aut"]);
-								if($tecnicoActual!=$idEmpleado){
-									$tecnicoActual=$idEmpleado;
-									
-									
-									$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado ";
-									$conexion=$conector->openConexion();
-	  								$resultado=$conector->executeQueryDefine($query,$conexion);
-	 								$filasTecnicos = pg_fetch_all($resultado);
-	  								$conector->closeConexionDef($conexion);
-	  								$local=$_SERVER['SERVER_NAME'];
-	  								if($local=="localhost"){
-	  									$ubicacion="http://".$local."/renault/media/userImage/";
-	  								}else{
-	  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
+							for($j=0;$j<$tecnicosSize;$j++){
+								$idTecnico=$tecnicos[$j]["id"];
+								$query="SELECT * FROM tablero_control where tecnico=$idTecnico ORDER BY status ASC";
+								$conexion=$conector->openConexion();
+								$resultado=$conector->executeQueryDefine($query,$conexion);
+								$filas=pg_fetch_all($resultado);
+								$conector->closeConexionDef($conexion);
 
-	  								}
-	  								$sizeElement=sizeof($filas);
-	  								$nombre=$filasTecnicos[0]["nombre"];
-	  								$apaterno=$filasTecnicos[0]["a_paterno"];
-	  								$amaterno=$filasTecnicos[0]["a_materno"];
-	  								$imagen=$filasTecnicos[0]["imagen_perfil"];
-									$ubicacion=$ubicacion.$imagen;
-									if($status==1){
-										echo "<tr class='r1'>".
-											"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-											"<td class=' redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
-											"<td class='redips-only last'>Planeado</td>".
-											"<td class='c1' >$h0800</td>".
-											"<td class='c1'>$h0830</td>".
-											"<td class='c1'>$h0900</td>".
-											"<td class='c1'>$h0930</td>".
-											"<td class='c1'>$h1000</td>".
-											"<td class='c1'>$h1030</td>".
-											"<td class='c1'>$h1100</td>".
-											"<td class='c1'>$h1130</td>".
-											"<td class='c1'>$h1200</td>".
-											"<td class='c1'>$h1230</td>".
-											"<td class='c1'>$h1300</td>".
-											"<td class='c1'>$h1330</td>".
-											"<td class='c1'>$h1400</td>".
-											"<td class='c1'>$h1430</td>".
-											"<td class='c1'>$h1500</td>".
-											"<td class='c1'>$h1530</td>".
-											"<td class='c1'>$h1600</td>".
+								$numfilas=pg_num_rows($resultado);
+								if($numfilas==2){
+
+									for($i=0;$i<$numfilas;$i++){
+										//echo($i."\n");
+										$idEmpleado=$filas[$i]["tecnico"];
+										$status=$filas[$i]["status"];
+										$h0800=$gestor->obtenerElemento($filas[$i]["h0800"]);
+										$h0830=$gestor->obtenerElemento($filas[$i]["h0830"]);
+										$h0900=$gestor->obtenerElemento($filas[$i]["h0900"]);
+										$h0930=$gestor->obtenerElemento($filas[$i]["h0930"]);
+										$h1000=$gestor->obtenerElemento($filas[$i]["h1000"]);
+										$h1030=$gestor->obtenerElemento($filas[$i]["h1030"]);
+										$h1100=$gestor->obtenerElemento($filas[$i]["h1100"]);
+										$h1130=$gestor->obtenerElemento($filas[$i]["h1130"]);
+										$h1200=$gestor->obtenerElemento($filas[$i]["h1200"]);
+										$h1230=$gestor->obtenerElemento($filas[$i]["h1230"]);
+										$h1300=$gestor->obtenerElemento($filas[$i]["h1300"]);
+										$h1330=$gestor->obtenerElemento($filas[$i]["h1330"]);
+										$h1400=$gestor->obtenerElemento($filas[$i]["h1400"]);
+										$h1430=$gestor->obtenerElemento($filas[$i]["h1430"]);
+										$h1500=$gestor->obtenerElemento($filas[$i]["h1500"]);
+										$h1530=$gestor->obtenerElemento($filas[$i]["h1530"]);
+										$h1600=$gestor->obtenerElemento($filas[$i]["h1600"]);
+										$h1630=$gestor->obtenerElemento($filas[$i]["h1630"]);
+										$h1700=$gestor->obtenerElemento($filas[$i]["h1700"]);
+										$h1730=$gestor->obtenerElemento($filas[$i]["h1730"]);
+										$h1800=$gestor->obtenerElemento($filas[$i]["h1800"]);
+										$h1830=$gestor->obtenerElemento($filas[$i]["h1830"]);
+										$h1900=$gestor->obtenerElemento($filas[$i]["h1900"]);
+										$h1930=$gestor->obtenerElemento($filas[$i]["h1930"]);
+
+										$lavado=$gestor->obtenerElemento($filas[$i]["lavado"]);
+										$control_calida=$gestor->obtenerElemento($filas[$i]["control_calidad"]);
+										$terminado=$gestor->obtenerElemento($filas[$i]["terminado"]);
+										$Tot=$gestor->obtenerElemento($filas[$i]["tot"]);
+										$partes=$gestor->obtenerElemento($filas[$i]["partes"]);
+										$AUT=$gestor->obtenerElemento($filas[$i]["aut"]);
 										
-											"<td class='c1'>$h1630</td>".
-
-											"<td class='c1'>$h1700</td>".
-											"<td class='c1'>$h1730</td>".
-											"<td class='c1'>$h1800</td>".
-											"<td class='c1'>$h1830</td>".
-											"<td class='c1'>$h1900</td>".
-											"<td class='c1'>$h1930</td>".
-											"<td class='c1'>$lavado</td>".
-											"<td class='c1'>$control_calida</td>".
-											"<td class='c1'>$terminado</td>".
-											"<td class='c1'>$Tot</td>".
-											"<td class='c1'>$partes</td>".
-											"<td class='c1'>$AUT</td>".
-											"</tr>";
-										}
-									
-
-									
-						
-								}
-								if($status==2){
-											echo "<tr class='rd' >".
-											
-											"<td class='redips-only last'>Trabajando</td>".
-											"<td>$h0800</td>".
-											"<td>$h0830</td>".
-											"<td>$h0900</td>".
-											"<td>$h0930</td>".
-											"<td>$h1000</td>".
-											"<td>$h1030</td>".
-											"<td>$h1100</td>".
-											"<td>$h1130</td>".
-											"<td>$h1200</td>".
-											"<td>$h1230</td>".
-											"<td>$h1300</td>".
-											"<td>$h1330</td>".
-											"<td>$h1400</td>".
-											"<td>$h1430</td>".
-											"<td>$h1500</td>".
-											"<td>$h1530</td>".
-											"<td>$h1600</td>".
+										$tecnicoActual=$idEmpleado;
 										
-											"<td colspan='' rowspan='' headers=''>".
-											$h1630.
-											"</td>".
+										
+										/*$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado ";
+										$conexion=$conector->openConexion();
+		  								$resultado=$conector->executeQueryDefine($query,$conexion);
+		 								$filasTecnicos = pg_fetch_all($resultado);
+		  								$conector->closeConexionDef($conexion);
+		  								*/
+		  								$local=$_SERVER['SERVER_NAME'];
+		  								if($local=="localhost"){
+		  									$ubicacion="http://".$local."/renault/media/userImage/";
+		  								}else{
+		  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 
-											"<td>$h1700</td>".
-											"<td>$h1730</td>".
-											"<td>$h1800</td>".
-											"<td>$h1830</td>".
-											"<td>$h1900</td>".
-											"<td>$h1930</td>".
-											"<td>$lavado</td>".
-											"<td>$control_calida</td>".
-											"<td>$terminado</td>".
-											"<td>$Tot</td>".
-											"<td>$partes</td>".
-											"<td>$AUT</td>".
+		  								}
+		  								$sizeElement=sizeof($filas);
+		  								$nombre=$tecnicos[$j]["nombre"];
+		  								$apaterno=$tecnicos[$j]["a_paterno"];
+		  								$amaterno=$tecnicos[$j]["a_materno"];
+		  								$imagen=$tecnicos[$j]["imagen_perfil"];
+										$ubicacion=$ubicacion.$imagen;
+										if($status==1){
+											echo "<tr class='r1'>".
+												"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
+												"<td class=' redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+												"<td class='redips-only last'>Planeado</td>".
+												"<td class='c1' >$h0800</td>".
+												"<td class='c1'>$h0830</td>".
+												"<td class='c1'>$h0900</td>".
+												"<td class='c1'>$h0930</td>".
+												"<td class='c1'>$h1000</td>".
+												"<td class='c1'>$h1030</td>".
+												"<td class='c1'>$h1100</td>".
+												"<td class='c1'>$h1130</td>".
+												"<td class='c1'>$h1200</td>".
+												"<td class='c1'>$h1230</td>".
+												"<td class='c1'>$h1300</td>".
+												"<td class='c1'>$h1330</td>".
+												"<td class='c1'>$h1400</td>".
+												"<td class='c1'>$h1430</td>".
+												"<td class='c1'>$h1500</td>".
+												"<td class='c1'>$h1530</td>".
+												"<td class='c1'>$h1600</td>".
 											
-										"</tr>";
-										}
-								
+												"<td class='c1'>$h1630</td>".
 
+												"<td class='c1'>$h1700</td>".
+												"<td class='c1'>$h1730</td>".
+												"<td class='c1'>$h1800</td>".
+												"<td class='c1'>$h1830</td>".
+												"<td class='c1'>$h1900</td>".
+												"<td class='c1'>$h1930</td>".
+												"<td class='c1'>$lavado</td>".
+												"<td class='c1'>$control_calida</td>".
+												"<td class='c1'>$terminado</td>".
+												"<td class='c1'>$Tot</td>".
+												"<td class='c1'>$partes</td>".
+												"<td class='c1'>$AUT</td>".
+												"</tr>";
+										}							
+										if($status==2){
+													echo "<tr class='rd' >".
+													
+													"<td class='redips-only last'>Trabajando</td>".
+													"<td>$h0800</td>".
+													"<td>$h0830</td>".
+													"<td>$h0900</td>".
+													"<td>$h0930</td>".
+													"<td>$h1000</td>".
+													"<td>$h1030</td>".
+													"<td>$h1100</td>".
+													"<td>$h1130</td>".
+													"<td>$h1200</td>".
+													"<td>$h1230</td>".
+													"<td>$h1300</td>".
+													"<td>$h1330</td>".
+													"<td>$h1400</td>".
+													"<td>$h1430</td>".
+													"<td>$h1500</td>".
+													"<td>$h1530</td>".
+													"<td>$h1600</td>".
+												
+													"<td colspan='' rowspan='' headers=''>".
+													$h1630.
+													"</td>".
+
+													"<td>$h1700</td>".
+													"<td>$h1730</td>".
+													"<td>$h1800</td>".
+													"<td>$h1830</td>".
+													"<td>$h1900</td>".
+													"<td>$h1930</td>".
+													"<td>$lavado</td>".
+													"<td>$control_calida</td>".
+													"<td>$terminado</td>".
+													"<td>$Tot</td>".
+													"<td>$partes</td>".
+													"<td>$AUT</td>".
+													
+												"</tr>";
+										}
+									}
+								} 
 
 							}
+							/*$query="SELECT * FROM tablero_control  ORDER BY  tecnico,status ASC";
+							$conexion=$conector->openConexion();
+							$resultado=$conector->executeQueryDefine($query,$conexion);
+							$filas = pg_fetch_all($resultado);
+							$conector->closeConexionDef($conexion);
+							$sizeElement=sizeof($filas); 
+							$tecnicoActual=-1;
+							*/
 
 						 ?>
 						

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../../static/css/modal.css" />
   <link rel="stylesheet" href="../../static/css/style_index.css" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap-theme.min.css">
+
 
 
   <script src="../../static/javascript/jquery-1.11.3.min.js"></script>
@@ -66,7 +68,7 @@
  
 </div>
 
-<div id="regusermodal" class="modalmask">
+  <div id="regusermodal" class="modalmask">
     <div class="modalbox movedown">
       <a id="closeUserReg" href="#close" title="Close" class="close closeUserReg">X</a>
       <div id="modalcontent">
@@ -136,11 +138,161 @@
       </div>
 
     </div>
-</div>
-
-<div id="regtecmodal" class="modalmask">
+  </div>
+    <!-- MODIFICAR USUARIO-->
+    <div id="modusermodal" class="modalmask">
     <div class="modalbox movedown">
-      <a id="closeTecReg" href="#close" title="Close" class="close closeTecReg">X</a>
+      <a id="closeUserModReg" href="#close" title="Close" class="close closeUserModReg">X</a>
+      <div id="modalcontent">
+               
+                <!--      Wizard container        -->   
+                <div class="wizard-container movedown"> 
+                    <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
+                        <form  id="modregister_user" name="modregister_user">
+             
+                    
+                          <div class="wizard-header">
+                              <h3>
+                                 <b> Actualizar Usuario</b><br>
+                              
+                              </h3>
+                          </div>
+                          <ul>
+                                <li><a href="#about" data-toggle="tab">Datos de la Cuenta</a></li>
+                               
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div class="tab-pane" id="about">
+                                  <div class="row">
+                                     
+                                      
+                                      <div class="col-sm-12">
+                                          <div class="form-group">
+                                            <label>usuario <small>(requerido)</small></label>
+                                            <input name="moduser" id="moduser" type="text" class="form-control" >
+                                          </div>
+                                          <div class="form-group">
+                                            <label>contraseña <small>(requerido)</small></label>
+                                            <input name="modpassword" id="modpassword" type="text" class="form-control" >
+                                          </div>
+                                          <div class="form-group">
+                                            <label>tipo de cuenta <small>(requerido)</small></label>
+                                            
+                                            <select name="modtypecount" id="modtypecount" class="form-control">
+                                              <option value="1">usuario normal</option>
+                                              <option value="2">administrador</option>
+                                            </select>
+                                          </div>
+                                      </div>
+                             
+                                  </div>
+                                </div>
+                           
+                             
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+                                    <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Modificar' />
+            
+                                </div>
+                                
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>  
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            
+      </div>
+
+    </div>
+  </div>
+
+  <div id="regtecmodal" class="modalmask">
+      <div class="modalbox movedown">
+        <a id="closeTecReg" href="#close" title="Close" class="close closeTecReg">X</a>
+        <div id="modalcontent">
+                 
+                    <!--   Big container   -->
+            <!--      Wizard container        -->   
+            <div class="wizard-container"> 
+                
+                <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
+                    <form id="register_tec" name="register_tec">
+         
+                
+                      <div class="wizard-header">
+                          <h3>
+                             <b>Registro de Tecnicos</b><br>
+                          
+                          </h3>
+                      </div>
+                      <ul>
+                            <li><a href="#about" data-toggle="tab">Datos Personales</a></li>
+                           
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="" id="about">
+                              <div >
+                                 
+                                  <div >
+                                     <div class="picture-container">
+                                          <div class="picture">
+                                              <img src="../../static/images/admin/register/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                              <input name="wizard-picture" type="file" id="wizard-picture">
+                                          </div>
+                                          <h6>Elegir Imagen</h6>
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="form-group">
+                                        <label>Nombre <small>(requerido)</small></label>
+                                        <input id="firstname" name="firstname" type="text" class="form-control" >
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Apellido Paterno <small>(requerido)</small></label>
+                                        <input id="lastnamepatern" name="lastnamepatern" type="text" class="form-control" >
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Apellido Materno <small>(requerido)</small></label>
+                                        <input id="lastnamemother" name="lastnamemother" type="text" class="form-control" >
+                                      </div>
+                                  </div>
+                         
+                              </div>
+                            </div>
+                       
+                         
+                        </div>
+                        <div class="wizard-footer">
+                            <div class="pull-right">
+                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Registrar' />
+        
+                            </div>
+                            
+                            <div class="pull-left">
+                                <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>  
+                    </form>
+                </div>
+            </div> <!-- wizard container -->
+        </div>
+
+      </div>
+  </div>
+
+
+<div id="modtecmodal" class="modalmask">
+    <div class="modalbox movedown">
+      <a id="closeTecReg" href="#close" title="Close" class="close closeTecModReg">X</a>
       <div id="modalcontent">
                
                   <!--   Big container   -->
@@ -148,12 +300,12 @@
           <div class="wizard-container"> 
               
               <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
-                  <form id="register_tec" name="register_tec">
+                  <form id="modregister_tec" name="modregister_tec">
        
               
                     <div class="wizard-header">
                         <h3>
-                           <b>Registro de Tecnicos</b><br>
+                           <b>Datos de Tecnico</b><br>
                         
                         </h3>
                     </div>
@@ -169,24 +321,25 @@
                                 <div >
                                    <div class="picture-container">
                                         <div class="picture">
-                                            <img src="../../static/images/admin/register/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                            <input name="wizard-picture" type="file" id="wizard-picture">
+                                            <img src="../../static/images/admin/register/default-avatar.png" class="picture-src" id="modwizardPicturePreview" title=""/>
+                                            <input name="modwizard-picture" type="file" id="modwizard-picture">
                                         </div>
                                         <h6>Elegir Imagen</h6>
                                     </div>
                                 </div>
                                 <div>
+                                    <input id="idtec" type="text" hidden="true">
                                     <div class="form-group">
                                       <label>Nombre <small>(requerido)</small></label>
-                                      <input id="firstname" name="firstname" type="text" class="form-control" >
+                                      <input id="modfirstname" name="modfirstname" type="text" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                       <label>Apellido Paterno <small>(requerido)</small></label>
-                                      <input id="lastnamepatern" name="lastnamepatern" type="text" class="form-control" >
+                                      <input id="modlastnamepatern" name="modlastnamepatern" type="text" class="form-control" >
                                     </div>
                                     <div class="form-group">
                                       <label>Apellido Materno <small>(requerido)</small></label>
-                                      <input id="lastnamemother" name="lastnamemother" type="text" class="form-control" >
+                                      <input id="modlastnamemother" name="modlastnamemother" type="text" class="form-control" >
                                     </div>
                                 </div>
                        
@@ -198,7 +351,7 @@
                       <div class="wizard-footer">
                           <div class="pull-right">
                               <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                              <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Registrar' />
+                              <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Modificar' />
       
                           </div>
                           
@@ -213,6 +366,9 @@
       </div>
 
     </div>
+
+
+    
 </div>
 </body>
 </html>

@@ -8,15 +8,15 @@
 		
 	}
 	include '../model/DatabaseConectorStatic.php';
-	$id_Tecnico=$_REQUEST['idTecnico'];
+	$idTec=$_REQUEST['idTecnico'];
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
 	
-	$firtName=$_POST["firstname"];
-	$lastFatherName=$_POST["lastnamePatern"];
-	$lastMomName=$_POST["lastnameMother"];
+	//$firtName=$_POST["firstname"];
+	//$lastFatherName=$_POST["lastnamePatern"];
+	//$lastMomName=$_POST["lastnameMother"];
 	
-	$query="SELECT * FROM tablero_control where idEmpleado=$id_Tecnico";
+	$query="SELECT * FROM tablero_control where tecnico=$idTec";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	$filas = pg_fetch_all($resultado);
 	$sizeElement=sizeof($filas);
@@ -49,9 +49,9 @@
 			$lavado=$filas[$i]["lavado"];
 			$control_calida=$filas[$i]["control_calidad"];
 			$terminado=$filas[$i]["terminado"];
-			$Tot=$filas[$i]["ToT"];
+			$Tot=$filas[$i]["tot"];
 			$partes=$filas[$i]["partes"];
-			$AUT=$filas[$i]["AUT"];
+			$AUT=$filas[$i]["aut"];
 
 			if(tieneElemento($h0800) ||
 				tieneElemento($h0830) ||
@@ -87,19 +87,20 @@
 			}
 	}
 	if($borrable){
-		$query="DELETE FROM tecnicos WHERE id_tecnico=$id_Tecnico";
+		$conector->openConexion();
+		$query="DELETE FROM tecnicos WHERE idTec=$idTec";
 		$resultado=$conector->executeQueryDefine($query,$conexion);
-
-		pg_close($conexion);
+		
 		if($resultado){
 			echo "el tecnico fue borrado satisfactoriamente";
 		}else{
 			echo "el tecnico no puede ser borrado";
 		}
 	}else{
-		echo "el tecnico tiene trabajos pendientes  es neceario eliminar sus trabajos "
+		echo "el tecnico tiene trabajos pendientes  es neceario eliminar sus trabajos ";
 	}
-	
+	$conector->closeConexionDef($conexion);
+
 	
 	
 	

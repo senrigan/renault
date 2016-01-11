@@ -1,10 +1,12 @@
 searchVisible = 0;
 transparent = true;
+var modtecImage=false;
+var modtecImageFile;
 
 $(document).ready(function(){
     /*  Activate the tooltips      */
     $('[rel="tooltip"]').tooltip();
-      
+   
     $('.wizard-card').bootstrapWizard({
         'tabClass': 'nav nav-pills',
         'nextSelector': '.btn-next',
@@ -102,6 +104,57 @@ $(document).ready(function(){
                 });
             }
         }
+        if(modtecactive){
+            if(validateModtec()){
+                var nombre=$("#modfirstname").val();
+                var id=$("#idtec").val();
+                
+                var apaterno=$("#modlastnamepatern").val();
+                var amaterno=$("#modlastnamemother").val();
+                var imagenPreviw=$("#modwizardPicturePreview").val();
+                /*var imagen=$("#modwizard-picture").val();
+                var fileInput = $('#modwizard-picture')[0];
+                if(imageFileCollection){
+                    var formdata=new FormData();
+                    formdata.append('image',imageFileCollection[0]);
+                }*/
+                if(modtecImage){
+                    alert("entro a con imagen modificada");
+                     $.post("controller/actualizar_tecnico.php",
+                    {
+                        idTecnico:id,
+                        firstname:nombre,
+                        lastnamePatern:apaterno,
+                        lastnameMother:amaterno,
+                        "wizard-picture":modtecImageFile,
+                    }
+                    ,function(data){
+                        if(data==1){
+                                alert("se modifico el tecnico existosamente");
+                        }else{
+                                alert("fallo al actualziar el tecnico");
+                        }
+                    });
+                }else{
+                     $.post("controller/actualizar_tecnico.php",
+                    {
+                        idTecnico:id,
+                        firstname:nombre,
+                        lastnamePatern:apaterno,
+                        lastnameMother:amaterno,
+                    }
+                    ,function(data){
+                        if(data==1){
+                                alert("se modifico el tecnico existosamente");
+                        }else{
+                                alert("fallo al actualziar el tecnico");
+                        }
+                     });
+                }
+               
+            }
+
+        }
      
     });
   
@@ -109,6 +162,10 @@ $(document).ready(function(){
     $("#wizard-picture").change(function(){
         readURL(this);
     });
+
+     $('#modwizard-picture').change(function(){
+        readURLMOD(this);
+     });
     
     $('[data-toggle="wizard-radio"]').click(function(){
         wizard = $(this).closest('.wizard-card');
@@ -148,6 +205,27 @@ function validateTec(){
         }
     }); 
     
+    if(!$(".wizard-card form").valid()){
+        //form is invalid
+        return false;
+    }
+    
+    return true;
+}
+
+function validateModtec(){
+      $(".wizard-card form").validate({
+        rules: {
+            modfirstname: "required",
+            modlastnamePatern: "required",
+            modlastnameMother:"required",        
+      },
+        messages: {
+            modfirstname: "Inserta tu nombre",
+            modlastnamePatern: "Inserta tu apellido Paterno",
+            modlastnameMother: "Inserta tu apellido materno"      
+        }
+    }); 
     if(!$(".wizard-card form").valid()){
         //form is invalid
         return false;
@@ -287,6 +365,26 @@ function readURL(input) {
             $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
         }
         reader.readAsDataURL(input.files[0]);
+    }
+}
+    
+
+function readURLMOD(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#modwizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+        modtecImageFile=input.files[0];
+        console.log(input.files[0]);
+        modtecImage=true;
+          // var files=e.target.files;
+        /*var imageFileCollection=[];
+        $.each(files,function(i,file){
+            imageFileCollection.push(file);
+        });*/
     }
 }
     

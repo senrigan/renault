@@ -41,11 +41,9 @@
 				"<td>".$cuenta."</td>".
 				"<td>";
 			echo "<button type='button' class='btn btn-warning' onclick=".
-				"modificar_usuario.php?idusuario=".
-					"($i+1)".
-					"  >Modificar</button>";
+				"modificarUsuario(".($i+1).") >Modificar</button>";
 			echo "<button type='button' class='btn btn-danger'  onclick=".
-				"eliminar_usuario.php?id="."($i+1)"."; >Eliminar</button></td>";
+				"eliminarUsuario(".($i+1).") >Eliminar</button></td>";
 			echo "</tr>";
 
 		

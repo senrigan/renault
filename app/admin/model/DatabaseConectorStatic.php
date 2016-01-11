@@ -15,20 +15,23 @@
 		static $host="ec2-54-83-36-203.compute-1.amazonaws.com";
 		static $conexion;
 		
-		public function __construct(){
+		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
-				$password="admin";
-				$dbname="renault";
-				$port="5432";
-				$host="localhost";
+				
+				self::$user="pruebas";
+				self::$password="admin";
+				self::$dbname="renault";
+				self::$port="5432";
+				self::$host="localhost";
+
 			}else{
 				
-				$user="iwxdbrzwzwmcvq";
-				$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
-				$dbname="dcv72crt7q7fa1";
-				$port="5432";
-				$host="ec2-54-83-36-203.compute-1.amazonaws.com";
+				self::$user="iwxdbrzwzwmcvq";
+				self::$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
+				self::$dbname="dcv72crt7q7fa1";
+				self::$port="5432";
+				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
 				
 			}
 		}
