@@ -40,6 +40,7 @@
 			echo "<td>".$filas[$i]['cuenta']."</td>".
 				"<td>".$cuenta."</td>".
 				"<td>";
+			
 			echo "<button type='button' class='btn btn-warning' onclick=".
 				"modificarUsuario(".($i+1).") >Modificar</button>";
 			echo "<button type='button' class='btn btn-danger'  onclick=".

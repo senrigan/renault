@@ -7,6 +7,13 @@
 	$filas = pg_fetch_all($resultado);
 	$conector->closeConexionDef($conexion);
 	$sizeElement=sizeof($filas);
+
+	$conector=new DatabaseConectorStat();
+	$conexion=$conector->openConexion();
+	$query="SELECT * FROM tecnicos ORDER BY id ASC";
+	$resultado=$conector->executeQueryDefine($query,$conexion);
+	$tecnicos=pg_fetch_all($resultado);
+	$conector->closeConexionDef($conexion);
 	//include "../../admin/model/DatabaseConectorStatic.php";
 	function checarElemento($elemento,$num){
 		$result="";
@@ -24,26 +31,26 @@
 		
 			switch($tipo){
 				case 1:
-					$result="<div class='blue' id='bluec'$num name='blue'$num style='border-style: none; cursor: move;'>$contenido</div>";
+					$result="<div class='blue' id='bluec$num' name='blue$num' style='border-style: none; cursor: move;'>$contenido</div>";
 					break;
 				case 2:
-					$result="<div class='white' id='whitec'$num name='white'$num style='border-style: none; cursor: move;'>$contenido</div>";
+					$result="<div class='white' id='whitec$num' name='white$num' style='border-style: none; cursor: move;'>$contenido</div>";
 					break;
 				case 3:
-					$result= "<div class='yellow' id='yellow'$num name='yellow'$num style='border-style: none; cursor: move;'>$contenido</div>";
+					$result= "<div class='yellow' id='yellow$num' name='yellow$num' style='border-style: none; cursor: move;'>$contenido</div>";
 					
 					break;
 				case 4:
-					$result="<div  class='redips-drag redips-clone red' id='red' name='red' height='40px' width='40px'>$contenido</div>";
+					$result="<div  class='redips-drag redips-clone red' id='red$num' name='red$num' height='40px' width='40px'>$contenido</div>";
 					break;
 				case 5:
 					$result="<div class='birthday' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
-							"<img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
+							"< img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
 							"</div>";
 					break;
 				case 6:
 					$result= "<div class='food' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
-							"<img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
+							"< img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
 							"</div>";
 					break;
 				default:
@@ -70,8 +77,8 @@
 		<link rel="stylesheet" href="../../../static/css/style.css" type="text/css" media="screen"/>
 	
 		
-		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
-		<script src="../../../static/javascript/admin/gestor_tablero.js"></script>
+		<script src="../../../static/javascript/admin/gestor_tablero_usuario.js"></script>
+
 
 	</head>
 	<body  >
@@ -145,171 +152,190 @@
 						
 						<tbody>
 						<?php
-						$empleadoActual=-1;
-						for($i=0;$i<$sizeElement;$i++){
-							$idTablero=$filas[$i]["id"];
-							$idEmpleado=$filas[$i]["tecnico"];
-							$status=$filas[$i]["status"];
-							$h0800=$filas[$i]["h0800"];
-							$h0830=$filas[$i]["h0830"];
-							$h0900=$filas[$i]["h0900"];
-							$h0930=$filas[$i]["h0930"];
-							$h1000=$filas[$i]["h1000"];
-							$h1030=$filas[$i]["h1030"];
-							$h1100=$filas[$i]["h1100"];
-							$h1130=$filas[$i]["h1130"];
-							$h1200=$filas[$i]["h1200"];
-							$h1230=$filas[$i]["h1230"];
-							$h1300=$filas[$i]["h1300"];
-							$h1330=$filas[$i]["h1330"];
-							$h1400=$filas[$i]["h1400"];
-							$h1430=$filas[$i]["h1430"];
-							$h1500=$filas[$i]["h1500"];
-							$h1530=$filas[$i]["h1530"];
-							$h1600=$filas[$i]["h1600"];
-							$h1630=$filas[$i]["h1630"];
-							$h1700=$filas[$i]["h1700"];
-							$h1730=$filas[$i]["h1730"];
-							$h1800=$filas[$i]["h1800"];
-							$h1830=$filas[$i]["h1830"];
-							$h1900=$filas[$i]["h1900"];
-							$h1930=$filas[$i]["h1930"];
-							$h2000=$filas[$i]["h2000"];
-							$lavado=$filas[$i]["lavado"];
-							$control=$filas[$i]["control_calidad"];
-							$terminado=$filas[$i]["terminado"];
-							$tot=$filas[$i]["ToT"];
-							$partes=$filas[$i]["partes"];
-							$aut=$filas[$i]["AUT"];
+						$tecnicosSize=sizeof($tecnicos);
 
-							$h0800=checarElemento($h0800,$i);
-							$h0830=checarElemento($h0830,$i);
-							$h0900=checarElemento($h0900,$i);
-							$h0930=checarElemento($h0930,$i);
-							$h1000=checarElemento($h1000,$i);
-							$h1030=checarElemento($h1030,$i);
-							$h1100=checarElemento($h1100,$i);
-							$h1130=checarElemento($h1130,$i);
-							$h1200=checarElemento($h1200,$i);
-							$h1230=checarElemento($h1230,$i);
-							$h1300=checarElemento($h1300,$i);
-							$h1330=checarElemento($h1330,$i);
-							$h1400=checarElemento($h1400,$i);
-							$h1430=checarElemento($h1430,$i);
-							$h1500=checarElemento($h1500,$i);
-							$h1530=checarElemento($h1530,$i);
-							$h1600=checarElemento($h1600,$i);
-							$h1630=checarElemento($h1630,$i);
-							$h1700=checarElemento($h1700,$i);
-							$h1730=checarElemento($h1730,$i);
-							$h1800=checarElemento($h1800,$i);
-							$h1830=checarElemento($h1830,$i);
-							$h1900=checarElemento($h1930,$i);
-							$h1930=checarElemento($h2000,$i);
-							$h2000=checarElemento($lavado,$i);
-							$control=checarElemento($control,$i);
-							$terminado=checarElemento($terminado,$i);
-							$tot=checarElemento($tot,$i);
-							$partes=checarElemento($partes,$i);
-							$aut=checarElemento($aut,$i);
-							
-							if($empleadoActual!=$idEmpleado){
-								$empleadoActual=$idEmpleado;
-								$conexion2=$conector->openConexion();
-								$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado";
-								$resultado=$conector->executeQueryDefine($query,$conexion2);
-								$filasTecnicos = pg_fetch_all($resultado);
-								$conector->closeConexionDef($conexion2);
-								$nombre=$filasTecnicos[0]["nombre"];
-								$apaterno=$filasTecnicos[0]["a_paterno"];
-								$amaterno=$filasTecnicos[0]["a_materno"];
-								$imagen=$filasTecnicos[0]["imagen_perfil"];
-								$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
-								$ubicacion=$ubicacion.$imagen;
-								//planeado
-									echo "<tr class='r1'>".
-									"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-									"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
-									"<td class='redips-only last'>Planeado</td>".
-									"<td class='c1' >$h0800</td>".//0800
-									"<td class='c1'>$h0830</td>".//0830
-									"<td class='c1'>$h0900</td>".//0900
-									"<td class='c1'>$h0930</td>".//0930
-									"<td class='c1'>$h1000</td>".//1000
-									"<td class='c1'>$h1030</td>".//1030
-									"<td class='c1'>$h1100</td>".//1100
-									"<td class='c1'>$h1130</td>".//1130
-									"<td class='c1'>$h1200</td>".//1200
-									"<td class='c1'>$h1230</td>".//1230
-									"<td class='c1'>$h1300</td>".//1300
-									"<td class='c1'>$h1330</td>".//1330
-									"<td class='c1'>$h1400</td>".//1400
-									"<td class='c1'>$h1430</td>".//1430
-									"<td class='c1'>$h1500</td>".//1500
-									"<td class='c1'>$h1530</td>".//1530
-									"<td class='c1'>$h1600</td>".//1600
-									"<td class='c1'>$h1630</td>".//1630
-									"<td class='c1'>$h1700</td>".//1700
-									"<td class='c1'>$h1730</td>".//1730
-									"<td class='c1'>$h1800</td>".//1800
-									"<td class='c1'>$h1830</td>".//1830
-									"<td class='c1'>$h1900</td>".//1900
-									"<td class='c1'>$h1930</td>".//1930
-									//"<td class='c1'></td>".//2000
-									"<td class='c1'>$lavado</td>".//lavado
-									"<td class='c1'>$control</td>".//control_calidad
-									"<td class='c1'>$terminado</td>".//termiando
-									"<td class='c1'>$tot</td>".//tot
-									"<td class='c1'>$partes</td>".//partes
-									"<td class='c1'>$aut</td>".//aut
-									"</tr>";
-								
-							}else{
-								//echo "el mismo empleado";
-								//trabajando
-									echo "<tr class='rd' >".											
-										"<td class='redips-only last'>Trabajando</td>".
-										"<td>$h0800</td>".//0800
-										"<td>$h0830</td>".//0830
-										"<td>$h0900</td>".//0900
-										"<td>$h0930</td>".//0930
-										"<td>$h1000</td>".//1000
-										"<td>$h1030</td>".//1030
-										"<td>$h1100</td>".//1100
-										"<td>$h1130</td>".//1130
-										"<td>$h1200</td>".//1200
-										"<td>$h1230</td>".//1230
-										"<td>$h1300</td>".//1300
-										"<td>$h1330</td>".//1330
-										"<td>$h1400</td>".//1400
-										"<td>$h1430</td>".//1430
-										"<td>$h1500</td>".//1500
-										"<td>$h1530</td>".//1530
-										"<td>$h1600</td>".//1600
-									
-										"<td>$h1630</td>".//1630
+							for($j=0;$j<$tecnicosSize;$j++){
+								$idTecnico=$tecnicos[$j]["id"];
+								$query="SELECT * FROM tablero_control where tecnico=$idTecnico ORDER BY status ASC";
+								$conexion=$conector->openConexion();
+								$resultado=$conector->executeQueryDefine($query,$conexion);
+								$filas=pg_fetch_all($resultado);
+								$conector->closeConexionDef($conexion);
 
-										"<td>$h1700</td>".//1700
-										"<td>$h1730</td>".//1730
-										"<td>$h1800</td>".//1800
-										"<td>$h1830</td>".//1830
-										"<td>$h1900</td>".//1900
-										"<td>$h1930</td>".//2000
-										"<td>$lavado</td>".//lavado
-										"<td>$control</td>".//control_calidad
-										"<td>$terminado</td>".//terminado
-										"<td>$tot</td>".//tot
-										"<td>$partes</td>".//partes
-										"<td>$aut</td>".//aut
+								$numfilas=pg_num_rows($resultado);
+								if($numfilas==2){
+
+									for($i=0;$i<$numfilas;$i++){
+										$idTablero=$filas[$i]["id"];
+										$idEmpleado=$filas[$i]["tecnico"];
+										$status=$filas[$i]["status"];
+										$h0800=$filas[$i]["h0800"];
+										$h0830=$filas[$i]["h0830"];
+										$h0900=$filas[$i]["h0900"];
+										$h0930=$filas[$i]["h0930"];
+										$h1000=$filas[$i]["h1000"];
+										$h1030=$filas[$i]["h1030"];
+										$h1100=$filas[$i]["h1100"];
+										$h1130=$filas[$i]["h1130"];
+										$h1200=$filas[$i]["h1200"];
+										$h1230=$filas[$i]["h1230"];
+										$h1300=$filas[$i]["h1300"];
+										$h1330=$filas[$i]["h1330"];
+										$h1400=$filas[$i]["h1400"];
+										$h1430=$filas[$i]["h1430"];
+										$h1500=$filas[$i]["h1500"];
+										$h1530=$filas[$i]["h1530"];
+										$h1600=$filas[$i]["h1600"];
+										$h1630=$filas[$i]["h1630"];
+										$h1700=$filas[$i]["h1700"];
+										$h1730=$filas[$i]["h1730"];
+										$h1800=$filas[$i]["h1800"];
+										$h1830=$filas[$i]["h1830"];
+										$h1900=$filas[$i]["h1900"];
+										$h1930=$filas[$i]["h1930"];
+										$h2000=$filas[$i]["h2000"];
+										$lavado=$filas[$i]["lavado"];
+										$control=$filas[$i]["control_calidad"];
+										$terminado=$filas[$i]["terminado"];
+										$tot=$filas[$i]["tot"];
+										$partes=$filas[$i]["partes"];
+										$aut=$filas[$i]["aut"];
+
+										$h0800=checarElemento($h0800,$i);
+										$h0830=checarElemento($h0830,$i);
+										$h0900=checarElemento($h0900,$i);
+										$h0930=checarElemento($h0930,$i);
+										$h1000=checarElemento($h1000,$i);
+										$h1030=checarElemento($h1030,$i);
+										$h1100=checarElemento($h1100,$i);
+										$h1130=checarElemento($h1130,$i);
+										$h1200=checarElemento($h1200,$i);
+										$h1230=checarElemento($h1230,$i);
+										$h1300=checarElemento($h1300,$i);
+										$h1330=checarElemento($h1330,$i);
+										$h1400=checarElemento($h1400,$i);
+										$h1430=checarElemento($h1430,$i);
+										$h1500=checarElemento($h1500,$i);
+										$h1530=checarElemento($h1530,$i);
+										$h1600=checarElemento($h1600,$i);
+										$h1630=checarElemento($h1630,$i);
+										$h1700=checarElemento($h1700,$i);
+										$h1730=checarElemento($h1730,$i);
+										$h1800=checarElemento($h1800,$i);
+										$h1830=checarElemento($h1830,$i);
+										$h1900=checarElemento($h1930,$i);
+										$h1930=checarElemento($h2000,$i);
+										$h2000=checarElemento($lavado,$i);
+										$control=checarElemento($control,$i);
+										$terminado=checarElemento($terminado,$i);
+										$tot=checarElemento($tot,$i);
+										$partes=checarElemento($partes,$i);
+										$aut=checarElemento($aut,$i);
 										
-									"</tr>";
+										if($status==1){
+											$empleadoActual=$idEmpleado;
+											$conexion2=$conector->openConexion();
+											$query="SELECT * FROM tecnicos where id=$idEmpleado";
+											$resultado=$conector->executeQueryDefine($query,$conexion2);
+											$filasTecnicos = pg_fetch_all($resultado);
+											$conector->closeConexionDef($conexion2);
+											$nombre=$filasTecnicos[0]["nombre"];
+											$apaterno=$filasTecnicos[0]["a_paterno"];
+											$amaterno=$filasTecnicos[0]["a_materno"];
+											$imagen=$filasTecnicos[0]["imagen_perfil"];
+											$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
+											$local=$_SERVER['SERVER_NAME'];
+			  								if($local=="localhost"){
+			  									$ubicacion="http://".$local."/renault/media/userImage/";
+			  								}else{
+			  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 
-								
+			  								}
+											$ubicacion=$ubicacion.$imagen;
+											//planeado
+												echo "<tr class='r1'>".
+												"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
+												"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+												"<td class='redips-only last'>Planeado</td>".
+												"<td class='c1' >$h0800</td>".//0800
+												"<td class='c1'>$h0830</td>".//0830
+												"<td class='c1'>$h0900</td>".//0900
+												"<td class='c1'>$h0930</td>".//0930
+												"<td class='c1'>$h1000</td>".//1000
+												"<td class='c1'>$h1030</td>".//1030
+												"<td class='c1'>$h1100</td>".//1100
+												"<td class='c1'>$h1130</td>".//1130
+												"<td class='c1'>$h1200</td>".//1200
+												"<td class='c1'>$h1230</td>".//1230
+												"<td class='c1'>$h1300</td>".//1300
+												"<td class='c1'>$h1330</td>".//1330
+												"<td class='c1'>$h1400</td>".//1400
+												"<td class='c1'>$h1430</td>".//1430
+												"<td class='c1'>$h1500</td>".//1500
+												"<td class='c1'>$h1530</td>".//1530
+												"<td class='c1'>$h1600</td>".//1600
+												"<td class='c1'>$h1630</td>".//1630
+												"<td class='c1'>$h1700</td>".//1700
+												"<td class='c1'>$h1730</td>".//1730
+												"<td class='c1'>$h1800</td>".//1800
+												"<td class='c1'>$h1830</td>".//1830
+												"<td class='c1'>$h1900</td>".//1900
+												"<td class='c1'>$h1930</td>".//1930
+												//"<td class='c1'></td>".//2000
+												"<td class='c1'>$lavado</td>".//lavado
+												"<td class='c1'>$control</td>".//control_calidad
+												"<td class='c1'>$terminado</td>".//termiando
+												"<td class='c1'>$tot</td>".//tot
+												"<td class='c1'>$partes</td>".//partes
+												"<td class='c1'>$aut</td>".//aut
+												"</tr>";
+											
+										}if($status==2){
+											//echo "el mismo empleado";
+											//trabajando
+												echo "<tr class='rd' >".											
+													"<td class='redips-only last'>Trabajando</td>".
+													"<td>$h0800</td>".//0800
+													"<td>$h0830</td>".//0830
+													"<td>$h0900</td>".//0900
+													"<td>$h0930</td>".//0930
+													"<td>$h1000</td>".//1000
+													"<td>$h1030</td>".//1030
+													"<td>$h1100</td>".//1100
+													"<td>$h1130</td>".//1130
+													"<td>$h1200</td>".//1200
+													"<td>$h1230</td>".//1230
+													"<td>$h1300</td>".//1300
+													"<td>$h1330</td>".//1330
+													"<td>$h1400</td>".//1400
+													"<td>$h1430</td>".//1430
+													"<td>$h1500</td>".//1500
+													"<td>$h1530</td>".//1530
+													"<td>$h1600</td>".//1600
+												
+													"<td>$h1630</td>".//1630
+
+													"<td>$h1700</td>".//1700
+													"<td>$h1730</td>".//1730
+													"<td>$h1800</td>".//1800
+													"<td>$h1830</td>".//1830
+													"<td>$h1900</td>".//1900
+													"<td>$h1930</td>".//2000
+													"<td>$lavado</td>".//lavado
+													"<td>$control</td>".//control_calidad
+													"<td>$terminado</td>".//terminado
+													"<td>$tot</td>".//tot
+													"<td>$partes</td>".//partes
+													"<td>$aut</td>".//aut
+													
+												"</tr>";
+
+											
+										}
+									}
+								}
 							}
-					
-							
-
-						}
+						
 
 					?>
 						<?php
