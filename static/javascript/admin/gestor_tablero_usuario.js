@@ -2,11 +2,13 @@ $(document).ready(function (){
 var table=document.getElementById("table2");
 	//console.log("table"+table);
 	var tecnicos=[];
-	var planeado=[];
-	var trabajando=[];
+	
 
 	for(var i=3,row; row=table.rows[i] ;i++){
+		var planeado=[];
+		var trabajando=[];
 		if(esImpar(i)){//planeando
+			console.log("NUEVO TECNICO"+i);
 			var tab_tecnico=[];
 			
 
@@ -85,19 +87,29 @@ var table=document.getElementById("table2");
 			for(indice in planeado){
 				var actualElemento=planeado[indice];
 				if(actualElemento!="-"){
-					for(var i=indice+1;i<planeado.length;i++){
-						var nuevoElemento=planeado[i];
+					for(var j=parseInt(indice)+1;j<planeado.length;j++){
+						var nuevoElemento=planeado[j];
+						console.log("indice"+indice);
+						console.log(actualElemento);
+						console.log("variable i"+j);
+						console.log("nuevo elementos"+nuevoElemento);
 						if(nuevoElemento!="-"){
+							console.log(actualElemento.text +" "+ nuevoElemento.text);
 							if(actualElemento.text==nuevoElemento.text && 
 								actualElemento.id==nuevoElemento.id){
 								console.log("elemento repitido"+actualElemento.text + actualElemento.id);
+							}else{
+								break;
 							}
+						}else{
+							break;
 						}
 					}		
 				}
 			}
 		}else{//trabajndo
 			//console.log(tecnico);
+			console.log("trabajando");
 			var status=obtenerCelda(0,row);
 			var h0800=obtenerCelda(1,row);
 			var h0830=obtenerCelda(2,row);
@@ -161,17 +173,37 @@ var table=document.getElementById("table2");
 			trabajando.push(aut);
 			//tab_tecnico.push(trabajando);
 			//tecnicos.push(tab_tecnico);
+			console.log("TRABAJANDO//////////////");
 			console.log(trabajando);
+			var elementosRepetidosTrab=[];
 			for(indice in trabajando){
 				var actualElemento=trabajando[indice];
 				if(actualElemento!="-"){
-					for(var i=indice+1;i<trabajando.length;i++){
-						var nuevoElemento=trabajando[i];
+					//var colnum=actualElemento.getAttribute("colspan");
+					for(var j=parseInt(indice)+1;j<trabajando.length;j++){
+						var nuevoElemento=trabajando[j];
+						console.log("indice"+indice);
+						console.log(actualElemento);
+						console.log("variable i"+j);
+						console.log("nuevo elementos"+nuevoElemento);
 						if(nuevoElemento!="-"){
 							if(actualElemento.text==nuevoElemento.text && 
 								actualElemento.id==nuevoElemento.id){
 								console.log("elemento repitido"+actualElemento.text + actualElemento.id);
+								
+								var celda=obtenerCeldaObjecto(indice,row);
+								console.log(celda.colSpan);
+								var celdaN=obtenerCeldaObjecto(j,row);
+								celdaN.innerHTML="";
+								row.deleteCell(j);
+								celda.colSpan=parseInt(celda.colSpan)+1;
+								console.log(celda.colSpan);
+
+							}else{
+								break;
 							}
+						}else{
+							break;
 						}
 					}		
 				}
@@ -194,6 +226,8 @@ function esImpar(num){
 
 function obtenerCelda(num , fila){
 	var celda=fila.cells[num].firstChild;
+	//console.log(fila.cells[num]);
+	//console.log(fila.cells[num].colSpan);
 	if(celda){
 		var id=celda.id;
 		if(id){
@@ -229,4 +263,9 @@ function obtenerCelda(num , fila){
 		celda="-";
 		return celda;
 	}
+}
+
+function obtenerCeldaObjecto(num, fila){
+	var celda=fila.cells[num];
+	return celda;
 }
