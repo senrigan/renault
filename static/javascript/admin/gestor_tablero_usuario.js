@@ -83,7 +83,7 @@ var table=document.getElementById("table2");
 			planeado.push(aut);
 			
 			//tab_tecnico.push(planeado);
-			console.log(planeado);
+			/*console.log(planeado);
 			for(indice in planeado){
 				var actualElemento=planeado[indice];
 				if(actualElemento!="-"){
@@ -95,8 +95,8 @@ var table=document.getElementById("table2");
 						console.log("nuevo elementos"+nuevoElemento);
 						if(nuevoElemento!="-"){
 							console.log(actualElemento.text +" "+ nuevoElemento.text);
-							if(actualElemento.text==nuevoElemento.text && 
-								actualElemento.id==nuevoElemento.id){
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
 								console.log("elemento repitido"+actualElemento.text + actualElemento.id);
 							}else{
 								break;
@@ -106,7 +106,86 @@ var table=document.getElementById("table2");
 						}
 					}		
 				}
+			}*/
+			var elementosRepetidosTrab=[];
+			var size=planeado.length;
+			var tableRepeat=[];
+			for(var k=0;k<size;k++){
+				console.log("indice "+k)
+				var actualElemento=planeado[k];
+				if(actualElemento!="-"){
+					//var colnum=actualElemento.getAttribute("colspan");
+					var repetido=[];
+					var elemento=k+3;
+					for(var j=parseInt(k)+1;j<planeado.length;j++){
+						var nuevoElemento=planeado[j];
+						//console.log(actualElemento);
+						console.log("actual eleemento"+actualElemento.text+" "+k+"nuevo elementos"+nuevoElemento.text+" "+j);
+						if(nuevoElemento!="-"){
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
+								//console.log("elemento repitido"+actualElemento.text + actualElemento.id);
+								repetido.push(j+3);
+								var celda=obtenerCeldaObjecto(k+1,row);
+								console.log(celda);
+								var celdaN=obtenerCeldaObjecto(j+1,row);
+								//celdaN.innerHTML="";
+								//row.deleteCell(j);
+								//celda.colSpan=parseInt(celda.colSpan)+1;
+								//console.log(celda.colSpan);
+
+							}else{
+								console.log("indice antes del cambio"+k +"j es "+j);
+								k=j-1;
+								console.log("indice despues del cambio"+k +"j es "+j);
+
+								break;
+							}
+						}else{
+							k=j-1;
+							break;
+						}
+					}
+					if(repetido.length>0){
+						var repetidoSize=repetido.length;
+						console.log("repetidos");
+						repetido.reverse();
+						repetido["inicio"]=elemento+1;
+						tableRepeat.push(repetido);
+						/*for(index in repetido){
+							console.log(repetido[index]);
+
+							row.deleteCell(repetido[index]);
+							var cel=obtenerCeldaObjecto(elemento+1,row);
+							//console.log("k"+k+" element"+elemento);
+							var celdaN=obtenerCeldaObjecto(repetido[index],row);
+							//celdaN.innerHTML="";
+							//console.log(celda.colSpan);
+							cel.colSpan=parseInt(cel.colSpan)+1;
+							//console.log(celda.colSpan);
+
+						}*/
+					}
+				}
 			}
+			console.log("repetidos Totales planeado");
+						console.log(tableRepeat);
+			tableRepeat.reverse();
+			var repatSize=tableRepeat.length;
+			for(var l=0;l<repatSize;l++){
+				var tabRepeat=tableRepeat[l];
+				var sizeTab=tabRepeat.length;
+				var celdaInicio=tabRepeat["inicio"];
+				console.log("celda inicio"+celdaInicio);
+				for(var o=0;o<sizeTab;o++){
+					row.deleteCell(tabRepeat[o]);
+					var cel=obtenerCeldaObjecto(celdaInicio,row);
+					cel.colSpan=parseInt(cel.colSpan)+1;
+					console.log(tabRepeat[o]);
+					
+				}
+			}
+
 		}else{//trabajndo
 			//console.log(tecnico);
 			console.log("trabajando");
@@ -176,36 +255,81 @@ var table=document.getElementById("table2");
 			console.log("TRABAJANDO//////////////");
 			console.log(trabajando);
 			var elementosRepetidosTrab=[];
-			for(indice in trabajando){
-				var actualElemento=trabajando[indice];
+			var size=trabajando.length;
+			var tableRepeat=[];
+			for(var planK=0;planK<size;planK++){
+				console.log("indice "+planK)
+				var actualElemento=trabajando[planK];
 				if(actualElemento!="-"){
 					//var colnum=actualElemento.getAttribute("colspan");
-					for(var j=parseInt(indice)+1;j<trabajando.length;j++){
+					var repetido=[];
+					var elemento=planK;
+					for(var j=parseInt(planK)+1;j<trabajando.length;j++){
 						var nuevoElemento=trabajando[j];
-						console.log("indice"+indice);
-						console.log(actualElemento);
-						console.log("variable i"+j);
-						console.log("nuevo elementos"+nuevoElemento);
+						//console.log(actualElemento);
+						console.log("actual eleemento"+actualElemento.text+" "+planK+"nuevo elementos"+nuevoElemento.text+" "+j);
 						if(nuevoElemento!="-"){
-							if(actualElemento.text==nuevoElemento.text && 
-								actualElemento.id==nuevoElemento.id){
-								console.log("elemento repitido"+actualElemento.text + actualElemento.id);
-								
-								var celda=obtenerCeldaObjecto(indice,row);
-								console.log(celda.colSpan);
-								var celdaN=obtenerCeldaObjecto(j,row);
-								celdaN.innerHTML="";
-								row.deleteCell(j);
-								celda.colSpan=parseInt(celda.colSpan)+1;
-								console.log(celda.colSpan);
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
+								//console.log("elemento repitido"+actualElemento.text + actualElemento.id);
+								repetido.push(j+1);
+								var celda=obtenerCeldaObjecto(planK+1,row);
+								console.log(celda);
+								var celdaN=obtenerCeldaObjecto(j+1,row);
+								//celdaN.innerHTML="";
+								//row.deleteCell(j);
+								//celda.colSpan=parseInt(celda.colSpan)+1;
+								//console.log(celda.colSpan);
 
 							}else{
+								console.log("indice antes del cambio"+planK +"j es "+j);
+								planK=j-1;
+								console.log("indice despues del cambio"+planK +"j es "+j);
+
 								break;
 							}
 						}else{
+							planK=j-1;
 							break;
 						}
-					}		
+					}
+					if(repetido.length>0){
+						var repetidoSize=repetido.length;
+						console.log("repetidos");
+						repetido.reverse();
+						repetido["inicio"]=elemento+1;
+						tableRepeat.push(repetido);
+						/*for(index in repetido){
+							console.log(repetido[index]);
+
+							row.deleteCell(repetido[index]);
+							var cel=obtenerCeldaObjecto(elemento+1,row);
+							//console.log("k"+k+" element"+elemento);
+							var celdaN=obtenerCeldaObjecto(repetido[index],row);
+							//celdaN.innerHTML="";
+							//console.log(celda.colSpan);
+							cel.colSpan=parseInt(cel.colSpan)+1;
+							//console.log(celda.colSpan);
+
+						}*/
+					}
+				}
+			}
+			console.log("repetidos Totales");
+						console.log(tableRepeat);
+			tableRepeat.reverse();
+			var repatSize=tableRepeat.length;
+			for(var l=0;l<repatSize;l++){
+				var tabRepeat=tableRepeat[l];
+				var sizeTab=tabRepeat.length;
+				var celdaInicio=tabRepeat["inicio"];
+				console.log("celda inicio"+celdaInicio);
+				for(var o=0;o<sizeTab;o++){
+					row.deleteCell(tabRepeat[o]);
+					var cel=obtenerCeldaObjecto(celdaInicio,row);
+					cel.colSpan=parseInt(cel.colSpan)+1;
+					console.log(tabRepeat[o]);
+					
 				}
 			}
 
@@ -248,8 +372,10 @@ function obtenerCelda(num , fila){
 			}else{
 				if(id.indexOf("food")!=-1){
 					id="food";
+					content["text"]=id;
 				}else if(id.indexOf("birthday")!=-1){
 					id="birthday";
+					content["text"]=id;
 				}
 
 			}

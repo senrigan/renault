@@ -44,8 +44,9 @@
 					case "birthday":
 						$tipoElemento=5;
 						break;
-						$tipoElemento=6;
+						
 					case "food":
+						$tipoElemento=6;
 						break;
 				}
 
@@ -87,8 +88,9 @@
 					case "birthday":
 						$tipoElemento=5;
 						break;
-						$tipoElemento=6;
 					case "food":
+						$tipoElemento=6;
+
 						break;
 				}
 				$query="INSERT INTO elemento_control VALUES (DEFAULT,$tipoElemento,'{$texto}',-1 ) returning id";

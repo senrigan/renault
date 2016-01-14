@@ -319,8 +319,10 @@ function obtenerCelda(num , fila){
 			}else{
 				if(id.indexOf("food")!=-1){
 					id="food";
+					content["text"]=id;
 				}else if(id.indexOf("birthday")!=-1){
 					id="birthday";
+					content["text"]=id;
 				}
 
 			}
