@@ -116,7 +116,7 @@ var table=document.getElementById("table2");
 				if(actualElemento!="-"){
 					//var colnum=actualElemento.getAttribute("colspan");
 					var repetido=[];
-					var elemento=k+3;
+					var elemento=actualElemento.index;
 					for(var j=parseInt(k)+1;j<planeado.length;j++){
 						var nuevoElemento=planeado[j];
 						//console.log(actualElemento);
@@ -125,7 +125,7 @@ var table=document.getElementById("table2");
 							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
 								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
 								//console.log("elemento repitido"+actualElemento.text + actualElemento.id);
-								repetido.push(j+3);
+								repetido.push(nuevoElemento.index);
 								var celda=obtenerCeldaObjecto(k+1,row);
 								console.log(celda);
 								var celdaN=obtenerCeldaObjecto(j+1,row);
@@ -150,7 +150,7 @@ var table=document.getElementById("table2");
 						var repetidoSize=repetido.length;
 						console.log("repetidos");
 						repetido.reverse();
-						repetido["inicio"]=elemento+1;
+						repetido["inicio"]=elemento;
 						tableRepeat.push(repetido);
 						/*for(index in repetido){
 							console.log(repetido[index]);
@@ -380,7 +380,7 @@ function obtenerCelda(num , fila){
 
 			}
 			content["id"]=id;
-
+			content["index"]=num;
 			return content;
 	}
 	return celda;
