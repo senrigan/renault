@@ -118,23 +118,83 @@ $(document).ready(function(){
                     var formdata=new FormData();
                     formdata.append('image',imageFileCollection[0]);
                 }*/
+
+
+                console.log($("#modregister_tec"));
+                var formSerialize=$("#modregister_tec").serialize();
+                console.log(formSerialize);
+                formData=new FormData($("form#modregister_tec")[0]);
+                formData.append("idTecnico",$("#idtec").val());
+                console.log(formData);
+                  $.ajax({
+                        url: "controller/test.php",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        success: function (data) {
+                            if(data==1){
+                                alert("se modifico el tecnico existosamente");
+                            }else{
+                                    alert("fallo al actualziar el tecnico");
+                            }
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+    
                 if(modtecImage){
+                    /*$.ajax({
+                        url: 'controller/actualizar_tecnico.php',
+                        type: 'POST',
+                        data: {
+                            idTecnico:id,
+                            firstname:nombre,
+                            lastnamePatern:apaterno,
+                            lastnameMother:amaterno,
+                            wizard_picture:modtecImageFile,
+                        },
+                        cache: false,
+                        dataType: 'json',
+                        processData: false, // Don't process the files
+                        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function(data, textStatus, jqXHR)
+                        {
+                            console.log(data);
+                            if(typeof data.error === 'undefined')
+                            {
+                                // Success so call function to process the form
+                                submitForm(event, data);
+                            }
+                            else
+                            {
+                                // Handle errors here
+                                console.log('ERRORS: ' + data.error);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            // Handle errors here
+                            console.log('ERRORS: ' + textStatus);
+                            // STOP LOADING SPINNER
+                        }
+                    });*/
                     alert("entro a con imagen modificada");
+
                      $.post("controller/actualizar_tecnico.php",
                     {
                         idTecnico:id,
                         firstname:nombre,
                         lastnamePatern:apaterno,
                         lastnameMother:amaterno,
-                        "wizard-picture":modtecImageFile,
+                        wizard_picture:modtecImageFile,
                     }
                     ,function(data){
-                        if(data==1){
-                                alert("se modifico el tecnico existosamente");
-                        }else{
-                                alert("fallo al actualziar el tecnico");
-                        }
+                       
                     });
+
+                    
+
                 }else{
                      $.post("controller/actualizar_tecnico.php",
                     {
@@ -151,6 +211,7 @@ $(document).ready(function(){
                         }
                      });
                 }
+                modtecImage=false;
                
             }
 
@@ -166,6 +227,8 @@ $(document).ready(function(){
      $('#modwizard-picture').change(function(){
         readURLMOD(this);
      });
+
+     //$("$modwizard-picture").on("change", prepareUpload);
     
     $('[data-toggle="wizard-radio"]').click(function(){
         wizard = $(this).closest('.wizard-card');
@@ -214,19 +277,19 @@ function validateTec(){
 }
 
 function validateModtec(){
-      $(".wizard-card form").validate({
+      $("form#modregister_tec").validate({
         rules: {
             modfirstname: "required",
-            modlastnamePatern: "required",
-            modlastnameMother:"required",        
+            modlastnamepatern: "required",
+            modlastnamemother:"required",        
       },
         messages: {
             modfirstname: "Inserta tu nombre",
-            modlastnamePatern: "Inserta tu apellido Paterno",
-            modlastnameMother: "Inserta tu apellido materno"      
+            modlastnamepatern: "Inserta tu apellido Paterno",
+            modlastnamemother: "Inserta tu apellido materno"      
         }
     }); 
-    if(!$(".wizard-card form").valid()){
+    if(!$("form#modregister_tec").valid()){
         //form is invalid
         return false;
     }
@@ -234,6 +297,9 @@ function validateModtec(){
     return true;
 }
 
+/*function prepareUpload(event){
+    modtecImageFile=event.target.files;
+}*/
 function validateUser(){
     $(".wizard-card form").validate({
         rules: {
@@ -378,7 +444,22 @@ function readURLMOD(input) {
         }
         reader.readAsDataURL(input.files[0]);
         modtecImageFile=input.files[0];
-        console.log(input.files[0]);
+        console.log(modtecImageFile);
+        modtecImageFile=new FormData();
+        var files=input.files[0];
+        $.each(files, function(key , value){
+            modtecImageFile.append(key, value);
+        });
+        modtecImage=true;
+        /*var auxImage=[];
+        for(index in modtecImageFile){
+            console.log(index);
+            auxImage[index]=modtecImageFile[index];
+        }
+        modtecImageFile=auxImage;
+        console.log(auxImage);
+        console.log("mod tec file");
+        console.log(modtecImageFile);
         modtecImage=true;
           // var files=e.target.files;
         /*var imageFileCollection=[];

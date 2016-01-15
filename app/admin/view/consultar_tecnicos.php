@@ -38,6 +38,7 @@
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
 			//echo getcwd()."../../media/userImage/".$filas[$i]['imagen_perfil'];
+			$idtec=$filas[$i]["id"];
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
@@ -74,8 +75,8 @@
 				"<td>".$filas[$i]['a_materno']."</td>";
 			?>
 				
-				<td><button  type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico(".($i+1).")" ;?>>Modificar</button>
-				<button  type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico(".($i+1).")"; ?> >Eliminar</button></td>
+				<td><button  type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico(".($idtec).")" ;?>>Modificar</button>
+				<button  type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico(".($idtec).")"; ?> >Eliminar</button></td>
 			<?php 
 			"</tr>";
 		}

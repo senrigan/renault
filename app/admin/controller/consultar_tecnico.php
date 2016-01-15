@@ -3,7 +3,7 @@
         $id_Tecnico=$_REQUEST['idTecnico'];
         $conector=new DatabaseConectorStat();
         $conexion=$conector->openConexion();
-        $query="SELECT * FROM tecnicos WHERE id_tecnico=$id_Tecnico ";
+        $query="SELECT * FROM tecnicos WHERE id=$id_Tecnico ";
         $resultado=$conector->executeQueryDefine($query,$conexion);
         if(!$resultado){
           echo "ocurrio un error al consultar la base de datos";
