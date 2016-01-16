@@ -40,7 +40,33 @@ function loadContent(page){
 	  }
 	});
 }
+function hola(id){
+$.post("controller/consultar_usuario.php",{idusuario:id},function(data){
+		var dat=JSON.parse(data);
+		if(dat){
+			var cuent=dat[0];
+			var usuario=cuent.cuenta;
+			var password=cuent.password;
+			var privileges=cuent.privileges;
+			$("#moduser").val(usuario);
+			$("#modpassword").val(password);
+			switch(privileges){
+				case 1:
+					$("#modtypecount").val(1);
+					break;
+				case 2:
+					$("#modtypecount").val(2);
+					break;
+			}
+			document.location.href = "#modusermodal";
+			moduseractive=true;
 
+			
+		}else{
+			alert("no se pueden consultar los datos del usuario");
+		}
+	});
+}
 function modificarTecnico(id){
 	$.post("controller/consultar_tecnico.php",{idTecnico:id},function(data){
 			var dat=JSON.parse(data);
@@ -73,10 +99,11 @@ function modificarTecnico(id){
 }
 
 function eliminarTecnico(id){
-	alert(id);
 	if (confirm('Realmente deseas borrar el Tenico ')) {
 		$.post("controller/eliminar_tecnico.php",{idTecnico:id},function(data){
 				alert(data);
+				var loadUrl = adminview+"consultar_tecnicos.php";
+	    		$("#container").load(loadUrl);
 		});
 	} else {
 
@@ -84,6 +111,7 @@ function eliminarTecnico(id){
 
 	
 }
+
 function modificarUsuario(id){
 	alert(id);
 	$.post("controller/consultar_usuario.php",{idusuario:id},function(data){

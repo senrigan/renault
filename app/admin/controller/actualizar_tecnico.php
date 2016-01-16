@@ -3,6 +3,51 @@
 	$id_Tecnico=$_REQUEST['idTecnico'];
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
+	$firtName=$_POST["modfirstname"];
+	$lastFatherName=$_POST["modlastnamepatern"];
+	$lastMomName=$_POST["modlastnamemother"];
+	if (is_uploaded_file($_FILES['modwizard-picture']['tmp_name'])) {
+		$local=$_SERVER['SERVER_NAME'];
+		if($local=="localhost"){
+			$target_path=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
+		}else{
+			$target_path=$_SERVER['DOCUMENT_ROOT']."/media/userImage/";
+
+		}
+		//$target_path = $_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
+		$target_path = $target_path . basename( $_FILES['modwizard-picture']['name']); 
+		$nameImage= $_FILES['modwizard-picture']['name'];
+		if( !$_FILES['modwizard-picture']['name']){
+				$nameImage="static/tecnico.png";	
+		}
+		if(move_uploaded_file($_FILES['modwizard-picture']['tmp_name'], $target_path)) { 
+			$query="UPDATE  tecnicos  SET nombre='$firtName' , a_paterno='$lastFatherName' , a_materno='$lastMomName' , imagen_perfil='$nameImage' WHERE  id=$id_Tecnico ";
+
+
+		} else{
+			$query="UPDATE  tecnicos  SET nombre='$firtName' , a_paterno='$lastFatherName' , a_materno='$lastMomName'  WHERE  id=$id_Tecnico ";
+
+		}
+	}else{
+		$query="UPDATE  tecnicos  SET nombre='$firtName' , a_paterno='$lastFatherName' , a_materno='$lastMomName'  WHERE  id=$id_Tecnico ";
+
+	}
+
+	
+	
+	$resultado=$conector->executeQueryDefine($query,$conexion);
+	pg_close($conexion);
+	if($resultado){
+		echo 1;
+	}else{
+		echo 0;
+	}
+
+	/*
+	include '../model/DatabaseConectorStatic.php';
+	$id_Tecnico=$_REQUEST['idTecnico'];
+	$conector=new DatabaseConectorStat();
+	$conexion=$conector->openConexion();
 	
 
 	$firtName=$_POST["firstname"];
@@ -39,7 +84,7 @@
 		echo 1;
 	}else{
 		echo 0;
-	}
+	}*/
 	
 	
 ?>

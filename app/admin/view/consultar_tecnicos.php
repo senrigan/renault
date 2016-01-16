@@ -18,7 +18,7 @@
 	include "../model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	$query="SELECT * FROM tecnicos ";
+	$query="SELECT * FROM tecnicos ORDER BY a_paterno , a_materno , nombre ASC";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 
 	/*include '../model/DatabaseConector.php';
@@ -42,7 +42,9 @@
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
-				$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil'];;
+				//$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
+				$ubicacion="http://".$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];;
+
 
 			}else{
 				$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$filas[$i]['imagen_perfil'];
@@ -52,21 +54,17 @@
 			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 			$imagenesUsuario="../../media/userImage/";
 			$ubicacion=trim($ubicacion);
-			echo"$ubicacion";
 			
 			//echo "".strcmp($ubicacion, $ubi);
 			if($filas[$i]['imagen_perfil']){
-				if(file_exists($ubicacion)){
-					$ubicacion=$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
-					echo "<image src='".$ubicacion."' class='img-thumbnail' width='100' height='100' >";
-				}else{
-					echo "<image src=".$imagenesUsuario."static/tecnico.png".
-					" class='img-thumbnail' width='100' height='100' >";
-				}
+				
+					//$ubicacion=$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
+					echo "<image src='".$ubicacion."' class='img-thumbnail modimage' width='100' height='100' >";
+				
 				
 			}else{
 				echo "<image src=".$imagenesUsuario."static/tecnico.png".
-					" class='img-thumbnail' width='100' height='100' >";
+					" class='img-thumbnail modimage' width='100' height='100' >";
 			}
 			
 			echo "</td>".

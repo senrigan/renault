@@ -83,7 +83,6 @@ $(document).ready(function(){
             }
         }
         if(reguseractive){
-            alert("reguser"+reguseractive);
             if(validateUser()){//registrar cuenta
                 var user=$("#user").val();
                 var pass=$("#password").val();
@@ -99,6 +98,7 @@ $(document).ready(function(){
 
                         alert(data);
                         $(".closeUserReg")[0].click();
+                        
 
                     }
                 });
@@ -127,13 +127,17 @@ $(document).ready(function(){
                 formData.append("idTecnico",$("#idtec").val());
                 console.log(formData);
                   $.ajax({
-                        url: "controller/test.php",
+                        url: "controller/actualizar_tecnico.php",
                         type: 'POST',
                         data: formData,
                         async: false,
                         success: function (data) {
+                            console.log(data);
                             if(data==1){
                                 alert("se modifico el tecnico existosamente");
+                                  $(".closeTecReg")[0].click();
+                                  var loadUrl = adminview+"consultar_tecnicos.php";
+                                 $("#container").load(loadUrl);
                             }else{
                                     alert("fallo al actualziar el tecnico");
                             }
@@ -142,9 +146,10 @@ $(document).ready(function(){
                         contentType: false,
                         processData: false
                     });
-    
-                if(modtecImage){
-                    /*$.ajax({
+                modtecImage=false;
+
+                /*if(modtecImage){
+                    $.ajax({
                         url: 'controller/actualizar_tecnico.php',
                         type: 'POST',
                         data: {
@@ -178,7 +183,7 @@ $(document).ready(function(){
                             console.log('ERRORS: ' + textStatus);
                             // STOP LOADING SPINNER
                         }
-                    });*/
+                    });
                     alert("entro a con imagen modificada");
 
                      $.post("controller/actualizar_tecnico.php",
@@ -212,7 +217,7 @@ $(document).ready(function(){
                      });
                 }
                 modtecImage=false;
-               
+               */
             }
 
         }

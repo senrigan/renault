@@ -22,7 +22,7 @@
 	$sizeElement=sizeof($filas);
 	$borrable=true;
 	for($i=0;$i<$sizeElement;$i++){
-			$status=$filas[$i]["statusTrabajo"];
+			$status=$filas[$i]["status"];
 			$h0800=$filas[$i]["h0800"];
 			$h0830=$filas[$i]["h0830"];
 			$h0900=$filas[$i]["h0900"];
@@ -49,7 +49,7 @@
 			$lavado=$filas[$i]["lavado"];
 			$control_calida=$filas[$i]["control_calidad"];
 			$terminado=$filas[$i]["terminado"];
-			$Tot=$filas[$i]["tot"];
+			$tot=$filas[$i]["tot"];
 			$partes=$filas[$i]["partes"];
 			$AUT=$filas[$i]["aut"];
 
@@ -77,9 +77,9 @@
 				tieneElemento($h1830) ||
 				tieneElemento($h1900) ||
 				tieneElemento($lavado) ||
-				tieneElemento($control_calidad) ||
+				tieneElemento($control_calida) ||
 				tieneElemento($terminado) ||
-				tieneElemento($ToT) ||
+				tieneElemento($tot) ||
 				tieneElemento($partes) ||
 				tieneElemento($AUT)){
 				$borrable=false;
@@ -88,7 +88,7 @@
 	}
 	if($borrable){
 		$conector->openConexion();
-		$query="DELETE FROM tecnicos WHERE idTec=$idTec";
+		$query="DELETE FROM tecnicos WHERE id=$idTec";
 		$resultado=$conector->executeQueryDefine($query,$conexion);
 		
 		if($resultado){
