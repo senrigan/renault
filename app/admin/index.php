@@ -8,9 +8,10 @@
   <link href="../../static/css/gsdk-base.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../../static/images/admin/register/favicon.ico">
   <link rel="stylesheet" href="../../static/css/modal.css" />
-  <link rel="stylesheet" href="../../static/css/style_index.css" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../../static/css/style_index.css" />
+
 
 
 
@@ -21,7 +22,6 @@
   <script src="../../static/javascript/jquery.bootstrap.wizard.js" type="text/javascript"></script>
   <script src="../../static/javascript/jquery.validate.min.js"></script>
   <script src="../../static/javascript/wizard.js"></script>
-  <script src="../../static/javascript/admin/reg_cuenta.js"></script>
   
 
 

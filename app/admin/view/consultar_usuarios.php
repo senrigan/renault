@@ -37,14 +37,14 @@
 			}else if($tipo==2){
 				$cuenta="administrador";
 			}
+			$id=$filas[$i]['id'];
 			echo "<td>".$filas[$i]['cuenta']."</td>".
 				"<td>".$cuenta."</td>".
 				"<td>";
 			
-			echo "<button type='button' class='btn btn-warning' onclick=".
-				"modificarUsuario(".($i+1).") >Modificar</button>";
+			echo "<button type='button' class='btn btn-warning' onclick='hola($id)'>Modificar</button>";
 			echo "<button type='button' class='btn btn-danger'  onclick=".
-				"eliminarUsuario(".($i+1).") >Eliminar</button></td>";
+				"eliminarUsuario(".$id.") >Eliminar</button></td>";
 			echo "</tr>";
 
 		
