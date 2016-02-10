@@ -214,7 +214,32 @@ $conector->closeConexionDef($conexion);
 												"<td class='c1'>$h1830</td>".
 												"<td class='c1'>$h1900</td>".
 												"<td class='c1'>$h1930</td>".
-												"<td class='c1'>$lavado</td>".
+												"<td class='c1'>".
+														"<table class='nested_table1'>".
+											"<colgroup>".
+												"<col width='50'>".
+												"<col width='50'>".
+												"<col width='50'>".
+											"</colgroup>".
+											"<tbody>".
+												"<tr>".
+													"<td>$lavado</td>".
+													"<td></td>".
+													"<td></td>".
+												"</tr>".
+												"<tr>".
+													"<td></td>".
+													"<td><div class='redips-drag square' style='border-style: solid; cursor: move;'>D</div></td>".
+													"<td></td>".
+												"</tr>".
+												"<tr>".
+													"<td>".
+													"</td>".
+													"<td></td>".
+													"<td></td>".
+												"</tr>".
+											"</tbody>".
+										"</table></td>".
 												"<td class='c1'>$control_calida</td>".
 												"<td class='c1'>$terminado</td>".
 												"<td class='c1'>$Tot</td>".
