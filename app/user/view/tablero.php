@@ -41,11 +41,11 @@
 					
 					break;
 				case 4:
-					$result="<div  class='red' id='red$num' name='red$num' height='40px' width='40px'>$contenido</div>";
+					$result="<div  class='red' id='red$num' name='red$num' height='40px' width='45px'>$contenido</div>";
 					break;
 				case 5:
 					$result="<div class='birthday' id='birthday$num' name='birthday$num' style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/birthday.png' alt='' height='40px' width='40px'>".
+								"<img src='../../../static/images/admin/birthday.png' alt='' height='45px' width='40px'>".
 								"</div>";
 					/*$result="<div class='birthday' id='birthday$num' name='birthday$num' style='border-style: none; cursor: move;'>".
 							"< img src='../../../static/images/admin/birthday.png' height='40px' width='40px' >".
@@ -54,7 +54,7 @@
 					break;
 				case 6:
 					$result= "<div class='food' id='food$num' name='food$num' style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/comida.png' alt='' height='40px' width='40px'>".
+								"<img src='../../../static/images/admin/comida.png' alt='' height='45px' width='40px'>".
 								"</div>";
 					/*$result= "<div class='food' id='foodc$num' name='food$num' style='border-style: none; cursor: move;' >< img src='../../../static/images/admin/comida.png'  height='40px' width='40px' >".
 							"</div>";
@@ -82,6 +82,7 @@
 		<script src="../../../static/css/bootstrap/js/bootstrap.min.js"></script>
 
 		<link rel="stylesheet" href="../../../static/css/style.css" type="text/css" media="screen"/>
+		<link rel="stylesheet" href="../../../static/css/tablero_user.css" type="text/css" media="screen"/>
 	
 		
 		<script src="../../../static/javascript/admin/gestor_tablero_usuario.js"></script>

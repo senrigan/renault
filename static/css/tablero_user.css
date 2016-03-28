@@ -1,11 +1,10 @@
 table{
-	background-color:#BBBCC0;
-	color:#000000; 
+	background-color:#fff;
+	color:#000000;
 	table-layout:fixed;
 	overflow: hidden;
 	word-wrap: break-word;
 	font-size: 8pt;
-	
 }
 
 .tablehead{
@@ -20,15 +19,11 @@ table{
 }
 .cellstitle {
 	background-color:#FFBE2F;
-	      font-size: 0.85em;
-}
-
-
-
-#table1 th{
-	background-color: #FFB615;
+	font-size: 10pt;
 }
 
 .c1{
-	font-size:10pt;
+	font-size: 10pt;
 }
+
+

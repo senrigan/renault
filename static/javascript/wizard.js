@@ -61,9 +61,14 @@ $(document).ready(function(){
     $(".btn-finish").click(function(){
         if(regtecactive){
             if(validateTec()){
+                var formSerializeReg=$("#register_tec").serialize();
+                
+
+
+
                 var name=$("#firstname").val();
-                var patern=$("#lastnamePatern").val();
-                var mother=$("#lastnameMother").val();
+                var patern=$("#lastnamepatern").val();
+                var mother=$("#lastnamemother").val();
                 var pict=$("#wizard-picture");
                 $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
                     if(data!=-1){

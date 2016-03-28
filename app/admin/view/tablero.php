@@ -186,7 +186,7 @@ $conector->closeConexionDef($conexion);
 										if($status==1){
 											echo "<tr class='r1'>".
 												"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-												"<td class=' redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+												"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100%' height='auto'   ></td>".
 												"<td class='redips-only last'>Planeado</td>".
 												"<td class='c1' >$h0800</td>".
 												"<td class='c1'>$h0830</td>".
@@ -215,31 +215,7 @@ $conector->closeConexionDef($conexion);
 												"<td class='c1'>$h1900</td>".
 												"<td class='c1'>$h1930</td>".
 												"<td class='c1'>".
-														"<table class='nested_table1'>".
-											"<colgroup>".
-												"<col width='50'>".
-												"<col width='50'>".
-												"<col width='50'>".
-											"</colgroup>".
-											"<tbody>".
-												"<tr>".
-													"<td>$lavado</td>".
-													"<td></td>".
-													"<td></td>".
-												"</tr>".
-												"<tr>".
-													"<td></td>".
-													"<td><div class='redips-drag square' style='border-style: solid; cursor: move;'>D</div></td>".
-													"<td></td>".
-												"</tr>".
-												"<tr>".
-													"<td>".
-													"</td>".
-													"<td></td>".
-													"<td></td>".
-												"</tr>".
-											"</tbody>".
-										"</table></td>".
+												"</td>".
 												"<td class='c1'>$control_calida</td>".
 												"<td class='c1'>$terminado</td>".
 												"<td class='c1'>$Tot</td>".
@@ -373,12 +349,16 @@ $conector->closeConexionDef($conexion);
 			</div>
 
 			<div aria-labelledby="ui-id-1" role="dialog" tabindex="-1" style="display: none; outline: 0px none; z-index: 1000;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-dialog-buttons">
-			<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+			
+			<?php 
+				/*<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
 				<span class="ui-dialog-title" id="ui-id-1">jQuery dialog</span>
 				<a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
 					<span class="ui-icon ui-icon-closethick">close</span>
 				</a>
-			</div>
+			</div>*/
+			?>
+			
 			<div class="ui-dialog-content ui-widget-content" id="dialog">Please choose action!</div>
 			<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 				<div class="ui-dialog-buttonset">

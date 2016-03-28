@@ -107,7 +107,31 @@ redips.init = function () {
 		// define Shift, Switch and Overwrite buttons
 		
 		buttons: {
+
+			'Cancelar': function (event, ui) {
+				// return dragged DIV element to the source cell only if X button is clicked
+				// (in this case event.which property exists)
+				/*if (event.which) {
+					// enable elements in target cell (return solid border)
+					rd.enableDrag(true, rd.td.target);
+					// if and DIV element is not cloned then return in to source cell
+					if (!clonedDIV) {
+						// append previously removed DIV to the target cell
+						rd.td.source.appendChild(rd.obj);
+					}
+					$(this).dialog('close');
+				}*/
+				rd.obj.parentNode.removeChild(rd.obj);
+			// this will disable DIV elements in target cell (DIV element will be somehow marked)
+			rd.enableDrag(true, rd.td.target);
+				//deleteTableRow(source.row);
+				//REDIPS.drag.event.rowDeleted();
+				$(this).dialog('close');
+				
+				
+				
 			
+		},
 			'Guardar': function () {
 				// empty target cell
 				rd.emptyCell(rd.td.target);
@@ -122,9 +146,12 @@ redips.init = function () {
 				// close dialog
 				$(this).dialog('close');
 			}
-		
+
 		
 		}
+		
+		
+		
 	});
 	// define jQuery dialog
 	$('#dialog').dialog({

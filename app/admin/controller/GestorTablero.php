@@ -35,12 +35,12 @@
 						break;
 					case 5:
 						$elemento="<div class='redips-drag  birthday moved' id='birthdayc'$idElemento name='birthday'$idElemento style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/birthday.png' alt='' height='40px' width='40px'>".
+								"<img src='../../../static/images/admin/birthday.png' alt='' height='45px' width='40px'>".
 								"</div>";
 						break;
 					case 6:
 						$elemento= "<div class=' redips-drag  food moved' id='foodc'$idElemento name='food'$idElemento style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/comida.png' alt='' height='40px' width='40px'>".
+								"<img src='../../../static/images/admin/comida.png' alt='' height='45px' width='40px'>".
 								"</div>";
 						break;
 					

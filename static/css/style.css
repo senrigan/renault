@@ -55,7 +55,7 @@ div#redips-drag td {
 
 /* table titles */
 div#redips-drag th {
-	font-size: 14pt;
+	font-size: 8pt;
 }
 
 /* drag object (DIV inside table cell) */
@@ -130,15 +130,6 @@ div#redips-drag th {
 	background-color: #eee;
 }
 
-
-
-.blue,.yellow,.white,.red{
-	border:1px  ;
-	margin: 2 5 2px;
-	padding: 15px;
-	width: auto;
-	height: auto;
-}
 /* cell dark */
 .cdark {
 	background-color: #C6C8CB;
@@ -160,16 +151,38 @@ div#redips-drag th {
 .blue{
 	background-color: #000080;
 	color : white;
+	width: 42px;
+	height: 45px;
+	display: block;
+	padding: 5px;
+	word-wrap: break-word;
 
 }
 .yellow{
 	background-color: #DAA520;
+	width: 42px;
+	height: 45px;
+	display: block;
+	padding: 5px;
+	word-wrap: break-word;
 }
 .white{
 	background-color: #F8F8FF;
+	width: 42px;
+	height: 45px;
+	display: block;
+	padding: 5px;
+	word-wrap: break-word;
 }
 
 .red{
 	background-color: #BE212E ;
+	width: 42px;
+	height: 45px;
+	display: block;
+	padding: 5px;
+	word-wrap: break-word;
 }
+
+
 
