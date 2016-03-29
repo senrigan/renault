@@ -162,9 +162,9 @@
                                
                             </ul>
                             
-                            <div class="tab-content">
+                            <div >
                                 <div class="tab-pane" id="about">
-                                  <div class="row">
+                                  <div class="row alignClass">
                                      
                                       
                                       <div class="col-sm-12">
