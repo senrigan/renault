@@ -6,26 +6,26 @@ var modtecImageFile;
 $(document).ready(function(){
     /*  Activate the tooltips      */
     $('[rel="tooltip"]').tooltip();
-   
+
     $('.wizard-card').bootstrapWizard({
         'tabClass': 'nav nav-pills',
         'nextSelector': '.btn-next',
         'previousSelector': '.btn-previous',
-         
+
          onInit : function(tab, navigation, index){
-            
+
            //check number of tabs and fill the entire row
            var $total = navigation.find('li').length;
            $width = 100/$total;
-           
+
            $display_width = $(document).width();
-           
+
            if($display_width < 600 && $total > 3){
                $width = 50;
            }
-           
+
            navigation.find('li').css('width',$width + '%');
-           
+
         },
         onNext: function(tab, navigation, index){
             if(index == 1){
@@ -34,19 +34,21 @@ $(document).ready(function(){
                 return validateSecondStep();
             } else if(index == 3){
                 return validateThirdStep();
-            } //etc. 
-              
+            } //etc.
+
+
+
         },
         onTabClick : function(tab, navigation, index){
             // Disable the posibility to click on tabs
             return false;
-        }, 
+        },
         onTabShow: function(tab, navigation, index) {
             var $total = navigation.find('li').length;
             var $current = index+1;
-            
+
             var wizard = navigation.closest('.wizard-card');
-            
+
             // If it's the last tab then hide the last button and show the finish instead
             if($current >= $total) {
                 $(wizard).find('.btn-next').hide();
@@ -62,7 +64,7 @@ $(document).ready(function(){
         if(regtecactive){
             if(validateTec()){
                 var formSerializeReg=$("#register_tec").serialize();
-                
+
 
 
 
@@ -72,19 +74,19 @@ $(document).ready(function(){
                 var pict=$("#wizard-picture");
                 $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
                     if(data!=-1){
-                        if(data==0){
+                        if(data===0){
                         alert("el tecnico ya esta registrador");
                         }else{
-                            alert("Tecnico Registrado existosamente");    
-                        }    
+                            alert("Tecnico Registrado existosamente");
+                        }
                     }else{
                         alert("Error al acceder ala base de datos");
                     }
-                    
-                    
+
+
                 });
 
-            
+
             }
         }
         if(reguseractive){
@@ -94,8 +96,8 @@ $(document).ready(function(){
                 var type=$("#typecount").val();
 
                 $.post("controller/registrar_cuenta.php",{user:user,password:pass,typecount:type},function(data){
-                    if(data==0){
-                        alert("El usuario ya existe")
+                    if(data===0){
+                        alert("El usuario ya existe");
                         $("#user").val("");
                         $("#password").val("");
 
@@ -103,17 +105,41 @@ $(document).ready(function(){
 
                         alert(data);
                         $(".closeUserReg")[0].click();
-                        
+
 
                     }
                 });
             }
         }
+
+        if(moduseractive){
+          if(validateModUser()){
+
+            moduseractive=false;
+            var moduser=$("#moduserInput").val();
+            var modpass=$("#modpassword").val();
+            var modtype=$("#modtypecount").val();
+            var idmod_user=$("#idmodtec").val();
+
+            $.post("controller/actualizar_usuario.php",{idmoduser:idmod_user,user:moduser,password:modpass,typecount:modtype},function(data){
+                if(data=="0"){
+                  alert("Fallo al actualizar el usuario");
+
+
+                }else{//registro exitoso
+                  alert("El usuario fue modificado correctamente");
+                    $(".closeUserModReg")[0].click();
+                    $("#moduser").click();
+
+                }
+            });
+          }
+        }
         if(modtecactive){
             if(validateModtec()){
                 var nombre=$("#modfirstname").val();
                 var id=$("#idtec").val();
-                
+
                 var apaterno=$("#modlastnamepatern").val();
                 var amaterno=$("#modlastnamemother").val();
                 var imagenPreviw=$("#modwizardPicturePreview").val();
@@ -200,10 +226,10 @@ $(document).ready(function(){
                         wizard_picture:modtecImageFile,
                     }
                     ,function(data){
-                       
+
                     });
 
-                    
+
 
                 }else{
                      $.post("controller/actualizar_tecnico.php",
@@ -226,9 +252,9 @@ $(document).ready(function(){
             }
 
         }
-     
+
     });
-  
+
     // Prepare the preview for profile picture
     $("#wizard-picture").change(function(){
         readURL(this);
@@ -239,7 +265,7 @@ $(document).ready(function(){
      });
 
      //$("$modwizard-picture").on("change", prepareUpload);
-    
+
     $('[data-toggle="wizard-radio"]').click(function(){
         wizard = $(this).closest('.wizard-card');
         wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
@@ -247,7 +273,7 @@ $(document).ready(function(){
         $(wizard).find('[type="radio"]').removeAttr('checked');
         $(this).find('[type="radio"]').attr('checked','true');
     });
-    
+
     $('[data-toggle="wizard-checkbox"]').click(function(){
         if( $(this).hasClass('active')){
             $(this).removeClass('active');
@@ -257,11 +283,11 @@ $(document).ready(function(){
             $(this).find('[type="checkbox"]').attr('checked','true');
         }
     });
-    
+
     $height = $(document).height();
     $('.set-full-height').css('height',$height);
-    
-    
+
+
 });
 
 function validateTec(){
@@ -269,20 +295,20 @@ function validateTec(){
         rules: {
             firstname: "required",
             lastnamePatern: "required",
-            lastnameMother:"required",        
+            lastnameMother:"required",
       },
         messages: {
             firstname: "Inserta tu nombre",
             lastnamePatern: "Inserta tu apellido Paterno",
-            lastnameMother: "Inserta tu apellido materno"      
+            lastnameMother: "Inserta tu apellido materno"
         }
-    }); 
-    
+    });
+
     if(!$(".wizard-card form").valid()){
         //form is invalid
         return false;
     }
-    
+
     return true;
 }
 
@@ -291,19 +317,41 @@ function validateModtec(){
         rules: {
             modfirstname: "required",
             modlastnamepatern: "required",
-            modlastnamemother:"required",        
+            modlastnamemother:"required",
       },
         messages: {
             modfirstname: "Inserta tu nombre",
             modlastnamepatern: "Inserta tu apellido Paterno",
-            modlastnamemother: "Inserta tu apellido materno"      
+            modlastnamemother: "Inserta tu apellido materno"
         }
-    }); 
+    });
     if(!$("form#modregister_tec").valid()){
         //form is invalid
         return false;
     }
-    
+
+    return true;
+}
+
+
+function validateModUser(){
+      $("form#modregister_user").validate({
+        rules: {
+            moduserInput: "required",
+            modpassword: "required",
+            modtypecount:"required",
+      },
+        messages: {
+            moduserInput: "Inserta nombre de usuario",
+            modpassword: "Insertar password",
+            modtypecount: "Seleccionar tipo de cuenta"
+        }
+    });
+    if(!$("form#modregister_user").valid()){
+        //form is invalid
+        return false;
+    }
+
     return true;
 }
 
@@ -322,17 +370,17 @@ function validateUser(){
             password:"Insertar una contraseña",
             typecount:"Insertar tipo de cuenta",
         }
-    }); 
-    
+    });
+
     if(!$(".wizard-card form").valid()){
         //form is invalid
         return false;
     }
-    
+
     return true;
 }
 function validateFirstStep(){
-    
+
     $(".wizard-card form").validate({
 		rules: {
 			firstname: "required",
@@ -342,7 +390,7 @@ function validateFirstStep(){
             password:"required",
             typecount:"required",
 
-			
+
 /*  other possible input validations
 			,username: {
 				required: true,
@@ -357,13 +405,13 @@ function validateFirstStep(){
 				minlength: 5,
 				equalTo: "#password"
 			},
-		
+
 			topic: {
 				required: "#newsletter:checked",
 				minlength: 2
 			},
 			agree: "required"
-*/			
+*/
 
 		},
 		messages: {
@@ -373,7 +421,7 @@ function validateFirstStep(){
             user:"Insertar nombre de usuario",
             password:"Insertar una contraseña",
             typecount:"Insertar tipo de cuenta",
-		
+
 
 /*   other posible validation messages
 			username: {
@@ -393,42 +441,42 @@ function validateFirstStep(){
 			agree: "Please accept our policy",
 			topic: "Please select at least 2 topics"
 */
-				
+
 		}
-	}); 
-	
+	});
+
 	if(!$(".wizard-card form").valid()){
     	//form is invalid
     	return false;
 	}
-	
+
 	return true;
 }
 
 function validateSecondStep(){
-   
+
     //code here for second step
     $(".wizard-card form").validate({
 		rules: {
-			
+
 		},
 		messages: {
-			
+
 		}
-	}); 
-	
+	});
+
 	if(!$(".wizard-card form").valid()){
     	console.log('invalid');
     	return false;
 	}
 	return true;
-    
+
 }
 
 function validateThirdStep(){
     //code here for third step
-    
-    
+
+
 }
 
  //Function to show image before upload
@@ -439,11 +487,11 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-        }
+        };
         reader.readAsDataURL(input.files[0]);
     }
 }
-    
+
 
 function readURLMOD(input) {
     if (input.files && input.files[0]) {
@@ -451,7 +499,7 @@ function readURLMOD(input) {
 
         reader.onload = function (e) {
             $('#modwizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-        }
+        };
         reader.readAsDataURL(input.files[0]);
         modtecImageFile=input.files[0];
         console.log(modtecImageFile);
@@ -478,16 +526,3 @@ function readURLMOD(input) {
         });*/
     }
 }
-    
-
-
-
-
-
-
-
-
-
-
-
-

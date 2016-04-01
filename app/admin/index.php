@@ -22,7 +22,7 @@
   <script src="../../static/javascript/jquery.bootstrap.wizard.js" type="text/javascript"></script>
   <script src="../../static/javascript/jquery.validate.min.js"></script>
   <script src="../../static/javascript/wizard.js"></script>
-  
+
 
 
 </head>
@@ -34,7 +34,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href=".">RENAULT ADMIN</a>
     </div>
@@ -63,38 +63,38 @@
     </div>
   </div>
 </nav>
-  
+
 <div id="container" name="container" class="container">
- 
+
 </div>
 
   <div id="regusermodal" class="modalmask">
     <div class="modalbox movedown">
       <a id="closeUserReg" href="#close" title="Close" class="close closeUserReg">X</a>
       <div id="modalcontent">
-               
-                <!--      Wizard container        -->   
-                <div class="wizard-container movedown"> 
+
+                <!--      Wizard container        -->
+                <div class="wizard-container movedown">
                     <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
                         <form  id="register_user" name="register_user">
-             
-                    
+
+
                           <div class="wizard-header">
                               <h3>
                                  <b>Registro de Usuarios</b><br>
-                              
+
                               </h3>
                           </div>
                           <ul>
                                 <li><a href="#about" data-toggle="tab">Datos de la Cuenta</a></li>
-                               
+
                             </ul>
-                            
+
                             <div class="tab-content">
                                 <div class="tab-pane" id="about">
                                   <div class="row">
-                                     
-                                      
+
+
                                       <div class="col-sm-12">
                                           <div class="form-group">
                                             <label>usuario <small>(requerido)</small></label>
@@ -106,35 +106,35 @@
                                           </div>
                                           <div class="form-group">
                                             <label>tipo de cuenta <small>(requerido)</small></label>
-                                            
+
                                             <select name="typecount" id="typecount" class="form-control">
                                               <option value="1">usuario normal</option>
                                               <option value="2">administrador</option>
                                             </select>
                                           </div>
                                       </div>
-                             
+
                                   </div>
                                 </div>
-                           
-                             
+
+
                             </div>
                             <div class="wizard-footer">
                                 <div class="pull-right">
                                     <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
                                     <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Registrar' />
-            
+
                                 </div>
-                                
+
                                 <div class="pull-left">
                                     <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>  
+                            </div>
                         </form>
                     </div>
                 </div> <!-- wizard container -->
-            
+
       </div>
 
     </div>
@@ -144,33 +144,34 @@
     <div class="modalbox movedown">
       <a id="closeUserModReg" href="#close" title="Close" class="close closeUserModReg">X</a>
       <div id="modalcontent">
-               
-                <!--      Wizard container        -->   
-                <div class="wizard-container movedown"> 
+
+                <!--      Wizard container        -->
+                <div class="wizard-container movedown">
                     <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
                         <form  id="modregister_user" name="modregister_user">
-             
-                    
+
+
                           <div class="wizard-header">
                               <h3>
                                  <b> Actualizar Usuario</b><br>
-                              
+
                               </h3>
                           </div>
                           <ul>
                                 <li><a href="#about" data-toggle="tab">Datos de la Cuenta</a></li>
-                               
+
                             </ul>
-                            
+
                             <div >
                                 <div class="tab-pane" id="about">
                                   <div class="row alignClass">
-                                     
-                                      
+
+
                                       <div class="col-sm-12">
                                           <div class="form-group">
+                                            <input id="idmodtec" type="text" hidden="true">
                                             <label>usuario <small>(requerido)</small></label>
-                                            <input name="moduser" id="moduser" type="text" class="form-control" >
+                                            <input name="moduserInput" id="moduserInput" type="text" class="form-control" >
                                           </div>
                                           <div class="form-group">
                                             <label>contraseña <small>(requerido)</small></label>
@@ -178,35 +179,35 @@
                                           </div>
                                           <div class="form-group">
                                             <label>tipo de cuenta <small>(requerido)</small></label>
-                                            
+
                                             <select name="modtypecount" id="modtypecount" class="form-control">
                                               <option value="1">usuario normal</option>
                                               <option value="2">administrador</option>
                                             </select>
                                           </div>
                                       </div>
-                             
+
                                   </div>
                                 </div>
-                           
-                             
+
+
                             </div>
                             <div class="wizard-footer">
                                 <div class="pull-right">
                                     <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
                                     <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Modificar' />
-            
+
                                 </div>
-                                
+
                                 <div class="pull-left">
                                     <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>  
+                            </div>
                         </form>
                     </div>
                 </div> <!-- wizard container -->
-            
+
       </div>
 
     </div>
@@ -216,30 +217,30 @@
       <div class="modalbox movedown">
         <a id="closeTecReg" href="#close" title="Close" class="close closeTecReg">X</a>
         <div id="modalcontent">
-                 
+
                     <!--   Big container   -->
-            <!--      Wizard container        -->   
-            <div class="wizard-container"> 
-                
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+
                 <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
                     <form id="register_tec" name="register_tec">
-         
-                
+
+
                       <div class="wizard-header">
                           <h3>
                              <b>Registro de Tecnicos</b><br>
-                          
+
                           </h3>
                       </div>
                       <ul>
                             <li><a href="#about" data-toggle="tab">Datos Personales</a></li>
-                           
+
                         </ul>
-                        
+
                         <div class="tab-content">
                             <div class="" id="about">
                               <div >
-                                 
+
                                   <div >
                                      <div class="picture-container">
                                           <div class="picture">
@@ -263,24 +264,24 @@
                                         <input id="lastnamemother" name="lastnamemother" type="text" class="form-control" >
                                       </div>
                                   </div>
-                         
+
                               </div>
                             </div>
-                       
-                         
+
+
                         </div>
                         <div class="wizard-footer">
                             <div class="pull-right">
                                 <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
                                 <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Registrar' />
-        
+
                             </div>
-                            
+
                             <div class="pull-left">
                                 <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                             </div>
                             <div class="clearfix"></div>
-                        </div>  
+                        </div>
                     </form>
                 </div>
             </div> <!-- wizard container -->
@@ -294,30 +295,30 @@
     <div class="modalbox movedown">
       <a id="closeTecReg" href="#close" title="Close" class="close closeTecModReg">X</a>
       <div id="modalcontent">
-               
+
                   <!--   Big container   -->
-          <!--      Wizard container        -->   
-          <div class="wizard-container"> 
-              
+          <!--      Wizard container        -->
+          <div class="wizard-container">
+
               <div class="card wizard-card ct-wizard-orange" id="wizardProfile">
                   <form id="modregister_tec" name="modregister_tec">
-       
-              
+
+
                     <div class="wizard-header">
                         <h3>
                            <b>Datos de Tecnico</b><br>
-                        
+
                         </h3>
                     </div>
                     <ul>
                           <li><a href="#about" data-toggle="tab">Datos Personales</a></li>
-                         
+
                       </ul>
-                      
+
                       <div class="tab-content">
                           <div class="" id="about">
                             <div >
-                               
+
                                 <div >
                                    <div class="picture-container">
                                         <div class="picture">
@@ -342,24 +343,24 @@
                                       <input id="modlastnamemother" name="modlastnamemother" type="text" class="form-control" >
                                     </div>
                                 </div>
-                       
+
                             </div>
                           </div>
-                     
-                       
+
+
                       </div>
                       <div class="wizard-footer">
                           <div class="pull-right">
                               <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
                               <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' id="finish" value='Modificar' />
-      
+
                           </div>
-                          
+
                           <div class="pull-left">
                               <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                           </div>
                           <div class="clearfix"></div>
-                      </div>  
+                      </div>
                   </form>
               </div>
           </div> <!-- wizard container -->
@@ -368,7 +369,7 @@
     </div>
 
 
-    
+
 </div>
 </body>
 </html>

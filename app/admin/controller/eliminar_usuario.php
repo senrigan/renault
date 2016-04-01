@@ -2,7 +2,7 @@
 	include '../model/DatabaseConectorStatic.php';
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	$id=$_REQUEST["id"];
+	$id=$_REQUEST["idusuario"];
 	$query="DELETE FROM cuentas WHERE id=$id";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	pg_close($conexion);
@@ -12,10 +12,10 @@
 		echo 0;
 	}
 
-	
-	
-	
-	
+
+
+
+
 
 
 

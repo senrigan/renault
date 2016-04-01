@@ -1,6 +1,7 @@
 var regtecactive=false;
 var reguseractive=false;
 var modtecactive=false;
+var moduseractive=false;
 $.ajax({
   xhr: function()
   {
@@ -40,7 +41,7 @@ function loadContent(page){
 	  }
 	});
 }
-function hola(id){
+function modificarUsuario(id){
 $.post("controller/consultar_usuario.php",{idusuario:id},function(data){
 		var dat=JSON.parse(data);
 		if(dat){
@@ -48,20 +49,23 @@ $.post("controller/consultar_usuario.php",{idusuario:id},function(data){
 			var usuario=cuent.cuenta;
 			var password=cuent.password;
 			var privileges=cuent.privileges;
-			$("#moduser").val(usuario);
+			$("#moduserInput").val(usuario);
 			$("#modpassword").val(password);
-			switch(privileges){
+      console.log("priviligios "+privileges);
+      $("#modtypecount").val(privileges);
+      $("#idmodtec").val(id);
+      /*switch(privileges){
 				case 1:
 					$("#modtypecount").val(1);
 					break;
 				case 2:
 					$("#modtypecount").val(2);
 					break;
-			}
+			}*/
 			document.location.href = "#modusermodal";
 			moduseractive=true;
 
-			
+
 		}else{
 			alert("no se pueden consultar los datos del usuario");
 		}
@@ -82,7 +86,7 @@ function modificarTecnico(id){
 				$("#idtec").val(id);
 				var firts=$("modfirstname");
 				if(imagen){
-					$("#modwizardPicturePreview").attr("src","../../media/userImage/"+imagen)
+					$("#modwizardPicturePreview").attr("src","../../media/userImage/"+imagen);
 
 				}else{
 					$("#modwizardPicturePreview").attr("src","../../media/userImage/static/tecnico.png");
@@ -90,11 +94,11 @@ function modificarTecnico(id){
 				document.location.href = "#modtecmodal";
 				modtecactive=true;
 
-			
+
 			}else{
 				alert("existe un error al intentar modificar al tecnico");
 			}
-			
+
 	});
 }
 
@@ -109,10 +113,10 @@ function eliminarTecnico(id){
 
 	}
 
-	
+
 }
 
-function modificarUsuario(id){
+function modificarUsuario2(id){
 	alert(id);
 	$.post("controller/consultar_usuario.php",{idusuario:id},function(data){
 		var dat=JSON.parse(data);
@@ -123,6 +127,7 @@ function modificarUsuario(id){
 			var privileges=cuent.privileges;
 			$("#moduser").val(usuario);
 			$("#modpassword").val(password);
+      $("#idmodtec").val(id);
 			switch(privileges){
 				case 1:
 					$("#modtypecount").val(1);
@@ -134,7 +139,7 @@ function modificarUsuario(id){
 			document.location.href = "#modusermodal";
 			moduseractive=true;
 
-			
+
 		}else{
 			alert("no se pueden consultar los datos del usuario");
 		}
@@ -143,7 +148,7 @@ function modificarUsuario(id){
 
 function eliminarUsuario(id){
 	if(confirm("Realmente deseas Eliminar esta cuenta ")){
-		$.post("controller/eliminarUsuario.php",{idusuario:id},function(data){
+		$.post("controller/eliminar_usuario.php",{idusuario:id},function(data){
 			if(data==1){
 				alert("la cuenta a sido eliminada correctamente");
 			}else{
@@ -158,11 +163,12 @@ function eliminarUsuario(id){
 
 $(document).ready(function() // or $(function()
  {
- 	
+
     $("#regtec").click(function () {
     	regtecactive=true;
     	reguseractive=false;
     	modtecactive=false;
+      moduseractive=false;
     //var loadUrl =adminview+"registro_tecnico.php";
     //$("#container").load(loadUrl);
 	});
@@ -171,19 +177,28 @@ $(document).ready(function() // or $(function()
 	    var loadUrl = adminview+"consultar_tecnicos.php";
 	    $("#container").load(loadUrl);
 	    modtecactive=false;
+      moduseractive=false;
+      reguseractive=false;
+      regtecactive=false;
 	});
 	$("#moduser").click(function () {
 	    var loadUrl = adminview+"consultar_usuarios.php";
 	    $("#container").load(loadUrl);
+      moduseractive=true;
+      reguseractive=false;
+	    regtecactive=false;
+	    modtecactive=false;
 	});
 	$("#reguser").click(function () {
 	    reguseractive=true;
 	    regtecactive=false;
 	    modtecactive=false;
+      moduseractive=false;
+
 	    //var loadUrl = adminview+"registro_usuario.php";
 	    //$("#modalcontent").load(loadUrl);
 	    //$("#modalreg").modal('show');
 	});
 
-	
+
  });

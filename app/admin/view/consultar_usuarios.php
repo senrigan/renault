@@ -18,7 +18,7 @@
 	$query="SELECT * FROM cuentas ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 
-	
+
 	if(!$resultado){
 		echo "ocurrio un error al consultar la base de datos";
 		exit;
@@ -28,8 +28,8 @@
 		$sizeElement=sizeof($filas);
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> ";
-			
-			
+
+
 			$tipo=$filas[$i]['privileges'];
 			$cuenta="";
 			if($tipo==1){//usuario normal
@@ -41,22 +41,20 @@
 			echo "<td>".$filas[$i]['cuenta']."</td>".
 				"<td>".$cuenta."</td>".
 				"<td>";
-			
-			echo "<button type='button' class='btn btn-warning' onclick='hola($id)'>Modificar</button>";
+
+			echo "<button type='button' class='btn btn-warning' onclick='modificarUsuario($id)'>Modificar</button>";
 			echo "<button type='button' class='btn btn-danger'  onclick=".
 				"eliminarUsuario(".$id.") >Eliminar</button></td>";
 			echo "</tr>";
 
-		
-			
-		
+
+
+
 		}
-		
+
 	}
-	
+
 ?>
-		
+
 	</tbody>
 </table>
-
-
