@@ -23,6 +23,26 @@
   <script src="../../static/javascript/jquery.validate.min.js"></script>
   <script src="../../static/javascript/wizard.js"></script>
 
+<!--  librerias para el carrusel -->
+  <link rel='stylesheet' id='style-css'  href='../../static/javascript/diapo/diapo.css' type='text/css' media='all'>
+  <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.min.js'></script>
+  <!--[if !IE]><!--><script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.mobile-1.0rc2.customized.min.js'></script><!--<![endif]-->
+  <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.easing.1.3.js'></script>
+  <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.hoverIntent.minified.js'></script>
+  <script type='text/javascript' src='../../static/javascript/diapo/scripts/diapo.js'></script>
+  <script type='text/javascript' src='../../static/javascript/diapo/scripts/test.js'></script>
+  <link rel="stylesheet" href="../../static/javascript/diapo/carrusel.css" />
+
+
+
+
+  <script>
+  $(function(){
+  	$('.pix_diapo').diapo();
+  });
+
+  </script>
+
 
 
 </head>
@@ -65,7 +85,64 @@
 </nav>
 
 <div id="container" name="container" class="container">
+  <section>
 
+    <div style="overflow:hidden; width:85%; height=85%; margin: 100px auto; padding:0 20px;">
+              <div class="pix_diapo">
+
+                  <!-- <div data-thumb="../../static/javascript/diapo/images/thumbs/megamind1048.jpg" data-time="5000" >
+                      <img src="../../static/javascript/diapo/images/slides/megamind1048.jpg">
+                  </div>
+                  <div data-thumb="../../static/javascript/diapo/images/thumbs/megamind_07.jpg" data-time="5000">
+                      <img src="../../static/javascript/diapo/images/slides/megamind_07.jpg">
+
+                  </div>
+                  <div data-thumb="../../static/javascript/diapo/images/thumbs/wall-e.jpg" data-time="5000">
+                      <img src="../../static/javascript/diapo/images/slides/wall-e.jpg">
+
+                  </div>
+                  <div data-thumb="../../static/javascript/diapo/images/thumbs/ratatouille2.jpg">
+                      <img src="../../static/javascript/diapo/images/slides/ratatouille2.jpg">
+                  </div> -->
+                  <?php
+                   $ruta="../../static/images/carrusel/slide/";
+                   // abrir un directorio y listarlo recursivo
+                   if (is_dir($ruta)) {
+                      if ($dh = opendir($ruta)) {
+                         while (($file = readdir($dh)) !== false) {
+                            //esta línea la utilizaríamos si queremos listar todo lo que hay en el directorio
+                            //mostraría tanto archivos como directorios
+                            //echo "<br>Nombre de archivo: $file : Es un: " . filetype($ruta . $file);
+                            if (is_dir($ruta . $file) && $file!="." && $file!=".."){
+
+                            }else{
+                              if(!is_dir($ruta . $file)){
+                                echo "
+                                <div data-thumb='../../static/images/carrusel/thum/$file' data-time='5000' >
+                                    <img src='$ruta$file'>
+                                </div>
+                                ";
+                              }
+
+
+                            }
+                         }
+                      closedir($dh);
+                      }
+                   }else
+                      echo "<br>No es ruta valida";
+
+
+                   ?>
+
+             </div><!-- #pix_diapo -->
+
+
+
+      </div>
+
+
+  </section>
 </div>
 
   <div id="regusermodal" class="modalmask">
