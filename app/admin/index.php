@@ -25,8 +25,7 @@
 
 <!--  librerias para el carrusel -->
   <link rel='stylesheet' id='style-css'  href='../../static/javascript/diapo/diapo.css' type='text/css' media='all'>
-  <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.min.js'></script>
-  <!--[if !IE]><!--><script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.mobile-1.0rc2.customized.min.js'></script><!--<![endif]-->
+  <!-- <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.min.js'></script> -->
   <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.easing.1.3.js'></script>
   <script type='text/javascript' src='../../static/javascript/diapo/scripts/jquery.hoverIntent.minified.js'></script>
   <script type='text/javascript' src='../../static/javascript/diapo/scripts/diapo.js'></script>
@@ -168,7 +167,7 @@
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane" id="about">
+                                <div class="" id="about">
                                   <div class="row">
 
 

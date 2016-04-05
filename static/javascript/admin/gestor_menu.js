@@ -151,6 +151,7 @@ function eliminarUsuario(id){
 		$.post("controller/eliminar_usuario.php",{idusuario:id},function(data){
 			if(data==1){
 				alert("la cuenta a sido eliminada correctamente");
+        $("#moduser").click();
 			}else{
 				alert("la cuenta no pudo ser eliminada");
 			}

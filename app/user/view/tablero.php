@@ -20,7 +20,7 @@
 		if(isset($elemento)|| !is_null($elemento)){
 			$conector=new DatabaseConectorStat();
 			$conexion=$conector->openConexion();
-			
+
 			$query="SELECT * FROM elemento_control where id=$elemento ";
 			$resultado=$conector->executeQueryDefine($query,$conexion);
 			$filas=pg_fetch_all($resultado);
@@ -28,7 +28,7 @@
 			$tipo=$filas[0]["tipo"];
 			$contenido=$filas[0]["contenido"];
 			$referencia=$filas[0]["referencia"];
-		
+
 			switch($tipo){
 				case 1:
 					$result="<div class='blue' id='bluec$num' name='blue$num' style='border-style: none; cursor: move;'>$contenido</div>";
@@ -38,7 +38,7 @@
 					break;
 				case 3:
 					$result= "<div class='yellow' id='yellow$num' name='yellow$num' style='border-style: none; cursor: move;'>$contenido</div>";
-					
+
 					break;
 				case 4:
 					$result="<div  class='red' id='red$num' name='red$num' height='40px' width='45px'>$contenido</div>";
@@ -68,7 +68,7 @@
 
 			return $result;
 		}
-		
+
 	}
 ?>
 <html>
@@ -83,22 +83,22 @@
 
 		<link rel="stylesheet" href="../../../static/css/style.css" type="text/css" media="screen"/>
 		<link rel="stylesheet" href="../../../static/css/tablero_user.css" type="text/css" media="screen"/>
-	
-		
+
+
 		<script src="../../../static/javascript/admin/gestor_tablero_usuario.js"></script>
 
 
 	</head>
 	<body  >
-		
+
 			<div id="right"  width="100%">
 				<div id="redips-drag" width="100%">
 					<table id="table2" name="table2" border="1" width="100%" >
 						<thead>
 							<tr>
 								<th class="redips-only last" colspan="31" rowspan="" headers="" scope="col">CONTROL DE PROGRESO DE TRABAJO</th>
-								
-								
+
+
 								<th class="redips-only last" colspan="2" rowspan="" headers="" scope="">Detenidos</th>
 							</tr>
 							<tr>
@@ -152,12 +152,12 @@
 								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">00</th>
 								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">30</th>
 
-							
-							
+
+
 
 							</tr>
 						</thead>
-						
+
 						<tbody>
 						<?php
 						$tecnicosSize=sizeof($tecnicos);
@@ -239,7 +239,7 @@
 										$tot=checarElemento($tot,$i);
 										$partes=checarElemento($partes,$i);
 										$aut=checarElemento($aut,$i);
-										
+
 										if($status==1){
 											$empleadoActual=$idEmpleado;
 											$conexion2=$conector->openConexion();
@@ -263,7 +263,7 @@
 											//planeado
 												echo "<tr class='r1'>".
 												"<td class='cellstitle' id='$idEmpleado' name='$idEmpleado' class='redips-only last' colspan='' rowspan='2'>$nombre $apaterno $amaterno</td>".
-												"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100' height='100' ></td>".
+												"<td class='cellstitle redips-only last' colspan='' rowspan='2'><image src='$ubicacion'  width='100%' height='auto' ></td>".
 												"<td class='redips-only last'>Planeado</td>".
 												"<td class='c1' >$h0800</td>".//0800
 												"<td class='c1'>$h0830</td>".//0830
@@ -297,11 +297,11 @@
 												"<td class='c1'>$partes</td>".//partes
 												"<td class='c1'>$aut</td>".//aut
 												"</tr>";
-											
+
 										}if($status==2){
 											//echo "el mismo empleado";
 											//trabajando
-												echo "<tr class='rd' >".											
+												echo "<tr class='rd' >".
 													"<td class='redips-only last'>Trabajando</td>".
 													"<td>$h0800</td>".//0800
 													"<td>$h0830</td>".//0830
@@ -320,7 +320,7 @@
 													"<td>$h1500</td>".//1500
 													"<td>$h1530</td>".//1530
 													"<td>$h1600</td>".//1600
-												
+
 													"<td>$h1630</td>".//1630
 
 													"<td>$h1700</td>".//1700
@@ -335,19 +335,19 @@
 													"<td>$tot</td>".//tot
 													"<td>$partes</td>".//partes
 													"<td>$aut</td>".//aut
-													
+
 												"</tr>";
 
-											
+
 										}
 									}
 								}
 							}
-						
+
 
 					?>
 						<?php
-						/* 
+						/*
 							$tecnicoActual=-1;
 							for($i=0;$i<$sizeElement;$i++){
 								$idEmpleado=$filas[$i]["idEmpleado"];
@@ -383,7 +383,7 @@
 									$Tot=$filas[$i]["ToT"];
 									$partes=$filas[$i]["partes"];
 									$AUT=$filas[$i]["AUT"];
-									
+
 									$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado ";
 									$conexion=$conector->openConexion();
 	  								$resultado=$conector->executeQueryDefine($query,$conexion);
@@ -394,33 +394,32 @@
 	  								$apaterno=$filasTecnicos[0]["a_paterno"];
 	  								$amaterno=$filasTecnicos[0]["a_materno"];
 	  								$imagen=$filasTecnicos[0]["imagen_perfil"];
-								
-						
+
+
 								}
-								
+
 
 
 							}*/
 							//echo "final de la tabla";
 
 						 ?>
-						
-						
-					
-					
+
+
+
+
 					</tbody>
-						
+
 					</table>
-					
+
 				</div>
-				
-				
+
+
 			</div>
 
-		
 
-		
+
+
 	</body>
 
 </html>
-

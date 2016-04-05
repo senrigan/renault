@@ -5,7 +5,7 @@ var modtecImageFile;
 
 $(document).ready(function(){
     /*  Activate the tooltips      */
-    $('[rel="tooltip"]').tooltip();
+  $('[rel="tooltip"]').tooltip();
 
     $('.wizard-card').bootstrapWizard({
         'tabClass': 'nav nav-pills',
@@ -72,19 +72,46 @@ $(document).ready(function(){
                 var patern=$("#lastnamepatern").val();
                 var mother=$("#lastnamemother").val();
                 var pict=$("#wizard-picture");
-                $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
-                    if(data!=-1){
-                        if(data===0){
-                        alert("el tecnico ya esta registrador");
-                        }else{
-                            alert("Tecnico Registrado existosamente");
-                        }
-                    }else{
-                        alert("Error al acceder ala base de datos");
-                    }
+                formData=new FormData($("form#register_tec")[0]);
+                console.log(formData);
+                  formData.append("firstname",name);
+                  formData.append("lastnamePatern",patern);
+                  formData.append("lastnameMother",mother);
 
+                  $.ajax({
+                        url: "controller/registrar_tecnico.php",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        success: function (data) {
+                            console.log(data);
+                            if(data==1){
+                              alert("El tecnico se Registro Exitosamente");
+                              $(".closeTecReg")[0].click();
+                                //  var loadUrl = adminview+"consultar_tecnicos.php";
+                                 //$("#container").load(loadUrl);
+                            }else{
+                                    alert("fallo al Registrar el tecnico");
+                            }
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
 
-                });
+                // $.post("controller/registrar_tecnico.php",{firstname:name,lastnamePatern:patern,lastnameMother:mother,'wizard-picture':pict},function(data){
+                //     if(data!=-1){
+                //         if(data===0){
+                //         alert("el tecnico ya esta registrador");
+                //         }else{
+                //             alert("Tecnico Registrado existosamente");
+                //         }
+                //     }else{
+                //         alert("Error al acceder ala base de datos");
+                //     }
+                //
+                //
+                // });
 
 
             }
