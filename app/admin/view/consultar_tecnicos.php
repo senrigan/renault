@@ -31,10 +31,11 @@
 		echo "ocurrio un error al consultar la base de datos";
 		exit;
 	}else{
-		
+
 		$filas = pg_fetch_all($resultado);
 		$conector->closeConexionDef($conexion);
 		$sizeElement=sizeof($filas);
+		if($sizeElement>0)
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
 			//echo getcwd()."../../media/userImage/".$filas[$i]['imagen_perfil'];
@@ -54,37 +55,35 @@
 			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 			$imagenesUsuario="../../media/userImage/";
 			$ubicacion=trim($ubicacion);
-			
+
 			//echo "".strcmp($ubicacion, $ubi);
 			if($filas[$i]['imagen_perfil']){
-				
+
 					//$ubicacion=$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];
 					echo "<image src='".$ubicacion."' class='img-thumbnail modimage' width='100' height='100' >";
-				
-				
+
+
 			}else{
 				echo "<image src=".$imagenesUsuario."static/tecnico.png".
 					" class='img-thumbnail modimage' width='100' height='100' >";
 			}
-			
+
 			echo "</td>".
 				"<td>".$filas[$i]['nombre']."</td>".
 				"<td>".$filas[$i]['a_paterno']."</td>".
 				"<td>".$filas[$i]['a_materno']."</td>";
 			?>
-				
+
 				<td><button  type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico(".($idtec).")" ;?>>Modificar</button>
 				<button  type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico(".($idtec).")"; ?> >Eliminar</button></td>
-			<?php 
+			<?php
 			"</tr>";
 		}
-		
+
 	//print_r($arr);
 	}
-	
+
 ?>
-		
+
 	</tbody>
 </table>
-
-
