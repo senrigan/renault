@@ -15,12 +15,18 @@
 
 	$conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
 	*/
+	$local=$_SERVER['SERVER_NAME'];
+	if($local=="localhost"){
+		$path="/renault/media/userImage/";
+	}else{
+		$path="/media/userImage/";
+	}
 	$target_path = $_SERVER['DOCUMENT_ROOT']."/renault/media/userImage/";
 	$firtName=$_POST["firstname"];
 	$lastFatherName=$_POST["lastnamePatern"];
 	$lastMomName=$_POST["lastnameMother"];
 	//if( $_FILES['wizard-picture']['name']){
-	
+
 
 	if(!isset($_POST['wizard-picture'])){
 

@@ -33,7 +33,7 @@
 				self::$port="5432";
 				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
 
-			}
+			 }
 		}
 
 		public function closeConexion(){
