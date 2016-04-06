@@ -18,10 +18,13 @@
 	$local=$_SERVER['SERVER_NAME'];
 	if($local=="localhost"){
 		$path="/renault/media/userImage/";
+		$target_path = $_SERVER['DOCUMENT_ROOT'].$path;
 	}else{
 		$path="/media/userImage/";
+		$target_path = $local.$path;
 	}
-	$target_path = $_SERVER['DOCUMENT_ROOT'].$path;
+	//;
+
 	$firtName=$_POST["firstname"];
 	$lastFatherName=$_POST["lastnamePatern"];
 	$lastMomName=$_POST["lastnameMother"];
@@ -29,8 +32,8 @@
 
 	//echo $_POST['wizard-picture'];
 	//echo "undifinido"+!isset($_POST['wizard-picture']);
-	if(isset($_POST['wizard-picture'])){
-		echo "no es vacio";
+	if(!isset($_POST['wizard-picture'])){
+	//	echo "no es vacio";
 		if(is_uploaded_file($_FILES['wizard-picture']['tmp_name'])){
 
 			$nameImage= $_FILES['wizard-picture']['name'];
