@@ -1,11 +1,11 @@
 table{
 	background-color:#BBBCC0;
-	color:#000000; 
+	color:#000000;
 	table-layout:fixed;
 	overflow: hidden;
 	word-wrap: break-word;
 	font-size: 8pt;
-	
+
 }
 
 .tablehead{
@@ -13,7 +13,7 @@ table{
 }
 
 .content{
-	 background-color:#1564FF;
+	 background-color:#ECECEC;
 }
 .tablehead thead th{
 	background-color:#FFBE2F;

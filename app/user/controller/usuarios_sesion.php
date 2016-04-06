@@ -42,7 +42,7 @@
 				$_SESSION['usuario']['id_user']=$idUser;
 				$_SESSION['usuario']['userName']=$userName;
 				$_SESSION['usuario']['typecount']=$privileges;
-				if($privileges==1){
+				if($privileges==1 ){
 					header("location : view/tablero.php");
 					$result= 1;
 
@@ -50,6 +50,10 @@
 				}else if($privileges==2){
 					header("location : ../../admin/index.html");
 					$result=2;
+				}if($privileges==3){
+					header("location : view/tablero.php");
+
+					$result=3;
 				}
 			}
 		}

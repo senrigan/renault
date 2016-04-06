@@ -12,7 +12,7 @@ table{
 }
 
 .content{
-	 background-color:#1564FF;
+	 background-color:#ececec;
 }
 .tablehead thead th{
 	background-color:#FFBE2F;
@@ -30,4 +30,9 @@ table{
 .cellstitle {
     background-color: #FFBE2F;
     font-size: 0.85em;
+}
+
+
+body{
+	background-color:#ececec;
 }

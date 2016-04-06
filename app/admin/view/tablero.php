@@ -121,7 +121,13 @@ $conector->closeConexionDef($conexion);
 						<tbody>
 
 						<?php
-							$tecnicosSize=sizeof($tecnicos);
+						  if(!$tecnicos){
+								$tecnicosSize=0;
+							}else{
+									$tecnicosSize=sizeof($tecnicos);
+							}
+
+							
 							$gestor=new GestorTablero();
 
 							for($j=0;$j<$tecnicosSize;$j++){
@@ -351,7 +357,7 @@ $conector->closeConexionDef($conexion);
 									<td>
 										<div class="">
 
-											<button type="button" class="btn btn-default btn-lg">Menu Principal</button>
+											<button type="button" class="btn btn-default btn-lg" onclick="regresarMenu()">Menu Principal</button>
 												<button class="btn btn-default btn-lg" onclick="guardarTablero()" >Guardar Cambios</button>
 										</div>
 									</td>

@@ -36,6 +36,8 @@
 				$cuenta="usuario normal";
 			}else if($tipo==2){
 				$cuenta="administrador";
+			}else if($tipo==3){
+				$cuenta="mostrador";
 			}
 			$id=$filas[$i]['id'];
 			echo "<td>".$filas[$i]['cuenta']."</td>".

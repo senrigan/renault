@@ -344,3 +344,8 @@ function obtenerCelda(num , fila){
 		return celda;
 	}
 }
+
+
+function regresarMenu(){
+			  window.location.assign('../../admin/index.php');
+}

@@ -1,16 +1,17 @@
 $(document).ready(function (){
+
 var table=document.getElementById("table2");
 	//console.log("table"+table);
 	var tecnicos=[];
-	
+
 
 	for(var i=3,row; row=table.rows[i] ;i++){
 		var planeado=[];
 		var trabajando=[];
 		if(esImpar(i)){//planeando
-			console.log("NUEVO TECNICO"+i);
+		//	console.log("NUEVO TECNICO"+i);
 			var tab_tecnico=[];
-			
+
 
 			var tecnico=row.cells[0];
 			tab_tecnico.push(tecnico.id);
@@ -81,7 +82,7 @@ var table=document.getElementById("table2");
 			planeado.push(partes);
 			var aut=obtenerCelda(32,row);;
 			planeado.push(aut);
-			
+
 			//tab_tecnico.push(planeado);
 			/*console.log(planeado);
 			for(indice in planeado){
@@ -95,7 +96,7 @@ var table=document.getElementById("table2");
 						console.log("nuevo elementos"+nuevoElemento);
 						if(nuevoElemento!="-"){
 							console.log(actualElemento.text +" "+ nuevoElemento.text);
-							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() &&
 								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
 								console.log("elemento repitido"+actualElemento.text + actualElemento.id);
 							}else{
@@ -104,14 +105,14 @@ var table=document.getElementById("table2");
 						}else{
 							break;
 						}
-					}		
+					}
 				}
 			}*/
 			var elementosRepetidosTrab=[];
 			var size=planeado.length;
 			var tableRepeat=[];
 			for(var k=0;k<size;k++){
-				console.log("indice "+k)
+			//	console.log("indice "+k)
 				var actualElemento=planeado[k];
 				if(actualElemento!="-"){
 					//var colnum=actualElemento.getAttribute("colspan");
@@ -122,7 +123,7 @@ var table=document.getElementById("table2");
 						//console.log(actualElemento);
 						console.log("actual eleemento"+actualElemento.text+" "+k+"nuevo elementos"+nuevoElemento.text+" "+j);
 						if(nuevoElemento!="-"){
-							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() &&
 								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
 								//console.log("elemento repitido"+actualElemento.text + actualElemento.id);
 								repetido.push(nuevoElemento.index);
@@ -135,9 +136,9 @@ var table=document.getElementById("table2");
 								//console.log(celda.colSpan);
 
 							}else{
-								console.log("indice antes del cambio"+k +"j es "+j);
+							//	console.log("indice antes del cambio"+k +"j es "+j);
 								k=j-1;
-								console.log("indice despues del cambio"+k +"j es "+j);
+								//console.log("indice despues del cambio"+k +"j es "+j);
 
 								break;
 							}
@@ -148,7 +149,7 @@ var table=document.getElementById("table2");
 					}
 					if(repetido.length>0){
 						var repetidoSize=repetido.length;
-						console.log("repetidos");
+					//	console.log("repetidos");
 						repetido.reverse();
 						repetido["inicio"]=elemento;
 						tableRepeat.push(repetido);
@@ -168,7 +169,7 @@ var table=document.getElementById("table2");
 					}
 				}
 			}
-			console.log("repetidos Totales planeado");
+			//console.log("repetidos Totales planeado");
 						console.log(tableRepeat);
 			tableRepeat.reverse();
 			var repatSize=tableRepeat.length;
@@ -176,19 +177,19 @@ var table=document.getElementById("table2");
 				var tabRepeat=tableRepeat[l];
 				var sizeTab=tabRepeat.length;
 				var celdaInicio=tabRepeat["inicio"];
-				console.log("celda inicio"+celdaInicio);
+			//	console.log("celda inicio"+celdaInicio);
 				for(var o=0;o<sizeTab;o++){
 					row.deleteCell(tabRepeat[o]);
 					var cel=obtenerCeldaObjecto(celdaInicio,row);
 					cel.colSpan=parseInt(cel.colSpan)+1;
-					console.log(tabRepeat[o]);
-					
+			//		console.log(tabRepeat[o]);
+
 				}
 			}
 
 		}else{//trabajndo
 			//console.log(tecnico);
-			console.log("trabajando");
+		//	console.log("trabajando");
 			var status=obtenerCelda(0,row);
 			var h0800=obtenerCelda(1,row);
 			var h0830=obtenerCelda(2,row);
@@ -252,13 +253,13 @@ var table=document.getElementById("table2");
 			trabajando.push(aut);
 			//tab_tecnico.push(trabajando);
 			//tecnicos.push(tab_tecnico);
-			console.log("TRABAJANDO//////////////");
+			//console.log("TRABAJANDO//////////////");
 			console.log(trabajando);
 			var elementosRepetidosTrab=[];
 			var size=trabajando.length;
 			var tableRepeat=[];
 			for(var planK=0;planK<size;planK++){
-				console.log("indice "+planK)
+			//	console.log("indice "+planK)
 				var actualElemento=trabajando[planK];
 				if(actualElemento!="-"){
 					//var colnum=actualElemento.getAttribute("colspan");
@@ -267,9 +268,9 @@ var table=document.getElementById("table2");
 					for(var j=parseInt(planK)+1;j<trabajando.length;j++){
 						var nuevoElemento=trabajando[j];
 						//console.log(actualElemento);
-						console.log("actual eleemento"+actualElemento.text+" "+planK+"nuevo elementos"+nuevoElemento.text+" "+j);
+					//	console.log("actual eleemento"+actualElemento.text+" "+planK+"nuevo elementos"+nuevoElemento.text+" "+j);
 						if(nuevoElemento!="-"){
-							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() && 
+							if(actualElemento.text.toUpperCase()==nuevoElemento.text.toUpperCase() &&
 								actualElemento.id.toUpperCase()==nuevoElemento.id.toUpperCase()){
 								//console.log("elemento repitido"+actualElemento.text + actualElemento.id);
 								repetido.push(j+1);
@@ -282,9 +283,9 @@ var table=document.getElementById("table2");
 								//console.log(celda.colSpan);
 
 							}else{
-								console.log("indice antes del cambio"+planK +"j es "+j);
+							//	console.log("indice antes del cambio"+planK +"j es "+j);
 								planK=j-1;
-								console.log("indice despues del cambio"+planK +"j es "+j);
+								//console.log("indice despues del cambio"+planK +"j es "+j);
 
 								break;
 							}
@@ -315,29 +316,29 @@ var table=document.getElementById("table2");
 					}
 				}
 			}
-			console.log("repetidos Totales");
-						console.log(tableRepeat);
+			//console.log("repetidos Totales");
+				//		console.log(tableRepeat);
 			tableRepeat.reverse();
 			var repatSize=tableRepeat.length;
 			for(var l=0;l<repatSize;l++){
 				var tabRepeat=tableRepeat[l];
 				var sizeTab=tabRepeat.length;
 				var celdaInicio=tabRepeat["inicio"];
-				console.log("celda inicio"+celdaInicio);
+				//console.log("celda inicio"+celdaInicio);
 				for(var o=0;o<sizeTab;o++){
 					row.deleteCell(tabRepeat[o]);
 					var cel=obtenerCeldaObjecto(celdaInicio,row);
 					cel.colSpan=parseInt(cel.colSpan)+1;
-					console.log(tabRepeat[o]);
-					
+					//console.log(tabRepeat[o]);
+
 				}
 			}
 
 		}
 	}
 	//console.log(planeado);
-	
 
+actualizarTablero();
 });
 
 function esImpar(num){
@@ -357,7 +358,7 @@ function obtenerCelda(num , fila){
 		if(id){
 			var content={};
 			if(id.indexOf("food")==-1 && id.indexOf("birthday")==-1 ){
-				
+
 				if(id.indexOf("yellow")!=-1){
 					id="yellow";
 				}else if(id.indexOf("blue")!=-1){
@@ -384,7 +385,7 @@ function obtenerCelda(num , fila){
 			return content;
 	}
 	return celda;
-			
+
 	}else{
 		celda="-";
 		return celda;
@@ -394,4 +395,28 @@ function obtenerCelda(num , fila){
 function obtenerCeldaObjecto(num, fila){
 	var celda=fila.cells[num];
 	return celda;
+}
+
+
+function actualizarTablero(){
+	$.ajax({
+	  url: '../controller/tipo_usuario.php',
+	  success: function(data) {
+	  	console.log("tipo de usuario es "+data);
+			if(data==3){
+				console.log("es mostrador");
+				wait(300000);
+				location.reload();
+			}
+	  }
+	});
+}
+
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
 }

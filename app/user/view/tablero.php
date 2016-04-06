@@ -1,4 +1,6 @@
 <?php
+
+
 	include "../../admin/model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
@@ -45,7 +47,7 @@
 					break;
 				case 5:
 					$result="<div class='birthday' id='birthday$num' name='birthday$num' style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/birthday.png' alt='' height='45px' width='40px'>".
+								"<img src='../../../static/images/admin/birthday.png' alt='' height='45px' width='100%'>".
 								"</div>";
 					/*$result="<div class='birthday' id='birthday$num' name='birthday$num' style='border-style: none; cursor: move;'>".
 							"< img src='../../../static/images/admin/birthday.png' height='40px' width='40px' >".
@@ -54,7 +56,7 @@
 					break;
 				case 6:
 					$result= "<div class='food' id='food$num' name='food$num' style='border-style: none; cursor: move;'>".
-								"<img src='../../../static/images/admin/comida.png' alt='' height='45px' width='40px'>".
+								"<img src='../../../static/images/admin/comida.png' alt='' height='45px' width='100%'>".
 								"</div>";
 					/*$result= "<div class='food' id='foodc$num' name='food$num' style='border-style: none; cursor: move;' >< img src='../../../static/images/admin/comida.png'  height='40px' width='40px' >".
 							"</div>";
@@ -160,7 +162,12 @@
 
 						<tbody>
 						<?php
-						$tecnicosSize=sizeof($tecnicos);
+						if(!$tecnicos){
+							$tecnicosSize=0;
+						}else{
+							$tecnicosSize=sizeof($tecnicos);
+
+						}
 
 							for($j=0;$j<$tecnicosSize;$j++){
 								$idTecnico=$tecnicos[$j]["id"];

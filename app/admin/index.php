@@ -195,6 +195,7 @@
                                             <select name="typecount" id="typecount" class="form-control">
                                               <option value="1">usuario normal</option>
                                               <option value="2">administrador</option>
+                                              <option value="3">mostrador</option>
                                             </select>
                                           </div>
                                       </div>
@@ -268,6 +269,7 @@
                                             <select name="modtypecount" id="modtypecount" class="form-control">
                                               <option value="1">usuario normal</option>
                                               <option value="2">administrador</option>
+                                              <option value="3">mostrador</option>
                                             </select>
                                           </div>
                                       </div>

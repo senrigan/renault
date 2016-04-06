@@ -18,11 +18,11 @@
             data : 'user='+user+'&pass='+pass,
 
             success:function(res){
-            
-              if(res==1 || res==2){
-                if(res==1){
+
+              if(res==1 || res==2 || res==3){
+                if(res==1 || res==3 ) {
                   window.location.href = "view/tablero.php";
-                }else if(res==2){
+                }else if(res==2 ){
                   window.location.href = "../admin/index.php";
                 }
                //$("#content").append(res);
@@ -37,7 +37,7 @@
             }
           });
       }
-    </script>  
+    </script>
   </head>
 
   <body>
@@ -72,10 +72,10 @@
   </div>
 
 </body>
-    
-    
-    
-    
-    
+
+
+
+
+
   </body>
 </html>
