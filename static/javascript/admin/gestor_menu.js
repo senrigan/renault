@@ -170,6 +170,11 @@ $(document).ready(function() // or $(function()
     	reguseractive=false;
     	modtecactive=false;
       moduseractive=false;
+      $("#firstname").val("");
+      $("#lastnamepatern").val("");
+      $("#lastnamemother").val("");
+      $("#wizard-picture").val("");
+      $("#wizardPicturePreview").attr('src','../../static/images/admin/register/default-avatar.png');
     //var loadUrl =adminview+"registro_tecnico.php";
     //$("#container").load(loadUrl);
 	});
@@ -195,7 +200,9 @@ $(document).ready(function() // or $(function()
 	    regtecactive=false;
 	    modtecactive=false;
       moduseractive=false;
-
+      $("#user").val("");
+      $("#password").val("");
+      $("#typecount").val(1);
 	    //var loadUrl = adminview+"registro_usuario.php";
 	    //$("#modalcontent").load(loadUrl);
 	    //$("#modalreg").modal('show');

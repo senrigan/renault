@@ -220,7 +220,7 @@ function guardarTablero(){
 				"partes":partes,
 				"aut":aut
 			};
-			
+
 
 			$.post("../controller/gestionar_tablero.php",{
 				id:tecnico.id,
@@ -228,6 +228,11 @@ function guardarTablero(){
 				trabajando:trab,
 				},function(data,status){
 				console.log("data es "+data);
+				if(data==null){
+					alert(data);
+				}else{
+					alert("Cambios Guardados con exito");
+				}
 			});
 			/* $.ajax({
 			     type: 'POST',
@@ -256,9 +261,9 @@ function guardarTablero(){
 			*/
 
 		}
-		
-		
-		
+
+
+
 
 
 		/*for(var j=0,col; col=row.cells[j] ;j++){
@@ -304,7 +309,7 @@ function obtenerCelda(num , fila){
 		if(id){
 			var content={};
 			if(id.indexOf("food")==-1 && id.indexOf("birthday")==-1 ){
-				
+
 				if(id.indexOf("yellow")!=-1){
 					id="yellow";
 				}else if(id.indexOf("blue")!=-1){
@@ -332,7 +337,7 @@ function obtenerCelda(num , fila){
 			return content;
 	}
 	return celda;
-			
+
 	}else{
 		celda="-";
 		console.log(celda);

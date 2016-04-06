@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+  if($_SESSION['usuario']['typecount']!=2){
+    header('Location: ../user/login.html');
+
+  }
+
+
+ ?>
 <html lang="en">
 <head>
   <title>Bootstrap Case</title>
@@ -76,8 +85,8 @@
         <li><a href="view/tablero.php" target="_self"></span>Tablero</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href=""><span class="glyphicon glyphicon-user"></span> <?php  if(isset($_SESSION['usuario'])){echo $_SESSION['usuario']['userName'] ;}else { echo "Sign Up"; }  ?></a></li>
+        <li><a href="controller/logout.php"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
       </ul>
     </div>
   </div>

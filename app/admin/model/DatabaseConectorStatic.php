@@ -1,4 +1,4 @@
-<?php 
+<?php
 	class DatabaseConectorStat{
 		/*static $user="pruebas";
 		static $password="admin";
@@ -7,18 +7,18 @@
 		static $host="localhost";
 		static $conexion;
 		*/
-		
+
 		static $user="iwxdbrzwzwmcvq";
 		static $password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 		static $dbname="dcv72crt7q7fa1";
 		static $port="5432";
 		static $host="ec2-54-83-36-203.compute-1.amazonaws.com";
 		static $conexion;
-		
+
 		function DatabaseConectorStat(){
-			$local=$_SERVER['SERVER_NAME'];
+		/*	$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
-				
+
 				self::$user="pruebas";
 				self::$password="admin";
 				self::$dbname="renault";
@@ -26,14 +26,14 @@
 				self::$host="localhost";
 
 			}else{
-				
+			*/
 				self::$user="iwxdbrzwzwmcvq";
 				self::$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 				self::$dbname="dcv72crt7q7fa1";
 				self::$port="5432";
 				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
-				
-			}
+
+			//}
 		}
 
 		public function closeConexion(){
@@ -47,7 +47,7 @@
 		public function openConexion(){
 			$cadenaConexion = "host=".self::$host." port=".self::$port." dbname=".self::$dbname." user=".self::$user." password=".self::$password."";
 			return pg_connect($cadenaConexion) ;
-		}	
+		}
 
 
 		public function executeQuery($query){
@@ -57,7 +57,7 @@
 
 		public function executeQueryDefine($query , $conect){
 			return pg_query($conect, $query);
-		}	
+		}
 	}
 
 ?>

@@ -18,7 +18,7 @@
 	$query="SELECT * FROM cuentas ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 
-
+ //	pgdump($resultado);
 	if(!$resultado){
 		echo "ocurrio un error al consultar la base de datos";
 		exit;

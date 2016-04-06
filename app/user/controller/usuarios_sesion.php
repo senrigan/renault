@@ -6,13 +6,13 @@
 	$query="SELECT * FROM  cuentas ";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	//$filas = pg_fetch_all($resultado);
-	
+
 	//$sizeElement=sizeof($filas);
 	session_start();
-	
+
 	//require "funciones/funciones.php";
 	//$con=conecta();
-	
+
 	$user=$_REQUEST['user'];
 	$pass=$_REQUEST['pass'];
 
@@ -38,9 +38,10 @@
 			$privileges=$filas[$i]['privileges'];
 			$password=$filas[$i]['password'];
 			if(strcmp($userName,$user)==0 && strcmp($pass,$password)==0){
-				$_SESSION['id_user']=$idUser;
-				$_SESSION['userName']=$userName;
-				$_SESSION['typecount']=$privileges;
+
+				$_SESSION['usuario']['id_user']=$idUser;
+				$_SESSION['usuario']['userName']=$userName;
+				$_SESSION['usuario']['typecount']=$privileges;
 				if($privileges==1){
 					header("location : view/tablero.php");
 					$result= 1;
@@ -52,17 +53,17 @@
 				}
 			}
 		}
-		
-		
+
+
 	}
 	$conector->closeConexionDef($conexion);
 	echo $result;
-	
+
 	/*if(!$resultado){
 		echo "ocurrio un error al consultar la base de datos";
 		exit;
 	}else{
-		
+
 		$sizeElement=sizeof($filas);
 		for($i=0;$i<$sizeElement;$i++){
 
@@ -84,7 +85,7 @@
 	} else{
 		$id_user=mysql_result($res,0,"id");
 		$nom_user=mysql_result($res,0, "nombre")." ".mysql_result($res,0, "apellidos");
-		
+
 		$_SESSION['id_user']=$id_user;
 		$_SESSION['nom_user']=$nom_user;
 		//$num=1;

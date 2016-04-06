@@ -33,8 +33,14 @@
 	}else{
 
 		$filas = pg_fetch_all($resultado);
+
 		$conector->closeConexionDef($conexion);
-		$sizeElement=sizeof($filas);
+		if($filas==false){
+			$sizeElement=0;
+		}else{
+			$sizeElement=sizeof($filas);
+		}
+		
 		if($sizeElement>0)
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";

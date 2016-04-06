@@ -1,12 +1,22 @@
 <?php
+
+
+
+
 include "../../admin/model/DatabaseConectorStatic.php";
 include "../controller/GestorTablero.php";
+session_start();
+if($_SESSION['usuario']['typecount']!=2){
+	header('Location: ../../user/login.html');
+
+}
 $conector=new DatabaseConectorStat();
 $conexion=$conector->openConexion();
 $query="SELECT * FROM tecnicos ORDER BY id ASC";
 $resultado=$conector->executeQueryDefine($query,$conexion);
 $tecnicos=pg_fetch_all($resultado);
 $conector->closeConexionDef($conexion);
+
 
 
 
@@ -31,7 +41,7 @@ $conector->closeConexionDef($conexion);
 		<script type="text/javascript">
 			var redipsURL = '../../../static/javascript/drag-and-drop-table-row/';
 		</script>
-		
+
 		<script type="text/javascript" src="../../../static/javascript/redips-drag-min.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/script.js"></script>
 		<script type="text/javascript" src="../../../static/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
@@ -40,15 +50,15 @@ $conector->closeConexionDef($conexion);
 		<link rel="stylesheet" href="../../../static/css/tablero.css"/>
 	</head>
 	<body class="content" onload="REDIPS.drag.init()" >
-		
+
 			<div id="right"  width="100%">
 				<div id="redips-drag" width="100%">
 					<table class="tablehead" id="table2" name="table2" border="1" width="100%" >
 						<thead>
 							<tr>
 								<th class="redips-only last" colspan="31" rowspan="" headers="" scope="col">CONTROL DE PROGRESO DE TRABAJO</th>
-								
-								
+
+
 								<th class="redips-only last" colspan="2" rowspan="" headers="" scope="">Detenidos</th>
 							</tr>
 							<tr>
@@ -102,14 +112,14 @@ $conector->closeConexionDef($conexion);
 								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">00</th>
 								<th class="redips-only last" colspan="" rowspan="" headers="" scope="">30</th>
 
-							
-							
+
+
 
 							</tr>
 						</thead>
-						
+
 						<tbody>
-						
+
 						<?php
 							$tecnicosSize=sizeof($tecnicos);
 							$gestor=new GestorTablero();
@@ -160,10 +170,10 @@ $conector->closeConexionDef($conexion);
 										$Tot=$gestor->obtenerElemento($filas[$i]["tot"]);
 										$partes=$gestor->obtenerElemento($filas[$i]["partes"]);
 										$AUT=$gestor->obtenerElemento($filas[$i]["aut"]);
-										
+
 										$tecnicoActual=$idEmpleado;
-										
-										
+
+
 										/*$query="SELECT * FROM tecnicos where id_tecnico=$idEmpleado ";
 										$conexion=$conector->openConexion();
 		  								$resultado=$conector->executeQueryDefine($query,$conexion);
@@ -205,7 +215,7 @@ $conector->closeConexionDef($conexion);
 												"<td class='c1'>$h1500</td>".
 												"<td class='c1'>$h1530</td>".
 												"<td class='c1'>$h1600</td>".
-											
+
 												"<td class='c1'>$h1630</td>".
 
 												"<td class='c1'>$h1700</td>".
@@ -222,10 +232,10 @@ $conector->closeConexionDef($conexion);
 												"<td class='c1'>$partes</td>".
 												"<td class='c1'>$AUT</td>".
 												"</tr>";
-										}							
+										}
 										if($status==2){
 													echo "<tr class='rd' >".
-													
+
 													"<td class='redips-only last'>Trabajando</td>".
 													"<td>$h0800</td>".
 													"<td>$h0830</td>".
@@ -244,7 +254,7 @@ $conector->closeConexionDef($conexion);
 													"<td>$h1500</td>".
 													"<td>$h1530</td>".
 													"<td>$h1600</td>".
-												
+
 													"<td colspan='' rowspan='' headers=''>".
 													$h1630.
 													"</td>".
@@ -261,11 +271,11 @@ $conector->closeConexionDef($conexion);
 													"<td>$Tot</td>".
 													"<td>$partes</td>".
 													"<td>$AUT</td>".
-													
+
 												"</tr>";
 										}
 									}
-								} 
+								}
 
 							}
 							/*$query="SELECT * FROM tablero_control  ORDER BY  tecnico,status ASC";
@@ -273,17 +283,17 @@ $conector->closeConexionDef($conexion);
 							$resultado=$conector->executeQueryDefine($query,$conexion);
 							$filas = pg_fetch_all($resultado);
 							$conector->closeConexionDef($conexion);
-							$sizeElement=sizeof($filas); 
+							$sizeElement=sizeof($filas);
 							$tecnicoActual=-1;
 							*/
 
 						 ?>
-						
-						
-					
-					
+
+
+
+
 					</tbody>
-						
+
 					</table>
 					<br><br><br>
 					<div id="left" name="left">
@@ -293,6 +303,9 @@ $conector->closeConexionDef($conexion);
 									<th class="redips-only last" colspan="7" rowspan="" headers="" scope="">
 										Elementos de arrastre
 									</th>
+									<th class="redips-only last" colspan="1" rowspan="" headers="" scope="">
+										Funciones
+									</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -300,12 +313,12 @@ $conector->closeConexionDef($conexion);
 									<td colspan="" rowspan="" headers="">
 										<div class="redips-drag redips-clone blue" id="blue" name="blue">
 										</div>
-										
+
 									</td>
 									<td class="redisp-dark" colspan="" rowspan="" headers="">
 										<div class="redips-drag redips-clone white" id="white" name="white">
 										</div>
-										
+
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone yellow" id="yellow" name="yellow" >
@@ -315,7 +328,7 @@ $conector->closeConexionDef($conexion);
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone red" id="red" name="red" height="40px" width="40px">
 										</div>
-										
+
 									</td>
 									<td class="dark" colspan="" rowspan="" headers="">
 										<div  class="redips-drag redips-clone birthday" id="birthday" name="birthday" >
@@ -332,25 +345,33 @@ $conector->closeConexionDef($conexion);
 										<div  id="Trash">
 											<img src="../../../static/images/admin/trash.png" alt="" height="40px" width="40px">
 										</div>
-										
+
+
+									</td>
+									<td>
+										<div class="">
+
+											<button type="button" class="btn btn-default btn-lg">Menu Principal</button>
+												<button class="btn btn-default btn-lg" onclick="guardarTablero()" >Guardar Cambios</button>
+										</div>
 									</td>
 
-									
 								</tr>
 							</tbody>
 						</table>
+
 					</div>
 				</div>
 				<div id="right" name="right">
-					<button onclick="guardarTablero()" >Guardar Cambios</button>
-					
+
+
 				</div>
-				
+
 			</div>
 
 			<div aria-labelledby="ui-id-1" role="dialog" tabindex="-1" style="display: none; outline: 0px none; z-index: 1000;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-dialog-buttons">
-			
-			<?php 
+
+			<?php
 				/*<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
 				<span class="ui-dialog-title" id="ui-id-1">jQuery dialog</span>
 				<a role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
@@ -358,7 +379,7 @@ $conector->closeConexionDef($conexion);
 				</a>
 			</div>*/
 			?>
-			
+
 			<div class="ui-dialog-content ui-widget-content" id="dialog">Please choose action!</div>
 			<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 				<div class="ui-dialog-buttonset">
@@ -383,7 +404,7 @@ $conector->closeConexionDef($conexion);
 
 		</div>
 
-		
+
 	</body>
 
 </html>
