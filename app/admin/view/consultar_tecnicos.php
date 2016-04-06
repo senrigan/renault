@@ -40,7 +40,7 @@
 		}else{
 			$sizeElement=sizeof($filas);
 		}
-		
+
 		if($sizeElement>0)
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
@@ -54,7 +54,7 @@
 
 
 			}else{
-				$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$filas[$i]['imagen_perfil'];
+				$ubicacion="/media/userImage/".$filas[$i]['imagen_perfil'];
 
 			}
 			//$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$filas[$i]['imagen_perfil'];
