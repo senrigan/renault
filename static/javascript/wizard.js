@@ -84,7 +84,7 @@ $(document).ready(function(){
                         data: formData,
                         async: false,
                         success: function (data) {
-                            console.log(data);
+                            console.log("data es"+data);
                             if(data==1){
                               alert("El tecnico se Registro Exitosamente");
                               $(".closeTecReg")[0].click();
