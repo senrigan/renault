@@ -49,8 +49,9 @@
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$local=$_SERVER['SERVER_NAME'];
 			if($local=="localhost"){
-				//$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
-				$ubicacion="http://".$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];;
+				$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil'];
+
+				//$ubicacion="http://".$local."/renault/media/userImage/".$filas[$i]['imagen_perfil'];;
 
 
 			}else{

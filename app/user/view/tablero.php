@@ -261,7 +261,8 @@
 											$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 											$local=$_SERVER['SERVER_NAME'];
 			  								if($local=="localhost"){
-			  									$ubicacion="http://".$local."/renault/media/userImage/";
+			  									//$ubicacion="http://".$local."/renault/media/userImage/";
+			  									$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil']
 			  								}else{
 			  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 

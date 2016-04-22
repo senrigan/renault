@@ -188,7 +188,9 @@ $conector->closeConexionDef($conexion);
 		  								*/
 		  								$local=$_SERVER['SERVER_NAME'];
 		  								if($local=="localhost"){
-		  									$ubicacion="http://".$local."/renault/media/userImage/";
+		  									//$ubicacion="http://".$local."/renault/media/userImage/";
+		  									//.$filas[$i]['imagen_perfil'];
+		  									$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 		  								}else{
 		  									$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 
