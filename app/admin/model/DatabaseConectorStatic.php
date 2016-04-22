@@ -17,15 +17,15 @@
 
 		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
-			// if($local=="localhost"){
-			//
-			// 	self::$user="pruebas";
-			// 	self::$password="admin";
-			// 	self::$dbname="renault";
-			// 	self::$port="5432";
-			// 	self::$host="localhost";
-			//
-			// }else{
+			 if($local=="localhost"){
+			
+				self::$user="pruebas";
+				self::$password="admin";
+				self::$dbname="renault";
+				self::$port="5432";
+				self::$host="localhost";
+			
+			 }else{
 
 				self::$user="iwxdbrzwzwmcvq";
 				self::$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
@@ -33,7 +33,7 @@
 				self::$port="5432";
 				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
 
-			  // }
+			  }
 		}
 
 		public function closeConexion(){
