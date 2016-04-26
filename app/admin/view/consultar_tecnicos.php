@@ -48,7 +48,7 @@
 			$idtec=$filas[$i]["id"];
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$local=$_SERVER['SERVER_NAME'];
-				$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+				$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 			if($local=="localhost" || $isIP==true){
 				//$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil'];
 

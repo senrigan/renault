@@ -186,7 +186,7 @@ $conector->closeConexionDef($conexion);
 		 								$filasTecnicos = pg_fetch_all($resultado);
 		  								$conector->closeConexionDef($conexion);
 		  								*/
-												$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+												$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 		  								$local=$_SERVER['SERVER_NAME'];
 		  								if($local=="localhost" || $isIP==true){
 		  									$ubicacion="http://".$local.":".$_SERVER['SERVER_PORT']."/renault/media/userImage/";

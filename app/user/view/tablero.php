@@ -259,7 +259,7 @@
 											$amaterno=$filasTecnicos[0]["a_materno"];
 											$imagen=$filasTecnicos[0]["imagen_perfil"];
 											$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
-												$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+												$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 											$local=$_SERVER['SERVER_NAME'];
 			  								if($local=="localhost" || $isIP==true){
 			  									$ubicacion="http://".$local.":".$_SERVER['SERVER_PORT']."/renault/media/userImage/";

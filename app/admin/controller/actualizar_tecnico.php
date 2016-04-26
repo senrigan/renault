@@ -8,7 +8,7 @@
 	$lastMomName=$_POST["modlastnamemother"];
 	if (is_uploaded_file($_FILES['modwizard-picture']['tmp_name'])) {
 		$local=$_SERVER['SERVER_NAME'];
-		$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+		$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 
 		if($local=="localhost" || $isIP==true) {
 			$target_path=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";

@@ -17,7 +17,7 @@
 
 		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
-				$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+				$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 			 if($local=="localhost" || $isIP==true){
 
 				self::$user="pruebas";
