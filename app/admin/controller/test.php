@@ -1,4 +1,4 @@
-<?php 
+<?php
 	/*$local=$_SERVER['SERVER_NAME'];
 	if($local=="localhost"){
 		$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
@@ -14,7 +14,7 @@
 	$id_Tecnico=$_REQUEST['idTecnico'];
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	
+
 
 	$firtName=$_POST["modfirstname"];
 	$lastFatherName=$_POST["modlastnamepatern"];
@@ -22,7 +22,8 @@
 	echo "".$_FILES['modwizard-picture']['name'];
 	if (is_uploaded_file($_FILES['modwizard-picture']['tmp_name'])) {
 		$local=$_SERVER['SERVER_NAME'];
-		if($local=="localhost"){
+			$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+		if($local=="localhost" || $isIP==true){
 			$target_path=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 		}else{
 			$target_path=$_SERVER['DOCUMENT_ROOT']."/media/userImage/";
@@ -30,13 +31,13 @@
 		}
 		//$target_path = $_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
 		echo "target 1".$target_path;
-		$target_path = $target_path . basename( $_FILES['modwizard-picture']['name']); 
+		$target_path = $target_path . basename( $_FILES['modwizard-picture']['name']);
 		echo "target 2".$target_path;
 		$nameImage= $_FILES['modwizard-picture']['name'];
 		if( !$_FILES['modwizard-picture']['name']){
-				$nameImage="static/tecnico.png";	
+				$nameImage="static/tecnico.png";
 		}
-		if(move_uploaded_file($_FILES['modwizard-picture']['tmp_name'], $target_path)) { 
+		if(move_uploaded_file($_FILES['modwizard-picture']['tmp_name'], $target_path)) {
 		echo "El archivo ". basename( $_FILES['modwizard-picture']['name']). " ha sido subido";
 			$query="UPDATE  tecnicos  SET nombre='$firtName' , a_paterno='$lastFatherName' , a_materno='$lastMomName' , imagen_perfil='$nameImage' WHERE  id=$id_Tecnico ";
 
@@ -52,8 +53,8 @@
 
 	}
 
-	
-	
+
+
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 	pg_close($conexion);
 	if($resultado){

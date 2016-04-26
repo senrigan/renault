@@ -17,14 +17,15 @@
 
 		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
-			 if($local=="localhost"){
-			
+				$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+			 if($local=="localhost" || $isIp==true){
+
 				self::$user="pruebas";
 				self::$password="admin";
 				self::$dbname="renault";
 				self::$port="5432";
 				self::$host="localhost";
-			
+
 			 }else{
 
 				self::$user="iwxdbrzwzwmcvq";

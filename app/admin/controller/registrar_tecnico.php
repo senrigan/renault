@@ -16,7 +16,8 @@
 	$conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
 	*/
 	$local=$_SERVER['SERVER_NAME'];
-	if($local=="localhost"){
+	$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
+	if($local=="localhost" || $isIp==true){
 		$path="/renault/media/userImage/";
 		$target_path = $_SERVER['DOCUMENT_ROOT'].$path;
 	}else{
