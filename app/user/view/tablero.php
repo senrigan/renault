@@ -261,7 +261,7 @@
 											$ubicacion="http://".$_SERVER['SERVER_NAME']."/media/userImage/";
 												$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
 											$local=$_SERVER['SERVER_NAME'];
-			  								if($local=="localhost" || $isIp==true){
+			  								if($local=="localhost" || $isIP==true){
 			  									$ubicacion="http://".$local.":".$_SERVER['SERVER_PORT']."/renault/media/userImage/";
 			  									//$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil']
 			  								}else{

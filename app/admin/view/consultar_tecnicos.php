@@ -49,7 +49,7 @@
 			$nombreImagen=trim($filas[$i]['imagen_perfil']);
 			$local=$_SERVER['SERVER_NAME'];
 				$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
-			if($local=="localhost" || $isIp==true){
+			if($local=="localhost" || $isIP==true){
 				//$ubicacion=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/".$filas[$i]['imagen_perfil'];
 
 				$ubicacion="http://".$local.":".$_SERVER['SERVER_PORT']."/renault/media/userImage/".$filas[$i]['imagen_perfil'];;

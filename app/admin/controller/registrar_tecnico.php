@@ -17,7 +17,7 @@
 	*/
 	$local=$_SERVER['SERVER_NAME'];
 	$isIP = (bool)ip2long($_SERVER['HTTP_HOST']);
-	if($local=="localhost" || $isIp==true){
+	if($local=="localhost" || $isIP==true){
 		$path="/renault/media/userImage/";
 		$target_path = $_SERVER['DOCUMENT_ROOT'].$path;
 	}else{
