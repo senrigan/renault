@@ -1,3 +1,39 @@
+$(document).ready(function() // or $(function()
+ {
+	 $('td').on('update', function(){
+    console.log('updates  en la tabla .');
+		});
+
+		$("td").on("change", function() {
+    console.log("changes en la tabla");
+		});
+
+
+		$("td").on("ondrag", function() {
+		console.log("changes en la tabla");
+		});
+
+		var x = document.getElementsByClassName("c1");
+		var tip="update";
+		addListener(x,"onupdate");
+		tip="change";
+		addListener(x,"onchange");
+
+		tip="ondrag";
+		addListener(x,"ondrag");
+		console.log("hola iniciando los listener");
+ });
+
+function addListener(x, type){
+	console.log(x.length);
+	for(var i = 0; i<x.length; i++){
+		console.log(x[i]);
+		x[i].addEventListener(""+type,function(){
+ 			console.log("estan ocurriendo cambios"+type);
+ 		});
+	}
+
+}
 function guardarTablero(){
 	var table=document.getElementById("table2");
 	//console.log("table"+table);
