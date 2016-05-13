@@ -2,8 +2,8 @@
 	include "../model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	$query="DELETE FROM elemento_control";
-	$resultado=$conector->executeQueryDefine($query,$conexion);
+	//$query="DELETE FROM elemento_control";
+	//$resultado=$conector->executeQueryDefine($query,$conexion);
 	$idTecnico=$_REQUEST["id"];
 	if(isset($idTecnico)){
 		//var_dump($_REQUEST);
@@ -18,7 +18,7 @@
        "h1330=null, h1400=null, h1430=null, h1500=null, h1530=null, h1600=null, h1630=null,".
        "h1700=null, h1730=null, h1800=null, h1830=null, h1900=null, h1930=null, h2000=null,".
        "lavado=null, control_calidad=null, terminado=null, tot=null, partes=null, ".
-       "aut=null WHERE status=1 OR status=2";
+       "aut=null WHERE tecnico=$idTecnico AND  (status=1 OR status=2) ";
        $resultado=$conector->executeQueryDefine($query,$conexion);
 
 		foreach ($planeado as $plan => $value) {

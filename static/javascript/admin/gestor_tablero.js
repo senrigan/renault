@@ -37,6 +37,16 @@ function addListener(x, type){
 function guardarTablero(){
 	var table=document.getElementById("table2");
 	//console.log("table"+table);
+  $.post("../controller/limpiar_elementos.php",{
+    command:"clean"
+    },function(data,status){
+    console.log("data es "+data);
+    if(data==null){
+      console.log(data);
+    }else{
+      console.log("Cambios Guardados con exito");
+    }
+  });
 	var tecnicos=[];
 	for(var i=3,row; row=table.rows[i] ;i++){
 		///console.log("row"+i+"data"+row.innerHTML)
@@ -49,8 +59,8 @@ function guardarTablero(){
 			var tecnico=row.cells[0];
 			tab_tecnico.push(tecnico.id);
 
-			//console.log(tecnico);
-			//console.log("id tecnico"+tecnico.id);
+			console.log(tecnico);
+			console.log("id tecnico"+tecnico.id);
 			var imagen=row.cells[1];
 			var status=row.cells[2];
 			///console.log("status"+status.innerHTML);
@@ -115,6 +125,8 @@ function guardarTablero(){
 			planeado.push(partes);
 			var aut=obtenerCelda(32,row);;
 			planeado.push(aut);
+      console.log("planeado");
+      console.log(planeado);
 			tab_tecnico.push(planeado);
 
 			var plan={
@@ -149,6 +161,8 @@ function guardarTablero(){
 				"partes":partes,
 				"aut":aut
 			};
+      console.log("planb -");
+      console.log(plan);
 		}else{//trabajndo
 			//console.log(tecnico);
 			var status=obtenerCelda(0,row);
@@ -214,7 +228,9 @@ function guardarTablero(){
 			trabajando.push(aut);
 			tab_tecnico.push(trabajando);
 			tecnicos.push(tab_tecnico);
-			console.log("tecnicos"+tecnicos);
+      console.log("tarbaajndo");
+      console.log(trabajando);
+			//console.log("tecnicos"+tecnicos);
 			/*$.POST("../controller/gestionar_tablero.php?id="+tecnico.id,{
 				planeado: planeado,
 				trabajando: trabajando
@@ -256,8 +272,12 @@ function guardarTablero(){
 				"partes":partes,
 				"aut":aut
 			};
+      console.log("trab");
+      console.log(trab);
+      console.log("plan");
+      console.log(plan);
 
-
+      console.log("insertando en la base");
 			$.post("../controller/gestionar_tablero.php",{
 				id:tecnico.id,
 				planeado:plan,
