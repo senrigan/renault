@@ -48,6 +48,8 @@ function guardarTablero(){
     }
   });
 	var tecnicos=[];
+  var size=table.rows.length;
+  var continueSave=true;
 	for(var i=3,row; row=table.rows[i] ;i++){
 		///console.log("row"+i+"data"+row.innerHTML)
 		if(esImpar(i)){//planeando
@@ -285,9 +287,12 @@ function guardarTablero(){
 				},function(data,status){
 				console.log("data es "+data);
 				if(data==null){
-					alert(data);
+					alert("ocurrio un error al guardar");
 				}else{
-					alert("Cambios Guardados con exito");
+          //console.log("validando i"+i+"size"+size);
+          if(continueSave){
+              continueSave=false;
+          }
 				}
 			});
 			/* $.ajax({
@@ -326,6 +331,10 @@ function guardarTablero(){
 			console.log("col"+col.innerHTML);
 		}*/
 	}
+
+  if(continueSave){
+    alert("cambios guardados con exito");
+  }
 	//var tab=JSON.stringify(tecnicos);
 	//console.log("tab"+tab);
 	/*$.post("../controller/gestionar_tablero.php?tablero="+tab,function(data,status){

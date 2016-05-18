@@ -18,7 +18,7 @@
 		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
 				$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
-			 if($local=="localhost" || $isIP==true){
+			 /*if($local=="localhost" || $isIP==true){
 
 				self::$user="pruebas";
 				self::$password="admin";
@@ -27,14 +27,14 @@
 				self::$host="localhost";
 
 			 }else{
-
+*/
 				self::$user="iwxdbrzwzwmcvq";
 				self::$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 				self::$dbname="dcv72crt7q7fa1";
 				self::$port="5432";
 				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
 
-			  }
+	//		  }
 		}
 
 		public function closeConexion(){
