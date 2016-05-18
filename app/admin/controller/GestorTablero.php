@@ -2,7 +2,7 @@
 	class GestorTablero{
 
 		public function __construct(){
-			
+
 		}
 
 		public function obtenerElemento($idElemento){
@@ -21,7 +21,7 @@
 
 				switch ($tipo) {
 					case 1:
-						$elemento="<div class='redips-drag  blue moved' id='blue' name='blue'></div>";
+						$elemento="<div class='redips-drag  blue moved' id='blue' name='blue'>$contenido</div>";
 						break;
 					case 2:
 						$elemento="<div class='white redips-drag moved' id='whitec' name='white'$idElemento style='border-style: none; cursor: move;'>$contenido</div>";
@@ -43,7 +43,7 @@
 								"<img src='../../../static/images/admin/comida.png' alt='' height='45px' width='40px'>".
 								"</div>";
 						break;
-					
+
 					default:
 						# code...
 						break;
@@ -51,7 +51,7 @@
 			}
 
 			return $elemento;
-			
+
 		}
 
 	}
