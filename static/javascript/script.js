@@ -23,7 +23,7 @@ redips.init = function () {
 	// set hover color
 	rd.hover.colorTd = '#FFE885';
 	// DIV elements can be dropped to the empty cells only
-	rd.dropMode = 'single';
+	//rd.dropMode = 'single';
 
 	rd.event.droppedBefore = function (targetCell) {
 		// test if target cell is occupied and set reference to the dragged DIV element
@@ -44,8 +44,8 @@ redips.init = function () {
 		}else{
 			console.log("id"+rd.obj.id)
 			var str=rd.obj.id;
-			
-			
+
+
 			if( !hasClass(rd.obj,"moved") && !rd.obj['inTable'] && str.indexOf("birthday")==-1 && str.indexOf("food")==-1){
 				$("#contentDiv").val("");
 
@@ -56,9 +56,9 @@ redips.init = function () {
 
 		// add counter to cloned element name
 	// (after cloned DIV element is dropped to the table)
-	
+
 	// in the moment when DIV element is moved, clonedDIV will be set
-	
+
 	// DIV element was clicked - disable 'mini' tables
 /*	rd.event.clicked = function () {
 		// search for table inside DIV element
@@ -82,12 +82,12 @@ redips.init = function () {
 	// A and B elements can't be placed to other table cells (this is default value)
 	rd.only.other = 'deny';
 
-	
+
 	rd.event.cloned = function () {
 		// set id of cloned element
 		var clonedId = rd.obj.id;
 		// if id of cloned element begins with "e" then make exception (allow DIV element to access cells with class name "redips-mark")
-		if (clonedId.substr(0, 1) === 'z') {   
+		if (clonedId.substr(0, 1) === 'z') {
 			//rd.mark.exception[clonedId] = 'mark';
 			rd.only.div[clonedId] = 'last';
 		}
@@ -97,7 +97,7 @@ redips.init = function () {
 		clonedDIV = cloned;
 	}
 
-	
+
 	$("#dialog2").dialog({
 		autoOpen: false,
 		resizable: false,
@@ -105,7 +105,7 @@ redips.init = function () {
 		width: 400,
 		height: 170,
 		// define Shift, Switch and Overwrite buttons
-		
+
 		buttons: {
 
 			'Cancelar': function (event, ui) {
@@ -127,10 +127,10 @@ redips.init = function () {
 				//deleteTableRow(source.row);
 				//REDIPS.drag.event.rowDeleted();
 				$(this).dialog('close');
-				
-				
-				
-			
+
+
+
+
 		},
 			'Guardar': function () {
 				// empty target cell
@@ -147,11 +147,11 @@ redips.init = function () {
 				$(this).dialog('close');
 			}
 
-		
+
 		}
-		
-		
-		
+
+
+
 	});
 	// define jQuery dialog
 	$('#dialog').dialog({
@@ -162,11 +162,11 @@ redips.init = function () {
 		height: 170,
 		// define Shift, Switch and Overwrite buttons
 		buttons: {
-			
+
 			'Switch': function () {
 				// enable elements in target cell (return solid border) in both cases
 				rd.enableDrag(true, rd.td.target);
-				// switch elements only if current DIV element is not cloned 
+				// switch elements only if current DIV element is not cloned
 				if (!clonedDIV) {
 					// relocate target and source cells
 					rd.relocate(rd.td.target, rd.td.source);
@@ -176,8 +176,8 @@ redips.init = function () {
 				// close dialog
 				$(this).dialog('close');
 			}
-		
-		
+
+
 		},
 		// action when dialog is closed
 		close: function (event, ui) {
@@ -193,7 +193,7 @@ redips.init = function () {
 				}
 			}
 		}
-	});	
+	});
 };
 
 // add onload event listener

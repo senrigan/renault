@@ -137,7 +137,7 @@ $conector->closeConexionDef($conexion);
 								$resultado=$conector->executeQueryDefine($query,$conexion);
 								$filas=pg_fetch_all($resultado);
 								$conector->closeConexionDef($conexion);
-
+								var_dump($resultado);
 								$numfilas=pg_num_rows($resultado);
 								if($numfilas==2){
 

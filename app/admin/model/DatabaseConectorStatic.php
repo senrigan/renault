@@ -1,39 +1,39 @@
 <?php
 	class DatabaseConectorStat{
-		/*static $user="pruebas";
-		static $password="admin";
+		static $user="postgres";
+		static $password="senrigan";
 		static $dbname="renault";
 		static $port="5432";
 		static $host="localhost";
 		static $conexion;
-		*/
 
+/*
 		static $user="iwxdbrzwzwmcvq";
 		static $password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 		static $dbname="dcv72crt7q7fa1";
 		static $port="5432";
 		static $host="ec2-54-83-36-203.compute-1.amazonaws.com";
 		static $conexion;
-
+*/
 		function DatabaseConectorStat(){
 			$local=$_SERVER['SERVER_NAME'];
 				$isIP = (bool)ip2long($_SERVER['SERVER_NAME']);
 			 /*if($local=="localhost" || $isIP==true){
-
-				self::$user="pruebas";
-				self::$password="admin";
+*/
+				self::$user="postgres";
+				self::$password="senrigan";
 				self::$dbname="renault";
 				self::$port="5432";
 				self::$host="localhost";
-
+/*
 			 }else{
 */
-				self::$user="iwxdbrzwzwmcvq";
+			/*	self::$user="iwxdbrzwzwmcvq";
 				self::$password="lekuhNVuNVpk42jhFTQXuXTzwQ";
 				self::$dbname="dcv72crt7q7fa1";
 				self::$port="5432";
 				self::$host="ec2-54-83-36-203.compute-1.amazonaws.com";
-
+*/
 	//		  }
 		}
 

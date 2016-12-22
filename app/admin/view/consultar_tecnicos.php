@@ -18,7 +18,7 @@
 	include "../model/DatabaseConectorStatic.php";
 	$conector=new DatabaseConectorStat();
 	$conexion=$conector->openConexion();
-	$query="SELECT * FROM tecnicos ORDER BY a_paterno , a_materno , nombre ASC";
+	$query="SELECT * FROM tecnicos ORDER BY id ASC";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
 
 	/*include '../model/DatabaseConector.php';
