@@ -35,9 +35,46 @@
 		exit;
 	}else{
 		
-		$filas = pg_fetch_all($resultado);
+		//$filas = pg_fetch_all($resultado);
+		$rows=mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+		foreach ($rows as $key => $value) {
+			echo "<tr> <td >";
+			$i=$value["id_tecnico"];
+			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
+			$nombreImagen=trim($value['imagen_perfil']);
+			$ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$value['imagen_perfil'];
+			//$imagenesUsuario=$_SERVER['DOCUMENT_ROOT']."renault/media/userImage/";
+			$imagenesUsuario="../../../media/userImage/";
+			$ubicacion=trim($ubicacion);
+			
+			//echo "".strcmp($ubicacion, $ubi);
+			if($filas[$i]['imagen_perfil']){
+				if(file_exists($ubicacion)){
+					echo "<image src='".$imagenesUsuario.$nombreImagen."' class='img-thumbnail' width='100' height='100' >";
+				}else{
+					echo "<image src=".$imagenesUsuario."static/tecnico.png".
+					" class='img-thumbnail' width='100' height='100' >";
+				}
+				
+			}else{
+				echo "<image src=".$imagenesUsuario."static/tecnico.png".
+					" class='img-thumbnail' width='100' height='100' >";
+			}
+			
+			echo "</td>".
+				"<td>".$value['nombre']."</td>".
+				"<td>".$value['a_paterno']."</td>".
+				"<td>".$value['a_materno']."</td>";
+			?>
+				
+				<td><button type='button' class='btn btn-warning'   onclick=<?php echo "modificarTecnico('modificar_tecnico.php?idTecnico=".$i."')" ; ?> >Modificar</button>
+				<button type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico('../controller/eliminar_tecnico.php?idTecnico=".$i."')"; ?> >Eliminar</button></td>
+			<?php 
+			"</tr>";
+		}
 		$conector->closeConexionDef($conexion);
-		$sizeElement=sizeof($filas);
+		//$sizeElement=sizeof($filas);
+		/*
 		for($i=0;$i<$sizeElement;$i++){
 			echo "<tr> <td >";
 			//echo getcwd()."../../../media/userImage/".$filas[$i]['imagen_perfil'];
@@ -71,7 +108,7 @@
 				<button type='button' class='btn btn-danger'  onclick=<?php echo "eliminarTecnico('../controller/eliminar_tecnico.php?idTecnico=".($i+1)."')"; ?> >Eliminar</button></td>
 			<?php 
 			"</tr>";
-		}
+		}*/
 		
 	//print_r($arr);
 	}

@@ -10,7 +10,7 @@
       function iniciarSesion(){
         var user=$("#login__username").val();
         var pass=$("#login__password").val();
-        console.log("user"+user+" pass"+pass);
+        console.log("user:"+user+" pass:"+pass);
         $.ajax({
             url:'controller/usuarios_sesion.php',
             type : 'post',
@@ -19,7 +19,7 @@
 
             success:function(res){
               alert(""+res);
-              if(res==1 || res==2){
+              if(res>0){
                 if(res==1){
                   window.location.href = "view/tablero.php";
                 }else if(res==2){

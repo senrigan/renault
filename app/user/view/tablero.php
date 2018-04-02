@@ -4,7 +4,7 @@
 	$conexion=$conector->openConexion();
 	$query="SELECT * FROM tablero_control  ORDER BY id ASC";
 	$resultado=$conector->executeQueryDefine($query,$conexion);
-	$filas = pg_fetch_all($resultado);
+	//$filas = pg_fetch_all($resultado);
 	$conector->closeConexionDef($conexion);
 	$sizeElement=sizeof($filas);
 	//include "../../admin/model/DatabaseConectorStatic.php";
@@ -16,39 +16,42 @@
 			
 			$query="SELECT * FROM elemento_control where id=$elemento ";
 			$resultado=$conector->executeQueryDefine($query,$conexion);
-			$filas=pg_fetch_all($resultado);
-			$conector->closeConexionDef($conexion);
-			$tipo=$filas[0]["tipo"];
-			$contenido=$filas[0]["contenido"];
-			$referencia=$filas[0]["referencia"];
-		
-			switch($tipo){
-				case 1:
-					$result="<div class='blue' id='bluec'$num name='blue'$num style='border-style: none; cursor: move;'>$contenido</div>";
-					break;
-				case 2:
-					$result="<div class='white' id='whitec'$num name='white'$num style='border-style: none; cursor: move;'>$contenido</div>";
-					break;
-				case 3:
-					$result= "<div class='yellow' id='yellow'$num name='yellow'$num style='border-style: none; cursor: move;'>$contenido</div>";
-					
-					break;
-				case 4:
-					$result="<div  class='redips-drag redips-clone red' id='red' name='red' height='40px' width='40px'>$contenido</div>";
-					break;
-				case 5:
-					$result="<div class='birthday' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
-							"<img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
-							"</div>";
-					break;
-				case 6:
-					$result= "<div class='food' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
-							"<img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
-							"</div>";
-					break;
-				default:
-					break;
+			//$filas=pg_fetch_all($resultado);
+			$rows=mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+			foreach ($rows as $key => $value) {
+				$tipo=$value["tipo"];
+				$contenido=$value["contenido"];
+				$referencia=$value["referencia"];
+				switch($tipo){
+					case 1:
+						$result="<div class='blue' id='bluec'$num name='blue'$num style='border-style: none; cursor: move;'>$contenido</div>";
+						break;
+					case 2:
+						$result="<div class='white' id='whitec'$num name='white'$num style='border-style: none; cursor: move;'>$contenido</div>";
+						break;
+					case 3:
+						$result= "<div class='yellow' id='yellow'$num name='yellow'$num style='border-style: none; cursor: move;'>$contenido</div>";
+						
+						break;
+					case 4:
+						$result="<div  class='redips-drag redips-clone red' id='red' name='red' height='40px' width='40px'>$contenido</div>";
+						break;
+					case 5:
+						$result="<div class='birthday' id='birthdayc'$num name='birthday'$num style='border-style: none; cursor: move;'>".
+								"<img src='../../../static/images/admin/birthday.jpg' alt='' height='40px' width='40px'>".
+								"</div>";
+						break;
+					case 6:
+						$result= "<div class='food' id='foodc'$num name='food'$num style='border-style: none; cursor: move;'>".
+								"<img src='../../../static/images/admin/comida.jpg' alt='' height='40px' width='40px'>".
+								"</div>";
+						break;
+					default:
+						break;
+				}
 			}
+			mysqli_free_result($resultado);
+			$conector->closeConexionDef($conexion);
 			return $result;
 		}else{
 

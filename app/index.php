@@ -6,9 +6,9 @@
 	}else{
 		$typecount=$_SESSION["typecount"];
 		if($typecount==2){//admin acount
-			header('location: admin/index.php');
+			header('Location: admin/index.php');
 		}else if($typecount==1){//user count
-			header('location: user/index.php');
+			header('Location: user/index.php');
 		}
 		//echo "ya hay una session creada";
 	}

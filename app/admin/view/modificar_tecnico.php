@@ -38,17 +38,23 @@
                             exit;
                           }else{
                             
-                            $filas = pg_fetch_all($resultado);
-                            $conector->closeConexionDef($conexion);
-                            $sizeElement=sizeof($filas);
-                            $nombre=$filas[0]['nombre'];
-                            $apaterno=$filas[0]['a_paterno'];
-                            $amaterno=$filas[0]['a_materno'];
-                            $imagen=$filas[0]['imagen_perfil'];
-                            $ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$imagen;
-                            if(!file_exists($ubicacion)){
-                                $imagen="static/tecnico.png";
+                            //$filas = pg_fetch_all($resultado);
+                            $rows=mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+                            foreach ($rows as $key => $value) {
+                              //$value['nombre'];
+                              $sizeElement=sizeof($filas);
+                              $nombre=$value['nombre'];
+                              $apaterno=$value['a_paterno'];
+                              $amaterno=$value['a_materno'];
+                              $imagen=$value['imagen_perfil'];
+                              $ubicacion=$_SERVER['DOCUMENT_ROOT']."/media/userImage/".$imagen;
+                              if(!file_exists($ubicacion)){
+                                  $imagen="static/tecnico.png";
+                              }  
                             }
+                            mysqli_free_result($resultado);
+                            $conector->closeConexionDef($conexion);
+                            
                           }
                           
                         ?>

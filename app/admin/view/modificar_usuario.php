@@ -6,11 +6,16 @@
   $query="SELECT * FROM cuentas WHERE id=$id_usuario ";
   $resultado=$conector->executeQueryDefine($query,$conexion);
 
-  $filas = pg_fetch_all($resultado);
+  //$filas = pg_fetch_all($resultado);
+  $rows=mysqli_fetch_all($resultado,MYSQLI_ASSOC);
+  foreach ($rows as $key => $value) {
+    $usuario=$value['cuenta'];
+    $pass=$value['password'];
+    $typecount=$value['privileges'];
+  }
+  mysqli_free_result($resultado);
   $conector->closeConexionDef($conexion);
-  $usuario=$filas[0]['cuenta'];
-  $pass=$filas[0]['password'];
-  $typecount=$filas[0]['privileges'];
+  
 
 ?>
 <!doctype html>
